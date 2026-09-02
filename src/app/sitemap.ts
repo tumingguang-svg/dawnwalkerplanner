@@ -8,16 +8,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/planner",
     "/time-costs",
+    "/quests",
+    "/missables",
     "/beginner",
     "/builds",
+    "/builds/vampire",
+    "/builds/human",
+    "/guides/how-time-works",
+    "/guides/30-day-deadline",
+    "/guides/day-vs-night",
+    "/guides/can-you-do-everything",
+    "/guides/missable-content",
     "/faq",
     "/disclaimer",
   ];
   const now = new Date();
+  const high = new Set(["", "/planner", "/guides/how-time-works"]);
+  const weekly = new Set([
+    "/planner",
+    "/time-costs",
+    "/quests",
+    "/missables",
+  ]);
   return paths.map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
-    changeFrequency: path === "/planner" ? "weekly" : "monthly",
-    priority: path === "" || path === "/planner" ? 1 : 0.7,
+    changeFrequency: weekly.has(path) ? "weekly" : "monthly",
+    priority: high.has(path) ? 1 : path.startsWith("/guides") ? 0.8 : 0.7,
   }));
 }

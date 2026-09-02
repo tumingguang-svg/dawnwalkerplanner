@@ -3,14 +3,17 @@ import type { TimePhase, VerificationStatus } from "./apConfig";
 /**
  * Time-cost catalog for the planner and /time-costs page.
  *
+ * Verification tiers: Estimated | Reported | Verified.
  * Post-launch owner updates:
- * 1. Play or cite a patch/community observation for an activity.
+ * 1. Play or cite a patch/player observation for an activity.
  * 2. Set `apCost` / `phase` to the observed values.
- * 3. Set `verificationStatus` to "community" (or keep "estimated"/"unverified").
- * 4. Fill `lastVerified` with an ISO date (YYYY-MM-DD) and optional `sourceNote`
- *    (e.g. "patch 1.0.2", "personal NG playthrough").
+ * 3. Set `verificationStatus` to "reported" (player/community note) or
+ *    "verified" (confirmed against retail/patch), else keep "estimated".
+ * 4. Fill `lastVerified` (YYYY-MM-DD), optional `sourceNote`, and optional
+ *    `platform` / `patch` when known.
  * 5. Leave `lastVerified: null` for rows that still need a real check.
  * Prefer shipping a complete estimated catalog over blank rows.
+ * Do not invent Verified retail numbers.
  */
 export type TimeCostEntry = {
   id: string;
@@ -25,6 +28,10 @@ export type TimeCostEntry = {
   sourceNote?: string;
   /** ISO date (YYYY-MM-DD) of last in-game or patch verification, or null. */
   lastVerified?: string | null;
+  /** Optional platform where the cost was observed (e.g. PC, PS5). */
+  platform?: string;
+  /** Optional patch / build id (e.g. 1.0.2). */
+  patch?: string;
 };
 
 /** Fan-estimated time costs. Prefer complete planner UX over perfect lore numbers. */
@@ -56,7 +63,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Story",
     apCost: 4,
     phase: "either",
-    verificationStatus: "unverified",
+    verificationStatus: "estimated",
     notes: "Typical cinematic / dialogue-heavy beat.",
     lastVerified: null,
   },
@@ -87,10 +94,10 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Side",
     apCost: 6,
     phase: "either",
-    verificationStatus: "community",
+    verificationStatus: "reported",
     notes: "Multi-step district arcs.",
     lastVerified: null,
-    sourceNote: "Aggregated from early community discussion (unconfirmed)",
+    sourceNote: "Aggregated from early player discussion (Reported, unconfirmed in retail)",
   },
   {
     id: "explore-block",
@@ -118,7 +125,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Combat",
     apCost: 4,
     phase: "night",
-    verificationStatus: "unverified",
+    verificationStatus: "estimated",
     notes: "Detection failure may burn extra AP.",
     lastVerified: null,
   },
@@ -159,7 +166,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Systems",
     apCost: 2,
     phase: "day",
-    verificationStatus: "unverified",
+    verificationStatus: "estimated",
     notes: "Vendor waits and recipe unlocks.",
     lastVerified: null,
   },
@@ -179,10 +186,10 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Story",
     apCost: 3,
     phase: "either",
-    verificationStatus: "community",
+    verificationStatus: "reported",
     notes: "Clue boards and interrogations.",
     lastVerified: null,
-    sourceNote: "Aggregated from early community discussion (unconfirmed)",
+    sourceNote: "Aggregated from early player discussion (Reported, unconfirmed in retail)",
   },
   {
     id: "family-lead",
@@ -221,7 +228,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     category: "Story",
     apCost: 5,
     phase: "night",
-    verificationStatus: "unverified",
+    verificationStatus: "estimated",
     notes: "Failure states may lock content.",
     spoiler: true,
     lastVerified: null,

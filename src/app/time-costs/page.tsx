@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
+import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { Spoiler } from "@/components/Spoiler";
+import { RelatedLinks } from "@/components/RelatedLinks";
 
 export const metadata: Metadata = {
-  title: "Time Costs Catalog — Estimated AP Activities",
+  title: "Time Costs Catalog — Estimated Time Budget Activities",
   description:
-    "Browse estimated Action Point costs for Blood of Dawnwalker activities, with verification status, last-verified dates, and source notes. Unofficial fan data.",
+    "Browse estimated Time Budget costs for Blood of Dawnwalker activities, with Estimated / Reported / Verified status, last-verified dates, and source notes. Unofficial fan data.",
 };
 
 const statusColor: Record<string, string> = {
   estimated: "text-ember-400 border-ember-600/40",
-  unverified: "text-dusk-300 border-dusk-600",
-  community: "text-dusk-100 border-dusk-500",
+  reported: "text-dusk-100 border-dusk-500",
+  verified: "text-dusk-50 border-ember-500/60 bg-ember-600/10",
 };
 
 const showVerifiedCol = TIME_COST_ENTRIES.some(
   (r) => r.lastVerified !== undefined
 );
 const showSourceCol = TIME_COST_ENTRIES.some((r) => r.sourceNote);
+const showPlatformCol = TIME_COST_ENTRIES.some((r) => r.platform);
+const showPatchCol = TIME_COST_ENTRIES.some((r) => r.patch);
 
 export default function TimeCostsPage() {
   return (
@@ -27,12 +32,28 @@ export default function TimeCostsPage() {
           Time costs
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          Fan-estimated AP spends for planning. Prefer a complete catalog over
-          perfect lore accuracy. Spoiler notes stay collapsed. After launch,
-          update{" "}
-          <code className="text-dusk-300">lastVerified</code> and{" "}
-          <code className="text-dusk-300">sourceNote</code> in the data file as
-          you confirm costs in-game.
+          Fan-estimated Time Budget spends for planning (model units). Prefer a
+          complete catalog over perfect lore accuracy. Spoiler notes stay
+          collapsed. After launch, update{" "}
+          <code className="text-dusk-300">lastVerified</code>,{" "}
+          <code className="text-dusk-300">sourceNote</code>, and optional{" "}
+          <code className="text-dusk-300">platform</code> /{" "}
+          <code className="text-dusk-300">patch</code> as you confirm costs
+          in-game. We do not invent Verified retail numbers.
+        </p>
+        <p className="mt-2 text-sm text-dusk-500">
+          Pair with the{" "}
+          <Link href="/planner" className="text-ember-400 hover:underline">
+            planner
+          </Link>{" "}
+          or read{" "}
+          <Link
+            href="/guides/how-time-works"
+            className="text-ember-400 hover:underline"
+          >
+            how time works
+          </Link>
+          .
         </p>
       </div>
 
@@ -42,13 +63,15 @@ export default function TimeCostsPage() {
             <tr>
               <th className="px-3 py-3">Activity</th>
               <th className="px-3 py-3">Category</th>
-              <th className="px-3 py-3">AP</th>
+              <th className="px-3 py-3">Units</th>
               <th className="px-3 py-3">Phase</th>
               <th className="px-3 py-3">Status</th>
               {showVerifiedCol && (
                 <th className="px-3 py-3">Last verified</th>
               )}
               {showSourceCol && <th className="px-3 py-3">Source note</th>}
+              {showPlatformCol && <th className="px-3 py-3">Platform</th>}
+              {showPatchCol && <th className="px-3 py-3">Patch</th>}
               <th className="px-3 py-3">Notes</th>
             </tr>
           </thead>
@@ -70,7 +93,7 @@ export default function TimeCostsPage() {
                   <span
                     className={`inline-block rounded border px-2 py-0.5 text-xs ${statusColor[row.verificationStatus]}`}
                   >
-                    {row.verificationStatus}
+                    {VERIFICATION_LABELS[row.verificationStatus]}
                   </span>
                 </td>
                 {showVerifiedCol && (
@@ -85,6 +108,16 @@ export default function TimeCostsPage() {
                     {row.sourceNote ?? (
                       <span className="text-dusk-600">—</span>
                     )}
+                  </td>
+                )}
+                {showPlatformCol && (
+                  <td className="px-3 py-3 text-dusk-400">
+                    {row.platform ?? <span className="text-dusk-600">—</span>}
+                  </td>
+                )}
+                {showPatchCol && (
+                  <td className="px-3 py-3 text-dusk-400">
+                    {row.patch ?? <span className="text-dusk-600">—</span>}
                   </td>
                 )}
                 <td className="px-3 py-3 text-dusk-400 max-w-xs">
@@ -102,9 +135,23 @@ export default function TimeCostsPage() {
         </table>
       </div>
       <p className="text-xs text-dusk-600">
-        {TIME_COST_ENTRIES.length} entries. All values are fan estimates unless
-        later verified against the released game.
+        {TIME_COST_ENTRIES.length} entries. Values are Estimated or Reported fan
+        model units unless later marked Verified against the released game.
       </p>
+      <RelatedLinks
+        extra={[
+          {
+            href: "/guides/day-vs-night",
+            label: "Day vs night guide",
+            description: "How phase tags affect spending.",
+          },
+          {
+            href: "/quests",
+            label: "Quest database",
+            description: "Shell table for quest Time Budget notes.",
+          },
+        ]}
+      />
     </div>
   );
 }

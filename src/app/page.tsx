@@ -12,7 +12,7 @@ const jsonLd = {
       name: "Dawnwalker Planner",
       url: siteUrl,
       description:
-        "Unofficial Blood of Dawnwalker fan planner for a 30-day / 480 AP campaign budget.",
+        "Unofficial Blood of Dawnwalker fan planner for an estimated 30-day Time Budget (480 model units).",
       inLanguage: "en-US",
     },
     {
@@ -22,7 +22,7 @@ const jsonLd = {
       operatingSystem: "Web",
       url: `${siteUrl}/planner`,
       description:
-        "Unofficial fan tool to budget estimated Action Points across a 30-day Blood of Dawnwalker campaign. Not affiliated with Rebel Wolves or Bandai Namco.",
+        "Unofficial fan tool to budget an estimated 30-day Time Budget across a Blood of Dawnwalker campaign. Model units only—not official Action Points. Not affiliated with Rebel Wolves or Bandai Namco.",
       offers: {
         "@type": "Offer",
         price: "0",
@@ -52,7 +52,7 @@ export default function HomePage() {
               Unofficial fan site
             </p>
             <span className="rounded-full border border-ember-600/50 bg-ember-600/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ember-400">
-              Data estimated
+              Time Budget · estimated
             </span>
           </div>
           <h1 className="font-display text-4xl leading-tight text-dusk-50 md:text-5xl">
@@ -61,11 +61,19 @@ export default function HomePage() {
           <p className="text-lg text-dusk-300">
             Dawnwalker Planner is a free, browser-based ledger for an estimated{" "}
             <strong className="text-dusk-100">
-              {AP_CONFIG.totalAp} Action Points
+              {AP_CONFIG.totalDays}-day Time Budget
             </strong>{" "}
-            across {AP_CONFIG.totalDays} days ({AP_CONFIG.dayAp} day +{" "}
+            ({AP_CONFIG.totalAp} model units: {AP_CONFIG.dayAp} day +{" "}
             {AP_CONFIG.nightAp} night). Load presets, add catalog costs, autosave
             locally, and share a plan URL—without dumping spoilers in your face.
+          </p>
+          <p className="text-sm text-dusk-500">
+            Model units are a fan planning shorthand, not a claim about official
+            Action Points. See the{" "}
+            <Link href="/disclaimer" className="text-ember-400 hover:underline">
+              disclaimer
+            </Link>
+            .
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
@@ -81,10 +89,10 @@ export default function HomePage() {
               Browse time costs
             </Link>
             <Link
-              href="/beginner"
+              href="/guides/how-time-works"
               className="inline-flex min-h-11 items-center justify-center px-2 py-3 text-sm text-dusk-400 underline-offset-4 hover:text-ember-400 hover:underline"
             >
-              Beginner guide
+              How time works
             </Link>
           </div>
         </div>
@@ -94,18 +102,33 @@ export default function HomePage() {
         {[
           {
             href: "/planner",
-            title: "480 AP planner",
-            body: "Add costs, load presets, track remaining AP with a progress bar, undo mistakes, autosave locally, and share a URL.",
+            title: "30-day Time Budget planner",
+            body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
           },
           {
             href: "/time-costs",
             title: "Time cost catalog",
-            body: "Estimated activities with verification labels, optional source notes, and collapsed spoilers.",
+            body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
           },
           {
             href: "/builds",
-            title: "Build templates",
-            body: "Four playstyle sketches—diplomat, stalker, guardian, heartstring—with AP tips.",
+            title: "Build hubs",
+            body: "Vampire and human playstyle sketches with Time Budget tips—not skill-tree dumps.",
+          },
+          {
+            href: "/quests",
+            title: "Quest database",
+            body: "Shell table for quest Time Budget notes. Placeholders stay Estimated until observed.",
+          },
+          {
+            href: "/missables",
+            title: "Missables index",
+            body: "A home for timer-sensitive content once Estimated or Reported rows exist.",
+          },
+          {
+            href: "/guides/can-you-do-everything",
+            title: "Guides",
+            body: "Original explainers on the deadline, day vs night, completionism, and missables.",
           },
         ].map((card) => (
           <Link
@@ -128,8 +151,12 @@ export default function HomePage() {
         <ul className="mt-3 list-disc space-y-1.5 pl-5">
           <li>This site is not affiliated with Rebel Wolves or Bandai Namco.</li>
           <li>
-            Numbers are estimated or unverified fan models for planning
-            practice.
+            The 480 total is an estimated 30-day Time Budget fan model (model
+            units), not official Action Points.
+          </li>
+          <li>
+            Costs are labeled Estimated, Reported, or Verified—never invent
+            Verified retail numbers.
           </li>
           <li>No cheats, no official assets, original copy only.</li>
           <li>

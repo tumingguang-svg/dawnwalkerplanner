@@ -2,10 +2,12 @@ import Link from "next/link";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/planner", label: "AP Planner" },
+  { href: "/planner", label: "Planner" },
   { href: "/time-costs", label: "Time Costs" },
-  { href: "/beginner", label: "Beginner Tips" },
-  { href: "/builds", label: "Build Ideas" },
+  { href: "/quests", label: "Quests" },
+  { href: "/missables", label: "Missables" },
+  { href: "/builds", label: "Builds" },
+  { href: "/guides/how-time-works", label: "Guides" },
   { href: "/faq", label: "FAQ" },
 ];
 
@@ -22,7 +24,7 @@ export function Header() {
               Dawnwalker Planner
             </div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-dusk-400">
-              Unofficial fan tool · data estimated
+              Unofficial · 30-day Time Budget model
             </div>
           </div>
         </Link>

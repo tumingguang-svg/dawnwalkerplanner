@@ -5,10 +5,18 @@ export const AP_CONFIG = {
   get totalAp() {
     return this.totalDays * (this.dayAp + this.nightAp);
   },
-  label: "480 Action Points (30 days x 8 day + 8 night)",
-  note: "Estimated / unverified fan model. Actual game values may differ after launch or patches.",
+  /** Fan model units for the interactive planner (not official Action Points). */
+  label: "Estimated 30-day Time Budget · 480 model units (30 × 8 day + 8 night)",
+  note: "Fan planning model only. These are estimated Time Budget units—not official Action Points. Actual game values may differ after launch or patches.",
 } as const;
 
-export type VerificationStatus = "estimated" | "unverified" | "community";
+/** Verification tiers for catalog costs and quest shells. */
+export type VerificationStatus = "estimated" | "reported" | "verified";
 
 export type TimePhase = "day" | "night" | "either";
+
+export const VERIFICATION_LABELS: Record<VerificationStatus, string> = {
+  estimated: "Estimated",
+  reported: "Reported",
+  verified: "Verified",
+};

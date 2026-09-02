@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ — Affiliation, 480 AP Model & Privacy",
+  title: "FAQ — Affiliation, Time Budget Model & Privacy",
   description:
-    "FAQ for the unofficial Dawnwalker Planner: affiliation, where 480 AP comes from, estimated data labels, localStorage privacy, and how to report wrong costs.",
+    "FAQ for the unofficial Dawnwalker Planner: affiliation, where the 30-day Time Budget (480 model units) comes from, Estimated/Reported/Verified labels, localStorage privacy, and how to report wrong costs.",
 };
 
 const FAQS = [
@@ -13,12 +13,12 @@ const FAQS = [
     a: "No. Dawnwalker Planner is an unofficial fan project. It is not affiliated with Rebel Wolves, Bandai Namco, or The Blood of Dawnwalker (TM).",
   },
   {
-    q: "Where does 480 AP come from?",
-    a: "It is a fan planning model: 30 days times 8 day AP plus 8 night AP. Treat it as estimated until you confirm values in your own playthrough.",
+    q: "Where does the 480 Time Budget total come from?",
+    a: "It is a fan planning model: 30 days × 8 day units + 8 night units. Treat the units as estimated Time Budget shorthand—not official Action Points—until you confirm values in your own playthrough.",
   },
   {
-    q: "Why are costs labeled estimated or unverified?",
-    a: "Pre-release and early community numbers drift. We label uncertainty instead of pretending precision.",
+    q: "What do Estimated, Reported, and Verified mean?",
+    a: "Estimated = fan planning guess. Reported = player or community observation not yet confirmed as retail-stable. Verified = checked against the released game / patch with a date or source note. We never invent Verified numbers.",
   },
   {
     q: "Does the planner store my data on a server?",
@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: "How do I report a wrong cost?",
-    a: "Open an issue on the GitHub repository once you can cite an in-game observation. We will retag verification status rather than silently overwrite.",
+    a: "Open an issue on the GitHub repository once you can cite an in-game observation. We will retag verification status (Estimated → Reported → Verified) rather than silently overwrite.",
   },
 ];
 
@@ -43,6 +43,13 @@ export default function FaqPage() {
           Short answers. See also the{" "}
           <Link href="/disclaimer" className="text-ember-400 hover:underline">
             disclaimer
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/guides/how-time-works"
+            className="text-ember-400 hover:underline"
+          >
+            how time works
           </Link>
           .
         </p>

@@ -33,7 +33,7 @@ export const PRESETS: PlanPreset[] = [
     id: "balanced-explore",
     name: "Balanced Explore",
     description:
-      "Split Action Points between story progress, districts, and optional encounters without overcommitting.",
+      "Split Time Budget units between story progress, districts, and optional encounters without overcommitting.",
     items: [
       { entryId: "main-steady", label: "Main path — steady pace (est.)", apCost: 64, phase: "either" },
       { entryId: "districts", label: "District exploration (est.)", apCost: 48, phase: "day" },
@@ -47,7 +47,7 @@ export const PRESETS: PlanPreset[] = [
     id: "romance-priority",
     name: "Romance Priority",
     description:
-      "Front-load companion and relationship scenes while keeping enough AP to finish the campaign.",
+      "Front-load companion and relationship scenes while keeping enough Time Budget units to finish the campaign.",
     items: [
       { entryId: "romance-arc", label: "Romance / companion arc (est.)", apCost: 48, phase: "either" },
       { entryId: "gift-social", label: "Gifts & social evenings (est.)", apCost: 24, phase: "night" },

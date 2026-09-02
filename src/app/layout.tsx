@@ -22,16 +22,18 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Dawnwalker Planner — Unofficial 30-Day / 480 AP Fan Tool",
+    default:
+      "Dawnwalker Planner — Unofficial 30-Day Time Budget Fan Tool",
     template: "%s | Dawnwalker Planner",
   },
   description:
-    "Unofficial Blood of Dawnwalker fan planner for a 30-day / 480 AP campaign budget. Estimated time costs, presets, and beginner tips. Not affiliated with Rebel Wolves or Bandai Namco.",
+    "Unofficial Blood of Dawnwalker fan planner for an estimated 30-day Time Budget (480 model units). Estimated time costs, presets, and beginner tips. Not affiliated with Rebel Wolves or Bandai Namco.",
   keywords: [
     "Blood of Dawnwalker",
     "Dawnwalker planner",
-    "480 AP",
     "30 day planner",
+    "Time Budget",
+    "dawnwalker day night",
     "fan guide",
   ],
   icons: {
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dawnwalker Planner",
     description:
-      "Plan your unofficial 30-day / 480 AP Blood of Dawnwalker campaign budget.",
+      "Plan your unofficial 30-day Time Budget for Blood of Dawnwalker (fan model units).",
     url: siteUrl,
     siteName: "Dawnwalker Planner",
     locale: "en_US",
@@ -51,7 +53,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Dawnwalker Planner — unofficial 480 AP fan tool",
+        alt: "Dawnwalker Planner — unofficial 30-day Time Budget fan tool",
       },
     ],
   },
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dawnwalker Planner",
     description:
-      "Unofficial 30-day / 480 AP Blood of Dawnwalker campaign planner.",
+      "Unofficial 30-day Time Budget planner for Blood of Dawnwalker (fan model).",
     images: ["/og.png"],
   },
   robots: { index: true, follow: true },

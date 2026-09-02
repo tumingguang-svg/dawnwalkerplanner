@@ -33,11 +33,22 @@ export default function DisclaimerPage() {
           fan commentary.
         </p>
         <p>
-          Gameplay numbers, Action Point totals, time costs, build advice, and
-          quest pacing notes are <strong className="text-dusk-100">estimated,
-          unverified, or community-sourced</strong> unless explicitly marked
-          otherwise. They may be incomplete or incorrect. Always trust your own
-          play experience and official patch notes over this fan tool.
+          The campaign total shown as 480 is an{" "}
+          <strong className="text-dusk-100">
+            estimated 30-day Time Budget fan model
+          </strong>{" "}
+          expressed in model units. It is{" "}
+          <strong className="text-dusk-100">
+            not a claim about official Action Points
+          </strong>
+          . Gameplay numbers, Time Budget totals, time costs, build advice, and
+          quest pacing notes are labeled{" "}
+          <strong className="text-dusk-100">
+            Estimated, Reported, or Verified
+          </strong>
+          . We do not invent Verified retail numbers. Values may be incomplete
+          or incorrect. Always trust your own play experience and official patch
+          notes over this fan tool.
         </p>
         <p>
           This site does not provide cheats, hacks, piracy, or unauthorized

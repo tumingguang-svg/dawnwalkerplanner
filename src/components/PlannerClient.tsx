@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { AP_CONFIG } from "@/data/apConfig";
+import { AP_CONFIG, VERIFICATION_LABELS } from "@/data/apConfig";
 import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
 import { PRESETS, type PresetItem } from "@/data/presets";
 import type { TimePhase } from "@/data/apConfig";
@@ -212,7 +212,7 @@ export function PlannerClient() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="font-display text-xl text-dusk-50 sm:text-2xl">
-            Action Point budget
+            Time Budget
           </h2>
           <p className="mt-1 text-sm text-dusk-400">{AP_CONFIG.label}</p>
           <p className="mt-1 text-xs text-ember-400">{AP_CONFIG.note}</p>
@@ -226,7 +226,7 @@ export function PlannerClient() {
             {remaining}
           </div>
           <div className="text-xs uppercase tracking-wider text-dusk-400">
-            AP remaining
+            Units remaining
           </div>
           <div className="mt-1 text-sm text-dusk-300">
             Used {used} / {totalAp}
@@ -239,7 +239,7 @@ export function PlannerClient() {
         aria-valuenow={used}
         aria-valuemin={0}
         aria-valuemax={totalAp}
-        aria-label="Action points used"
+        aria-label="Time Budget units used"
       >
         <div
           className={barClass}
@@ -252,12 +252,12 @@ export function PlannerClient() {
         <span>Either: {eitherUsed}</span>
         {overBudget && (
           <span className="font-medium text-blood-400">
-            Over budget by {Math.abs(remaining)} AP — trim the plan.
+            Over budget by {Math.abs(remaining)} units — trim the plan.
           </span>
         )}
         {!overBudget && nearBudget && (
           <span className="font-medium text-ember-400">
-            Low remaining AP — leave contingency if you can.
+            Low remaining units — leave contingency if you can.
           </span>
         )}
       </div>
@@ -278,7 +278,7 @@ export function PlannerClient() {
                 overBudget ? "text-blood-400" : "text-ember-400"
               }`}
             >
-              {remaining} AP
+              {remaining} units
             </div>
           </div>
           <div className="min-w-0 flex-1">
@@ -310,7 +310,7 @@ export function PlannerClient() {
             <div className="font-display text-lg text-dusk-50">{preset.name}</div>
             <p className="mt-2 text-sm text-dusk-400">{preset.description}</p>
             <div className="mt-3 text-xs text-ember-400">
-              Load preset ({preset.items.reduce((s, i) => s + i.apCost, 0)} AP)
+              Load preset ({preset.items.reduce((s, i) => s + i.apCost, 0)} units)
             </div>
           </button>
         ))}
@@ -337,8 +337,8 @@ export function PlannerClient() {
             >
               {TIME_COST_ENTRIES.map((e) => (
                 <option key={e.id} value={e.id}>
-                  {e.name} · {e.apCost} AP · {phaseLabel(e.phase)} ·{" "}
-                  {e.verificationStatus}
+                  {e.name} · {e.apCost} · {phaseLabel(e.phase)} ·{" "}
+                  {VERIFICATION_LABELS[e.verificationStatus]}
                 </option>
               ))}
             </select>
@@ -347,8 +347,9 @@ export function PlannerClient() {
             <p className="rounded-lg border border-dusk-800/80 bg-night-950/50 px-3 py-2 text-xs text-dusk-400">
               <span className="text-dusk-200">{selectedCatalog.name}</span>
               {" — "}
-              {selectedCatalog.apCost} AP ({phaseLabel(selectedCatalog.phase)}),{" "}
-              {selectedCatalog.verificationStatus}. {selectedCatalog.notes}
+              {selectedCatalog.apCost} units ({phaseLabel(selectedCatalog.phase)}),{" "}
+              {VERIFICATION_LABELS[selectedCatalog.verificationStatus]}.{" "}
+              {selectedCatalog.notes}
             </p>
           )}
           <button
@@ -372,7 +373,7 @@ export function PlannerClient() {
               min={0}
               value={customCost}
               onChange={(e) => setCustomCost(Number(e.target.value))}
-              aria-label="Custom AP cost"
+              aria-label="Custom Time Budget cost"
               className="w-28 min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             />
             <select
@@ -458,7 +459,7 @@ export function PlannerClient() {
                   <div>
                     <div className="text-sm text-dusk-100">{line.label}</div>
                     <div className="text-xs text-dusk-500">
-                      {line.apCost} AP · {phaseLabel(line.phase)}
+                      {line.apCost} units · {phaseLabel(line.phase)}
                     </div>
                   </div>
                   <button
@@ -478,7 +479,7 @@ export function PlannerClient() {
 
       <p className="text-xs text-dusk-600">
         Plan autosaves to localStorage in this browser. Share URLs encode your
-        current list (no account). Values remain estimated/unverified fan data.
+        current list (no account). Values remain Estimated or Reported fan model units—not official Action Points.
         Undo restores the previous plan state after add, remove, clear, or
         preset load.
       </p>

@@ -9,8 +9,10 @@ export function Footer() {
           Planner is an unofficial fan-made site. It is{" "}
           <strong className="text-dusk-200">not affiliated with</strong> Rebel
           Wolves, Bandai Namco, or The Blood of Dawnwalker (TM). All trademarks
-          belong to their respective owners. Data on this site is labeled
-          estimated or unverified and may be wrong.
+          belong to their respective owners. The 480 total is an estimated
+          30-day Time Budget fan model (model units), not official Action
+          Points. Catalog rows are labeled Estimated, Reported, or Verified and
+          may be wrong.
         </p>
         <p className="flex flex-wrap gap-x-5 gap-y-2">
           <Link
@@ -23,13 +25,37 @@ export function Footer() {
             href="/planner"
             className="inline-flex min-h-10 items-center hover:text-dusk-200"
           >
-            AP Planner
+            Planner
           </Link>
           <Link
             href="/time-costs"
             className="inline-flex min-h-10 items-center hover:text-dusk-200"
           >
             Time Costs
+          </Link>
+          <Link
+            href="/quests"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Quests
+          </Link>
+          <Link
+            href="/missables"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Missables
+          </Link>
+          <Link
+            href="/builds"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Builds
+          </Link>
+          <Link
+            href="/guides/how-time-works"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Guides
           </Link>
           <Link
             href="/faq"

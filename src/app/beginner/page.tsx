@@ -6,7 +6,7 @@ import { AP_CONFIG } from "@/data/apConfig";
 export const metadata: Metadata = {
   title: "Beginner Guide — First Week AP Habits",
   description:
-    "Spoiler-light beginner tips for budgeting day and night Action Points in Blood of Dawnwalker. First-week habits, contingency AP, and how to use the unofficial planner.",
+    "Spoiler-light beginner tips for budgeting day and night Time Budget units in Blood of Dawnwalker. First-week habits, contingency buffer, and how to use the unofficial planner.",
 };
 
 export default function BeginnerPage() {
@@ -18,22 +18,23 @@ export default function BeginnerPage() {
         </h1>
         <p className="mt-2 text-dusk-400">
           A short, spoiler-light orientation for planning your first campaign
-          around an estimated {AP_CONFIG.totalAp} AP budget.
+          around an estimated {AP_CONFIG.totalDays}-day Time Budget ({AP_CONFIG.totalAp} model units).
         </p>
       </div>
 
       <section className="space-y-3 text-dusk-300">
-        <h2 className="font-display text-xl text-dusk-50">The AP loop</h2>
+        <h2 className="font-display text-xl text-dusk-50">The Time Budget loop</h2>
         <p>
-          Treat each day as two wallets: {AP_CONFIG.dayAp} day AP and{" "}
-          {AP_CONFIG.nightAp} night AP. Some activities accept either phase;
-          others are locked to daylight or darkness. When you are unsure, log
-          the cost as &quot;either&quot; in the planner and refine later.
+          Treat each day as two wallets: {AP_CONFIG.dayAp} day units and{" "}
+          {AP_CONFIG.nightAp} night units in our fan model. Some activities
+          accept either phase; others are locked to daylight or darkness. When
+          you are unsure, log the cost as &quot;either&quot; in the planner and
+          refine later.
         </p>
         <p>
-          Over thirty days that yields {AP_CONFIG.totalAp} AP total. That number
-          is a fan planning model—verify against your own play once the game
-          ships patches.
+          Over thirty days that yields {AP_CONFIG.totalAp} model units total.
+          That number is an estimated Time Budget fan model—not official Action
+          Points. Verify against your own play once patches land.
         </p>
       </section>
 
@@ -41,8 +42,8 @@ export default function BeginnerPage() {
         <h2 className="font-display text-xl text-dusk-50">First-week habits</h2>
         <ol className="list-decimal space-y-2 pl-5">
           <li>Finish one main beat before opening three side chains.</li>
-          <li>Keep a 16–24 AP contingency for travel and failures.</li>
-          <li>Spend at least one night AP on information gathering early.</li>
+          <li>Keep a 16–24 unit contingency for travel and failures.</li>
+          <li>Spend at least one night unit on information gathering early.</li>
           <li>
             Open the{" "}
             <Link href="/planner" className="text-ember-400 hover:underline">
@@ -62,9 +63,27 @@ export default function BeginnerPage() {
         </Spoiler>
       </section>
 
+      <section className="space-y-2 text-sm text-dusk-400">
+        <p>
+          Dig deeper:{" "}
+          <Link href="/guides/how-time-works" className="text-ember-400 hover:underline">
+            how time works
+          </Link>
+          ,{" "}
+          <Link href="/guides/30-day-deadline" className="text-ember-400 hover:underline">
+            30-day deadline
+          </Link>
+          ,{" "}
+          <Link href="/guides/day-vs-night" className="text-ember-400 hover:underline">
+            day vs night
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="rounded-xl border border-dusk-800 bg-night-900/40 p-4 text-sm text-dusk-400">
         No cheats, trainers, or exploit instructions appear on this site—only
-        planning hygiene and estimated costs.
+        planning hygiene and Estimated Time Budget costs.
       </section>
     </div>
   );
