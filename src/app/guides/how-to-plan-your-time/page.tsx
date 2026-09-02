@@ -6,15 +6,16 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/how-to-plan-your-time",
-  title: "How to Plan Your Time in Blood of Dawnwalker (Time Budget)",
+  title: "Dawnwalker How to Plan Your Time – Time Budget Workflow",
   description:
-    "Unofficial workflow for the Blood of Dawnwalker Time Budget planner: load a preset, add estimated costs from the catalog, protect a contingency buffer, and share a plan URL. Fan model units—not official Action Points.",
+    "Dawnwalker how to plan your time: Time Budget planner workflow—presets, catalog costs, contingency buffer, share URL. Fan model, not official AP.",
+  absoluteTitle: true,
 });
 
 export default function HowToPlanYourTimePage() {
   return (
     <GuideLayout
-      title="How to plan your time with the Time Budget planner"
+      title="Dawnwalker How to Plan Your Time"
       intro="A practical workflow for the unofficial 30-day ledger: turn Estimated activities into a visible budget, keep day and night wallets honest, and leave room for the choices you have not made yet."
       keywordNote="Primary focus: how to plan your time / Time Budget planner workflow."
     >

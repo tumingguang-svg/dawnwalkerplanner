@@ -9,9 +9,10 @@ import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = pageMetadata({
   path: "/time-costs",
-  title: "Time Costs Catalog — Estimated Time Budget Activities",
+  title: "Dawnwalker Time Budget Costs (Estimated Catalog)",
   description:
-    "Browse estimated Time Budget costs for Blood of Dawnwalker activities, with Estimated / Reported / Verified status, last-verified dates, and source notes. Unofficial fan data.",
+    "Dawnwalker Time Budget costs: estimated activity catalog for The Blood of Dawnwalker with Estimated / Reported / Verified labels and source notes.",
+  absoluteTitle: true,
 });
 
 const statusColor: Record<string, string> = {
@@ -33,7 +34,7 @@ export default function TimeCostsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Time costs
+          Dawnwalker Time Budget Costs (Estimated Catalog)
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Fan-estimated Time Budget spends for planning (model units). Prefer a

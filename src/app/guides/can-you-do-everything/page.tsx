@@ -6,15 +6,16 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/can-you-do-everything",
-  title: "Can You Do Everything in Blood of Dawnwalker?",
+  title: "Can You Do Everything in Dawnwalker? – Time Budget Reality",
   description:
-    "Unofficial answer to can you do everything in Blood of Dawnwalker: why a single 30-day pass rarely clears all content, and how to prioritize with an estimated Time Budget fan model.",
+    "Can you do everything in Dawnwalker? Why a single 30-day pass rarely clears all Blood of Dawnwalker content—and how to prioritize with a Time Budget.",
+  absoluteTitle: true,
 });
 
 export default function CanYouDoEverythingPage() {
   return (
     <GuideLayout
-      title="Can you do everything in one campaign?"
+      title="Can You Do Everything in Dawnwalker?"
       intro="Short answer: plan as if you cannot. A fixed month plus branching priorities means completionism collides with the clock—especially if you treat fan model units as a hard ceiling for practice."
       keywordNote="Primary focus: can you do everything (Dawnwalker)."
     >

@@ -8,9 +8,10 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/quests",
-  title: "Quest Database — What This Catalog Tracks",
+  title: "Dawnwalker Quests – What We Track (Known Info)",
   description:
-    "Unofficial Blood of Dawnwalker quest catalog schema: fields we will store after retail observation or cited player footage. Not a confirmed quest list. Estimated until verified.",
+    "Dawnwalker quests: currently known information for The Blood of Dawnwalker. Time pressure from public marketing, planner use, and fields we will store after retail data.",
+  absoluteTitle: true,
 });
 
 const statusColor: Record<string, string> = {
@@ -52,47 +53,121 @@ const SCHEMA_FIELDS = [
 
 export default function QuestsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Quest database
+          Dawnwalker Quests – What We Track (Known Info)
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          This page documents <strong className="text-dusk-200">what the catalog tracks</strong>
-          —the fields we will fill after retail gameplay or fully cited player
-          footage. It is not a finished quest list. Until those checks exist,
-          nothing here is confirmed fact.
-        </p>
-        <p className="mt-2 text-sm text-dusk-500">
-          Use the{" "}
-          <Link href="/planner" className="text-ember-400 hover:underline">
-            planner
-          </Link>{" "}
-          for campaign ledgers and{" "}
-          <Link href="/time-costs" className="text-ember-400 hover:underline">
-            time costs
-          </Link>{" "}
-          for activity-level estimates. Mechanism notes live in{" "}
-          <Link
-            href="/guides/choices-and-consequences"
-            className="text-ember-400 hover:underline"
-          >
-            choices and consequences
-          </Link>
-          .
+          An honest summary of what is currently known about quest-shaped
+          content in The Blood of Dawnwalker from public marketing—and what
+          this unofficial catalog will store once retail observation exists. Not
+          a finished quest list. Not Verified retail costs.
         </p>
       </div>
 
+      <article className="prose-invert max-w-3xl space-y-6 text-dusk-300">
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            Time pressure is the known premise—not a spoiler checklist
+          </h2>
+          <p>
+            Public materials for Blood of Dawnwalker have framed the campaign
+            around a scarce window of nights and days. That marketing premise is
+            enough to justify planning tools. It is not enough to invent named
+            quests, hard deadlines, or Verified Action Point costs. Players keep
+            asking for quest databases because RPG communities expect sortable
+            tables. Until someone can cite retail play or fully sourced footage,
+            the honest answer is thinner: the game sells time pressure; the
+            concrete quest roster is still pending observation.
+          </p>
+          <p>
+            Treat “currently known information” as a category that includes
+            tone, structure, and planning advice—not fake row counts. We know
+            fans will want to distinguish main-path beats, side explorations,
+            personal leads, and faction work. We know day and night matter as
+            separate planning wallets in our estimated Time Budget model. We do
+            not know the official names, order, or unit costs of every chain.
+            Publishing invented titles would help SEO briefly and hurt trust
+            forever. Dawnwalker Planner chooses trust.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            How to use the planner and guides until retail data exists
+          </h2>
+          <p>
+            Until this table fills with Observed rows, plan with mechanisms
+            instead of spoilers. Open the{" "}
+            <Link href="/planner" className="text-ember-400 hover:underline">
+              Dawnwalker Planner
+            </Link>{" "}
+            and budget an estimated 30-day Time Budget with presets and custom
+            lines. Pull activity-level guesses from the{" "}
+            <Link href="/time-costs" className="text-ember-400 hover:underline">
+              time costs catalog
+            </Link>
+            —still Estimated, still labeled. Read{" "}
+            <Link
+              href="/guides/choices-and-consequences"
+              className="text-ember-400 hover:underline"
+            >
+              choices and consequences
+            </Link>{" "}
+            for the choice → consequence → time cost loop, and{" "}
+            <Link
+              href="/guides/how-to-plan-your-time"
+              className="text-ember-400 hover:underline"
+            >
+              how to plan your time
+            </Link>{" "}
+            for a practical workflow.
+          </p>
+          <p>
+            A useful pre-release habit: reserve ledger space for “unknown main
+            beats,” “unknown personal leads,” and a contingency buffer instead of
+            pretending you already know every side chain. When a friend shares a
+            rumor, log it as a custom Estimated line with a note—not as Verified.
+            When retail launches, swap rumors for cited rows. That workflow is
+            why this page stays indexable even while the data table is almost
+            empty: it explains the gap instead of hiding behind noindex.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            What the future quest database will store
+          </h2>
+          <p>
+            Each future row is meant to answer planning questions, not to dump
+            story. We store a working name and type bucket; an estimated Time
+            Budget cost (or null when pending); a phase tag for day, night,
+            either, or unknown; a verification status; a missable-risk hint; and
+            citation fields so Reported or Verified claims can be audited.
+            YouTube-derived values need URL, timestamp, platform, game version,
+            and verification date before they can climb past Estimated.
+          </p>
+          <p>
+            Null estimated cost means “not yet measured,” never “free.” Unknown
+            missable risk means we refuse to guess a timer. Schema example rows
+            exist only so the columns are readable in the UI. They are not real
+            quests. When real observations arrive, example scaffolding will give
+            way to cited entries—or stay empty longer if sources remain thin.
+          </p>
+        </section>
+      </article>
+
       <section className="rounded-2xl border border-dusk-800 bg-night-900/40 p-5 text-sm text-dusk-300 space-y-3">
-        <h2 className="font-display text-xl text-dusk-50">Fields this database stores</h2>
-        <p className="text-dusk-400">
-          Rows appear only after observation. The catalog grows from retail
-          playthrough notes or YouTube (and similar) footage that includes
-          source URL, timestamp, platform, game version, and verification date.
-        </p>
+        <h2 className="font-display text-xl text-dusk-50">
+          Fields this database stores
+        </h2>
         <dl className="space-y-2">
           {SCHEMA_FIELDS.map((item) => (
-            <div key={item.field} className="sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-3">
+            <div
+              key={item.field}
+              className="sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-3"
+            >
               <dt className="font-mono text-xs text-ember-400">{item.field}</dt>
               <dd className="text-dusk-400">{item.meaning}</dd>
             </div>
@@ -102,11 +177,11 @@ export default function QuestsPage() {
 
       <section className="space-y-3">
         <h2 className="font-display text-xl text-dusk-50">
-          Pending verification — schema example
+          Quest table — no verified retail rows yet
         </h2>
         <p className="text-sm text-dusk-500">
-          One illustrative row so the columns are readable. It is not a real
-          quest. Additional names will wait for observation.
+          Honest empty-ish state: only a schema illustration appears below. No
+          verified Blood of Dawnwalker quest costs are published here.
         </p>
         <div className="overflow-x-auto rounded-xl border border-dusk-800">
           <table className="min-w-full text-left text-sm">
@@ -180,7 +255,7 @@ export default function QuestsPage() {
           {
             href: "/missables",
             label: "Missables index",
-            description: "Schema for windows and risk—empty until observed.",
+            description: "Timer-risk planning summary—empty until observed.",
           },
         ]}
       />

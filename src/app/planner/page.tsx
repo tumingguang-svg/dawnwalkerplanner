@@ -5,9 +5,10 @@ import { PlannerClient } from "@/components/PlannerClient";
 
 export const metadata: Metadata = pageMetadata({
   path: "/planner",
-  title: "Interactive 30-Day Time Budget Planner",
+  title: "Dawnwalker Planner – Interactive 30-Day Time Budget",
   description:
-    "Interactive unofficial Blood of Dawnwalker planner: budget an estimated 30-day Time Budget (480 model units), load presets, undo changes, track overspend, autosave locally, and share plan URLs.",
+    "Interactive Dawnwalker Planner: budget an estimated 30-day Time Budget (480 model units), load presets, undo, autosave locally, and share plan URLs.",
+  absoluteTitle: true,
 });
 
 export default function PlannerPage() {
@@ -15,7 +16,7 @@ export default function PlannerPage() {
     <div className="space-y-6">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Interactive Time Budget planner
+          Dawnwalker Planner – Interactive 30-Day Time Budget
         </h1>
         <h2 className="mt-2 font-display text-lg text-dusk-300">
           Budget day and night model units

@@ -6,15 +6,16 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/how-time-works",
-  title: "How Time Works in Blood of Dawnwalker (Fan Model)",
+  title: "Dawnwalker How Time Works – 30-Day Time Budget Fan Model",
   description:
-    "Unofficial explainer of how the Blood of Dawnwalker 30-day Time Budget fan model works: day units, night units, phases, and how to use Dawnwalker Planner without treating numbers as official Action Points.",
+    "Dawnwalker how time works: estimated 30-day Time Budget fan model for The Blood of Dawnwalker—day units, night units, phases. Not official AP.",
+  absoluteTitle: true,
 });
 
 export default function HowTimeWorksPage() {
   return (
     <GuideLayout
-      title="How time works in Blood of Dawnwalker"
+      title="Dawnwalker How Time Works"
       intro="A spoiler-light overview of the campaign clock as a planning problem—and how this site’s estimated 30-day Time Budget model helps you think in day and night wallets."
       keywordNote="Primary focus: how time works (Dawnwalker)."
     >

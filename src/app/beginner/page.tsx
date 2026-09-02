@@ -7,9 +7,10 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/beginner",
-  title: "Beginner Guide — First Week AP Habits",
+  title: "Dawnwalker Beginner Guide – First Week Time Budget",
   description:
-    "Spoiler-light beginner tips for budgeting day and night Time Budget units in Blood of Dawnwalker. First-week habits, contingency buffer, and how to use the unofficial planner.",
+    "Dawnwalker beginner guide: first-week Time Budget habits for The Blood of Dawnwalker—day/night wallets, contingency buffer, and the unofficial planner.",
+  absoluteTitle: true,
 });
 
 export default function BeginnerPage() {
@@ -17,7 +18,7 @@ export default function BeginnerPage() {
     <div className="prose-invert max-w-3xl space-y-8">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Beginner guide
+          Dawnwalker Beginner Guide – First Week Time Budget
         </h1>
         <p className="mt-2 text-dusk-400">
           A short, spoiler-light orientation for planning your first campaign

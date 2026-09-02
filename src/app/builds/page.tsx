@@ -6,9 +6,10 @@ import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds",
-  title: "Build Ideas Hub — Vampire & Human Sketches",
+  title: "Dawnwalker Builds Hub",
   description:
-    "Unofficial Blood of Dawnwalker build hub. Choose vampire or human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps; not official builds.",
+    "Dawnwalker Builds Hub: unofficial vampire and human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps or official builds.",
+  absoluteTitle: true,
 });
 
 export default function BuildsHubPage() {
@@ -16,7 +17,7 @@ export default function BuildsHubPage() {
     <div className="space-y-8">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Build ideas
+          Dawnwalker Builds Hub
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Lightweight playstyle sketches split by vampire-leaning and

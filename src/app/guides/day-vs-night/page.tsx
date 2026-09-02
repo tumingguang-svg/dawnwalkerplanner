@@ -6,15 +6,16 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/day-vs-night",
-  title: "Dawnwalker Day vs Night — When to Spend Each Phase",
+  title: "Dawnwalker Day vs Night – When to Spend Each Phase",
   description:
-    "Unofficial Blood of Dawnwalker day vs night guide: how to allocate estimated day and night Time Budget units, avoid idle wallets, and plan phase-locked activities.",
+    "Dawnwalker day vs night: allocate estimated day and night Time Budget units, avoid idle wallets, and plan phase-locked activities for Blood of Dawnwalker.",
+  absoluteTitle: true,
 });
 
 export default function DayVsNightPage() {
   return (
     <GuideLayout
-      title="Day vs night: spending each phase"
+      title="Dawnwalker Day vs Night"
       intro="Daylight and darkness are not just mood—they are two wallets in the estimated Time Budget model. Here is how to keep both productive without assuming official Action Point rules."
       keywordNote="Primary focus: day vs night (Dawnwalker)."
     >

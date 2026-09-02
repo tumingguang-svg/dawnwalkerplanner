@@ -8,9 +8,10 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/missables",
-  title: "Missables Index — What This Catalog Tracks",
+  title: "Dawnwalker Missables – Planning for Timer Risks",
   description:
-    "Unofficial Blood of Dawnwalker missables schema: timer windows and risk fields we will store after retail observation or cited footage. Not a confirmed missable list.",
+    "Dawnwalker missables: plan for timer risks in The Blood of Dawnwalker using public marketing time pressure—no fake verified deadlines. Empty table until observed.",
+  absoluteTitle: true,
 });
 
 const SCHEMA_FIELDS = [
@@ -42,39 +43,114 @@ const SCHEMA_FIELDS = [
 
 export default function MissablesPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Missables index
+          Dawnwalker Missables – Planning for Timer Risks
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          This page documents <strong className="text-dusk-200">what the catalog tracks</strong>
-          {" "}for timer-sensitive content. It is not a spoiler checklist and not a
-          claim that specific beats are missable. Rows will appear after retail
-          observation or fully cited player footage—not before.
-        </p>
-        <p className="mt-2 text-sm text-dusk-500">
-          For planning habits (without invented lists), read the{" "}
-          <Link
-            href="/guides/missable-content"
-            className="text-ember-400 hover:underline"
-          >
-            missable content guide
-          </Link>
-          . Pair with the{" "}
-          <Link href="/planner" className="text-ember-400 hover:underline">
-            Time Budget planner
-          </Link>
-          .
+          A spoiler-light planning page for timer-sensitive content in The Blood
+          of Dawnwalker. We summarize the risk concept from public marketing and
+          explain how to use the Time Budget tools—without inventing Verified
+          missable lists or fake quest deadlines.
         </p>
       </div>
 
+      <article className="prose-invert max-w-3xl space-y-6 text-dusk-300">
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            What “missable risk” means before retail data
+          </h2>
+          <p>
+            Missable risk, on this site, means you might lock yourself out of a
+            beat by advancing the campaign clock, skipping a conversation
+            window, or committing to a conflicting branch. Public marketing for
+            Blood of Dawnwalker has leaned hard on limited time—the sense that
+            nights are numbered and dawns keep arriving whether you are ready or
+            not. That tone is currently known information. Specific named
+            missables with hard day counts are not.
+          </p>
+          <p>
+            Players often want a checklist the week a gothic RPG launches. Checklists
+            feel safe. Invented checklists are worse than none: they train people
+            to rush the wrong scenes and to treat fan fiction as patch notes.
+            Dawnwalker Missables therefore stays useful by teaching habits—front-load
+            personal leads that feel urgent, keep contingency in the ledger, delay
+            pure tourism until after the first major gate—while the verified table
+            remains empty.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            How to plan with the Dawnwalker Planner until rows exist
+          </h2>
+          <p>
+            Use the{" "}
+            <Link href="/planner" className="text-ember-400 hover:underline">
+              interactive Time Budget planner
+            </Link>{" "}
+            as your risk surface. Add a custom line called “timer-sensitive
+            personal lead (unknown)” with an Estimated cost and a note to revisit
+            after you see the in-game journal. Protect sixteen to twenty-four
+            model units as contingency so a surprise window does not bankrupt the
+            month. Pair that with the{" "}
+            <Link
+              href="/guides/missable-content"
+              className="text-ember-400 hover:underline"
+            >
+              missable content guide
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/guides/can-you-do-everything"
+              className="text-ember-400 hover:underline"
+            >
+              can you do everything?
+            </Link>{" "}
+            so expectations stay realistic.
+          </p>
+          <p>
+            When a streamer mentions a soft lock, do not paste the rumor into this
+            index as Verified. Capture it in your personal plan notes, wait for a
+            citeable source with platform and version, then promote it through
+            Estimated → Reported → Verified. The{" "}
+            <Link href="/quests" className="text-ember-400 hover:underline">
+              quests page
+            </Link>{" "}
+            follows the same honesty rule. Empty catalogs are indexable on purpose:
+            search engines and players both deserve a clear “not yet observed”
+            answer.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            Fields the future missables database will store
+          </h2>
+          <p>
+            Future rows will hold a working name, a window description (phase,
+            clock, or branch), a risk band, verification status, and citation
+            metadata. We refuse to invent windows such as “must finish by night
+            12” without observation. Unknown risk is the default because guessing
+            high or low both mislead: high creates fake panic; low creates false
+            calm. When footage is used, we require URL, timestamp, platform, game
+            version, and verification date—the same bar as elsewhere on
+            Dawnwalker Planner.
+          </p>
+          <p>
+            A blank table means “not yet observed.” It does not mean “nothing is
+            missable,” and it does not mean “this content does not exist.” After
+            launch, expect this page to grow slowly and cite carefully rather than
+            flood with unverified names.
+          </p>
+        </section>
+      </article>
+
       <section className="rounded-2xl border border-dusk-800 bg-night-900/40 p-5 text-sm text-dusk-300 space-y-3">
-        <h2 className="font-display text-xl text-dusk-50">Fields this index stores</h2>
-        <p className="text-dusk-400">
-          Empty is intentional. A blank catalog means “not yet observed,” not
-          “nothing is missable” and not “this content does not exist.”
-        </p>
+        <h2 className="font-display text-xl text-dusk-50">
+          Fields this index stores
+        </h2>
         <dl className="space-y-2">
           {SCHEMA_FIELDS.map((item) => (
             <div
@@ -121,10 +197,17 @@ export default function MissablesPage() {
           </table>
         </div>
       ) : (
-        <p className="rounded-xl border border-dashed border-dusk-800 px-4 py-6 text-sm text-dusk-500">
-          No observed missable rows yet. This index fills after retail
-          observation or YouTube verification with a complete source citation.
-        </p>
+        <div className="space-y-3">
+          <h2 className="font-display text-xl text-dusk-50">
+            Missables table — no verified rows yet
+          </h2>
+          <p className="rounded-xl border border-dashed border-dusk-800 px-4 py-6 text-sm text-dusk-500">
+            No observed missable rows yet. This index fills after retail
+            observation or YouTube verification with a complete source citation.
+            Until then, plan for timer risk with the guides and planner—not with
+            invented deadlines.
+          </p>
+        </div>
       )}
 
       <DataStatus />

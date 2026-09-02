@@ -6,15 +6,16 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/30-day-deadline",
-  title: "Blood of Dawnwalker 30-Day Deadline — Pacing Guide",
+  title: "Dawnwalker 30-Day Deadline – Pacing the Campaign Clock",
   description:
-    "Unofficial Blood of Dawnwalker 30-day deadline guide: how to pace main path, side content, and contingency using an estimated Time Budget fan model—not official Action Points.",
+    "Dawnwalker 30-day deadline guide: pace main path, side content, and contingency with an estimated Time Budget fan model—not official Action Points.",
+  absoluteTitle: true,
 });
 
 export default function ThirtyDayDeadlinePage() {
   return (
     <GuideLayout
-      title="The 30-day deadline"
+      title="Dawnwalker 30-Day Deadline"
       intro="How to treat the campaign month as a pacing problem: front-load what feels time-sensitive, park tourist content, and keep a contingency buffer in the fan Time Budget model."
       keywordNote="Primary focus: 30-day deadline (Dawnwalker)."
     >

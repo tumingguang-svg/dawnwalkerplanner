@@ -6,15 +6,16 @@ import { Spoiler } from "@/components/Spoiler";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/missable-content",
-  title: "Blood of Dawnwalker Missable Content — Planning Guide",
+  title: "Dawnwalker Missable Content – Timer Risk Planning Guide",
   description:
-    "Unofficial Blood of Dawnwalker missable content guide: how to flag timer-sensitive quests, relationships, and endings using Estimated planning habits—no invented Verified lists.",
+    "Dawnwalker missable content guide: flag timer-sensitive risks with Estimated planning habits. No invented Verified lists for The Blood of Dawnwalker.",
+  absoluteTitle: true,
 });
 
 export default function MissableContentGuidePage() {
   return (
     <GuideLayout
-      title="Missable content: plan before it vanishes"
+      title="Dawnwalker Missable Content"
       intro="A spoiler-light framework for spotting timer-sensitive content in a 30-day campaign. The missables index stays a shell until Estimated or Reported rows exist—we will not invent Verified checklists."
       keywordNote="Primary focus: missable content (Dawnwalker)."
     >

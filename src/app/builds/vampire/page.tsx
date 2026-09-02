@@ -8,9 +8,10 @@ import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds/vampire",
-  title: "Vampire Builds — Night & Occult Playstyles",
+  title: "Dawnwalker Vampire Builds",
   description:
-    "Unofficial Blood of Dawnwalker vampire build sketches: Night Stalker, Crimson Rite, and flexible romance paths with Estimated Time Budget tips.",
+    "Dawnwalker Vampire Builds: unofficial night and occult playstyle sketches with Estimated Time Budget tips for The Blood of Dawnwalker.",
+  absoluteTitle: true,
 });
 
 export default function VampireBuildsPage() {
@@ -25,7 +26,7 @@ export default function VampireBuildsPage() {
           / Vampire
         </p>
         <h1 className="mt-2 font-display text-3xl text-dusk-50 md:text-4xl">
-          Vampire builds
+          Dawnwalker Vampire Builds
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Estimated night-forward sketches. Pair with the{" "}

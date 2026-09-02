@@ -8,9 +8,10 @@ import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds/human",
-  title: "Human Builds — Diplomat & Guardian Playstyles",
+  title: "Dawnwalker Human Builds",
   description:
-    "Unofficial Blood of Dawnwalker human build sketches: Blade Diplomat, Ward Guardian, and flexible romance paths with Estimated Time Budget tips.",
+    "Dawnwalker Human Builds: unofficial diplomat and guardian playstyle sketches with Estimated Time Budget tips for The Blood of Dawnwalker.",
+  absoluteTitle: true,
 });
 
 export default function HumanBuildsPage() {
@@ -25,7 +26,7 @@ export default function HumanBuildsPage() {
           / Human
         </p>
         <h1 className="mt-2 font-display text-3xl text-dusk-50 md:text-4xl">
-          Human builds
+          Dawnwalker Human Builds
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Estimated daylight- and reputation-leaning sketches. Use the{" "}

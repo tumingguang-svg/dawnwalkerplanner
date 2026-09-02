@@ -5,15 +5,16 @@ import { GuideLayout } from "@/components/GuideLayout";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/choices-and-consequences",
-  title: "Choices and Consequences in Blood of Dawnwalker (Limited Time)",
+  title: "Dawnwalker Choices and Consequences – Limited Time",
   description:
-    "Unofficial Blood of Dawnwalker guide to choices and consequences under a limited Time Budget: how a choice becomes a consequence, then a time cost you can log in the planner. Estimated fan model—not confirmed retail outcomes.",
+    "Dawnwalker choices and consequences under a limited Time Budget: choice → consequence → time cost in the planner. Estimated fan model, not retail outcomes.",
+  absoluteTitle: true,
 });
 
 export default function ChoicesAndConsequencesPage() {
   return (
     <GuideLayout
-      title="Choices and consequences when time is limited"
+      title="Dawnwalker Choices and Consequences"
       intro="In a 30-day campaign, a choice is not only a story fork. It spends a slice of the clock, closes or delays other options, and leaves a consequence you still have to budget for. This is a mechanism guide—not an ending list."
       keywordNote="Primary focus: choices and consequences + limited time (Dawnwalker)."
     >
