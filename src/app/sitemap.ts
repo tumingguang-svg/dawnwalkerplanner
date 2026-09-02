@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/missable-content",
     "/faq",
     "/disclaimer",
+    "/privacy",
+    "/terms",
   ];
   const now = new Date();
   const high = new Set([

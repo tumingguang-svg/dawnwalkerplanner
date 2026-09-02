@@ -22,6 +22,24 @@ export function Footer() {
             Full disclaimer
           </Link>
           <Link
+            href="/privacy"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Privacy
+          </Link>
+          <Link
+            href="/terms"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Terms
+          </Link>
+          <a
+            href="mailto:contact@dawnwalkerplanner.org"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Contact
+          </a>
+          <Link
             href="/planner"
             className="inline-flex min-h-10 items-center hover:text-dusk-200"
           >
