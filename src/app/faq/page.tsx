@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "FAQ — Affiliation, 480 AP Model & Privacy",
   description:
-    "Frequently asked questions about the unofficial Dawnwalker Planner fan site.",
+    "FAQ for the unofficial Dawnwalker Planner: affiliation, where 480 AP comes from, estimated data labels, localStorage privacy, and how to report wrong costs.",
 };
 
 const FAQS = [

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { BUILD_TEMPLATES } from "@/data/buildTemplates";
 
 export const metadata: Metadata = {
-  title: "Build Templates",
+  title: "Build Templates — Diplomat, Stalker & More",
   description:
-    "Unofficial Blood of Dawnwalker build sketches with playstyle focus and AP budgeting tips.",
+    "Unofficial Blood of Dawnwalker build sketches (diplomat, stalker, guardian, heartstring) with playstyle focus, strengths, watch-outs, and AP budgeting tips.",
 };
 
 export default function BuildsPage() {

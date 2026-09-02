@@ -4,9 +4,9 @@ import { Spoiler } from "@/components/Spoiler";
 import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = {
-  title: "Beginner Guide",
+  title: "Beginner Guide — First Week AP Habits",
   description:
-    "Beginner tips for budgeting day and night Action Points in Blood of Dawnwalker — unofficial fan advice.",
+    "Spoiler-light beginner tips for budgeting day and night Action Points in Blood of Dawnwalker. First-week habits, contingency AP, and how to use the unofficial planner.",
 };
 
 export default function BeginnerPage() {
