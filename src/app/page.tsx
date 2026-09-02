@@ -67,8 +67,11 @@ export default function HomePage() {
             </span>
           </div>
           <h1 className="font-display text-4xl leading-tight text-dusk-50 md:text-5xl">
-            Budget every night before the dawn breaks
+            The Blood of Dawnwalker Planner
           </h1>
+          <p className="font-display text-xl text-ember-400/90 md:text-2xl">
+            Budget every night before the dawn breaks
+          </p>
           <p className="text-lg text-dusk-300">
             Dawnwalker Planner is a free, browser-based ledger for an estimated{" "}
             <strong className="text-dusk-100">
