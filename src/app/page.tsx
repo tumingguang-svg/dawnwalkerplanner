@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AP_CONFIG } from "@/data/apConfig";
+import { DataStatus } from "@/components/DataStatus";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://dawnwalkerplanner.org";
@@ -118,17 +119,17 @@ export default function HomePage() {
           {
             href: "/quests",
             title: "Quest database",
-            body: "Shell table for quest Time Budget notes. Placeholders stay Estimated until observed.",
+            body: "Schema of fields we will store after retail observation or cited footage—not a confirmed quest list.",
           },
           {
             href: "/missables",
             title: "Missables index",
-            body: "A home for timer-sensitive content once Estimated or Reported rows exist.",
+            body: "Timer-window schema. Stays empty until Estimated or Reported observations exist.",
           },
           {
-            href: "/guides/can-you-do-everything",
+            href: "/guides/how-to-plan-your-time",
             title: "Guides",
-            body: "Original explainers on the deadline, day vs night, completionism, and missables.",
+            body: "Planner workflow, choices and consequences under limited time, deadline, day vs night, and missables.",
           },
         ].map((card) => (
           <Link
@@ -156,7 +157,7 @@ export default function HomePage() {
           </li>
           <li>
             Costs are labeled Estimated, Reported, or Verified—never invent
-            Verified retail numbers.
+            Verified retail numbers. Unverified data is not confirmed fact.
           </li>
           <li>No cheats, no official assets, original copy only.</li>
           <li>
@@ -168,6 +169,8 @@ export default function HomePage() {
           </li>
         </ul>
       </section>
+
+      <DataStatus />
     </div>
   );
 }

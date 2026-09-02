@@ -73,9 +73,9 @@ export default function MissableContentGuidePage() {
           </li>
           <li>
             <Link href="/quests" className="text-ember-400 hover:underline">
-              Quest database shell
+              Quest catalog schema
             </Link>{" "}
-            — placeholders pending observation.
+            — fields stored after observation, not a finished quest list.
           </li>
           <li>
             <Link

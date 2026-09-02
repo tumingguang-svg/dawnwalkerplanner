@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { DataStatus, type DataStatusProps } from "./DataStatus";
 import { RelatedLinks, type RelatedLink } from "./RelatedLinks";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   related?: RelatedLink[];
   lastUpdated?: string;
   keywordNote?: string;
+  dataStatus?: DataStatusProps;
 };
 
 const GUIDE_LINKS: RelatedLink[] = [
@@ -15,6 +17,16 @@ const GUIDE_LINKS: RelatedLink[] = [
     href: "/guides/how-time-works",
     label: "How time works",
     description: "Day, night, and the fan Time Budget model.",
+  },
+  {
+    href: "/guides/how-to-plan-your-time",
+    label: "How to plan your time",
+    description: "Time Budget planner workflow, step by step.",
+  },
+  {
+    href: "/guides/choices-and-consequences",
+    label: "Choices and consequences",
+    description: "How limited time turns choices into trade-offs.",
   },
   {
     href: "/guides/30-day-deadline",
@@ -45,6 +57,7 @@ export function GuideLayout({
   related,
   lastUpdated = "2026-09-02",
   keywordNote,
+  dataStatus,
 }: Props) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem]">
@@ -62,11 +75,7 @@ export function GuideLayout({
           )}
         </header>
         {children}
-        <p className="border-t border-dusk-800 pt-4 text-xs text-dusk-600">
-          Last updated: {lastUpdated} (Asia/Shanghai calendar date). Fan
-          commentary only—not affiliated with Rebel Wolves or Bandai Namco. No
-          Verified retail costs are invented here.
-        </p>
+        <DataStatus lastReviewed={lastUpdated} {...dataStatus} />
       </article>
       <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
         <RelatedLinks

@@ -94,7 +94,14 @@ export default function HowTimeWorksPage() {
             <Link href="/planner" className="text-ember-400 hover:underline">
               planner
             </Link>{" "}
-            and leave a contingency buffer.
+            and leave a contingency buffer. Full workflow:{" "}
+            <Link
+              href="/guides/how-to-plan-your-time"
+              className="text-ember-400 hover:underline"
+            >
+              how to plan your time
+            </Link>
+            .
           </li>
           <li>
             Read{" "}

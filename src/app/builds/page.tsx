@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = {
   title: "Build Ideas Hub — Vampire & Human Sketches",
@@ -62,12 +63,18 @@ export default function BuildsHubPage() {
             description: "Phase wallets for either path.",
           },
           {
+            href: "/guides/how-to-plan-your-time",
+            label: "How to plan your time",
+            description: "Time Budget planner workflow.",
+          },
+          {
             href: "/beginner",
             label: "Beginner guide",
             description: "First-week Time Budget habits.",
           },
         ]}
       />
+      <DataStatus />
     </div>
   );
 }

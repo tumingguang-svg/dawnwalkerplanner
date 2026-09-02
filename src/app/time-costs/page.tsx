@@ -4,6 +4,7 @@ import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { Spoiler } from "@/components/Spoiler";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = {
   title: "Time Costs Catalog — Estimated Time Budget Activities",
@@ -23,6 +24,7 @@ const showVerifiedCol = TIME_COST_ENTRIES.some(
 const showSourceCol = TIME_COST_ENTRIES.some((r) => r.sourceNote);
 const showPlatformCol = TIME_COST_ENTRIES.some((r) => r.platform);
 const showPatchCol = TIME_COST_ENTRIES.some((r) => r.patch);
+const showYoutubeCol = TIME_COST_ENTRIES.some((r) => r.youtubeSource);
 
 export default function TimeCostsPage() {
   return (
@@ -72,6 +74,7 @@ export default function TimeCostsPage() {
               {showSourceCol && <th className="px-3 py-3">Source note</th>}
               {showPlatformCol && <th className="px-3 py-3">Platform</th>}
               {showPatchCol && <th className="px-3 py-3">Patch</th>}
+              {showYoutubeCol && <th className="px-3 py-3">YouTube source</th>}
               <th className="px-3 py-3">Notes</th>
             </tr>
           </thead>
@@ -120,6 +123,30 @@ export default function TimeCostsPage() {
                     {row.patch ?? <span className="text-dusk-600">—</span>}
                   </td>
                 )}
+                {showYoutubeCol && (
+                  <td className="px-3 py-3 text-dusk-400 max-w-[14rem]">
+                    {row.youtubeSource ? (
+                      <span className="block text-xs">
+                        <a
+                          href={row.youtubeSource.url}
+                          className="text-ember-400 hover:underline break-all"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          {row.youtubeSource.url}
+                        </a>
+                        <span className="mt-0.5 block text-dusk-600">
+                          {row.youtubeSource.timestamp} ·{" "}
+                          {row.youtubeSource.platform} ·{" "}
+                          {row.youtubeSource.gameVersion} ·{" "}
+                          {row.youtubeSource.verificationDate}
+                        </span>
+                      </span>
+                    ) : (
+                      <span className="text-dusk-600">—</span>
+                    )}
+                  </td>
+                )}
                 <td className="px-3 py-3 text-dusk-400 max-w-xs">
                   {row.spoiler ? (
                     <Spoiler label="Reveal notes (spoiler)">
@@ -137,9 +164,16 @@ export default function TimeCostsPage() {
       <p className="text-xs text-dusk-600">
         {TIME_COST_ENTRIES.length} entries. Values are Estimated or Reported fan
         model units unless later marked Verified against the released game.
+        Unverified data is not confirmed fact.
       </p>
+      <DataStatus />
       <RelatedLinks
         extra={[
+          {
+            href: "/guides/how-to-plan-your-time",
+            label: "How to plan your time",
+            description: "Turn catalog rows into a ledger.",
+          },
           {
             href: "/guides/day-vs-night",
             label: "Day vs night guide",
@@ -148,7 +182,7 @@ export default function TimeCostsPage() {
           {
             href: "/quests",
             label: "Quest database",
-            description: "Shell table for quest Time Budget notes.",
+            description: "Schema of fields we will store after observation.",
           },
         ]}
       />

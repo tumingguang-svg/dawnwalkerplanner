@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = {
   title: "FAQ — Affiliation, Time Budget Model & Privacy",
@@ -18,7 +19,7 @@ const FAQS = [
   },
   {
     q: "What do Estimated, Reported, and Verified mean?",
-    a: "Estimated = fan planning guess. Reported = player or community observation not yet confirmed as retail-stable. Verified = checked against the released game / patch with a date or source note. We never invent Verified numbers.",
+    a: "Estimated = fan planning guess (the default for pre-release values). Reported = player or community observation not yet confirmed as retail-stable. Verified = checked against the released game / patch with a date or source note. Data without gameplay verification, official sources, or fully cited player footage is not confirmed fact. YouTube-derived rows must keep source URL, timestamp, platform, game version, and verification date. We never invent Verified numbers.",
   },
   {
     q: "Does the planner store my data on a server?",
@@ -65,6 +66,7 @@ export default function FaqPage() {
           </div>
         ))}
       </dl>
+      <DataStatus />
     </div>
   );
 }

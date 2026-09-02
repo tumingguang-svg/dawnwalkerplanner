@@ -9,10 +9,17 @@ Domain: https://dawnwalkerplanner.org
 - / — home
 - /planner — interactive planner
 - /time-costs — AP catalog
+- /quests — quest catalog schema (fills after observation)
+- /missables — missables schema (empty until observed)
 - /beginner — tips
 - /builds — templates
+- /guides/how-time-works — time model
+- /guides/how-to-plan-your-time — planner workflow
+- /guides/choices-and-consequences — choices under limited time
 - /faq — FAQ
 - /disclaimer — legal
+
+Data honesty: see [docs/DATA.md](docs/DATA.md) and [CONTRIBUTING.md](CONTRIBUTING.md). Unverified values are not confirmed fact. Pre-release numbers stay Estimated.
 
 ## Local development
 

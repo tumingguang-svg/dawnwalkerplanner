@@ -46,9 +46,11 @@ export default function DisclaimerPage() {
           <strong className="text-dusk-100">
             Estimated, Reported, or Verified
           </strong>
-          . We do not invent Verified retail numbers. Values may be incomplete
-          or incorrect. Always trust your own play experience and official patch
-          notes over this fan tool.
+          . We do not invent Verified retail numbers. Values without gameplay
+          verification, official sources, or fully cited player footage are{" "}
+          <strong className="text-dusk-100">not confirmed fact</strong>. Pre-release
+          values stay Estimated. Always trust your own play experience and
+          official patch notes over this fan tool.
         </p>
         <p>
           This site does not provide cheats, hacks, piracy, or unauthorized

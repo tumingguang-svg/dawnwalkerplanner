@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/builds/vampire",
     "/builds/human",
     "/guides/how-time-works",
+    "/guides/how-to-plan-your-time",
+    "/guides/choices-and-consequences",
     "/guides/30-day-deadline",
     "/guides/day-vs-night",
     "/guides/can-you-do-everything",
@@ -23,7 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/disclaimer",
   ];
   const now = new Date();
-  const high = new Set(["", "/planner", "/guides/how-time-works"]);
+  const high = new Set([
+    "",
+    "/planner",
+    "/guides/how-time-works",
+    "/guides/how-to-plan-your-time",
+    "/guides/choices-and-consequences",
+  ]);
   const weekly = new Set([
     "/planner",
     "/time-costs",

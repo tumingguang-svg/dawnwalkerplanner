@@ -22,12 +22,19 @@ export default function PlannerPage() {
           be shared via URL. These are fan model units—not a claim about
           official Action Points. See{" "}
           <Link
+            href="/guides/how-to-plan-your-time"
+            className="text-ember-400 hover:underline"
+          >
+            how to plan your time
+          </Link>
+          ,{" "}
+          <Link
             href="/guides/how-time-works"
             className="text-ember-400 hover:underline"
           >
             how time works
-          </Link>{" "}
-          and the{" "}
+          </Link>
+          , and the{" "}
           <Link href="/time-costs" className="text-ember-400 hover:underline">
             time costs catalog
           </Link>

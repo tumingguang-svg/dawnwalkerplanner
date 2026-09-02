@@ -1,13 +1,18 @@
-import type { TimePhase, VerificationStatus } from "./apConfig";
+import type {
+  TimePhase,
+  VerificationStatus,
+  YoutubeSourceMeta,
+} from "./apConfig";
 
 /**
- * Quest database shell. Rows are placeholders pending retail confirmation.
- * Do not invent Verified costs.
+ * Quest catalog schema. Fill rows only after retail observation or a complete
+ * YouTube citation. Do not invent Verified costs or fake quest names.
  */
 export type QuestEntry = {
   id: string;
   name: string;
   type: "main" | "side" | "personal" | "faction";
+  /** Null until observed. Null is not zero. */
   estimatedAp: number | null;
   phase: TimePhase | "unknown";
   verificationStatus: VerificationStatus;
@@ -17,32 +22,26 @@ export type QuestEntry = {
   sourceNote?: string;
   platform?: string;
   patch?: string;
+  gameVersion?: string;
+  youtubeSource?: YoutubeSourceMeta;
 };
 
+/**
+ * At most one schema example until real observations exist.
+ * This is not a quest list.
+ */
 export const QUEST_ENTRIES: QuestEntry[] = [
   {
-    id: "placeholder-main-opener",
-    name: "Main path opener (placeholder)",
+    id: "schema-example-pending",
+    name: "Schema example — not a real quest",
     type: "main",
     estimatedAp: null,
     phase: "unknown",
     verificationStatus: "estimated",
     missableRisk: "unknown",
     notes:
-      "Pending Estimated Time Budget cost after retail observation. Not Verified.",
+      "Pending verification. Illustrates the fields this catalog will store after retail play or fully cited player footage. Not a quest title, cost, or spoiler.",
     lastVerified: null,
-    sourceNote: "Shell row — awaiting playthrough notes",
-  },
-  {
-    id: "placeholder-side-district",
-    name: "District side chain (placeholder)",
-    type: "side",
-    estimatedAp: null,
-    phase: "either",
-    verificationStatus: "estimated",
-    missableRisk: "medium",
-    notes:
-      "Placeholder for a multi-step side chain. Cost intentionally blank until Estimated.",
-    lastVerified: null,
+    sourceNote: "Schema example only — awaiting observation",
   },
 ];

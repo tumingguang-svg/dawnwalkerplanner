@@ -20,3 +20,28 @@ export const VERIFICATION_LABELS: Record<VerificationStatus, string> = {
   reported: "Reported",
   verified: "Verified",
 };
+
+/**
+ * Required metadata when a value is derived from player footage (e.g. YouTube).
+ * Do not mark such rows Verified without every field filled.
+ */
+export type YoutubeSourceMeta = {
+  url: string;
+  timestamp: string;
+  platform: string;
+  gameVersion: string;
+  verificationDate: string;
+};
+
+/** Sitewide page-level data banner defaults. Switch to verified after retail checks. */
+export const SITE_DATA_STATUS = {
+  status: "estimated" as VerificationStatus,
+  lastReviewed: "2026-09-02",
+  lastVerified: null as string | null,
+  gameVersion: undefined as string | undefined,
+  platform: undefined as string | undefined,
+  source: undefined as string | undefined,
+  youtube: undefined as YoutubeSourceMeta | undefined,
+  basis: "Based on pre-release / fan model information",
+  pendingNote: "Retail gameplay verification pending",
+};

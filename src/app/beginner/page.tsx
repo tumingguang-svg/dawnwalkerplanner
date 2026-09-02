@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Spoiler } from "@/components/Spoiler";
+import { DataStatus } from "@/components/DataStatus";
 import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = {
@@ -70,6 +71,20 @@ export default function BeginnerPage() {
             how time works
           </Link>
           ,{" "}
+          <Link
+            href="/guides/how-to-plan-your-time"
+            className="text-ember-400 hover:underline"
+          >
+            how to plan your time
+          </Link>
+          ,{" "}
+          <Link
+            href="/guides/choices-and-consequences"
+            className="text-ember-400 hover:underline"
+          >
+            choices and consequences
+          </Link>
+          ,{" "}
           <Link href="/guides/30-day-deadline" className="text-ember-400 hover:underline">
             30-day deadline
           </Link>
@@ -83,8 +98,11 @@ export default function BeginnerPage() {
 
       <section className="rounded-xl border border-dusk-800 bg-night-900/40 p-4 text-sm text-dusk-400">
         No cheats, trainers, or exploit instructions appear on this site—only
-        planning hygiene and Estimated Time Budget costs.
+        planning hygiene and Estimated Time Budget costs. Unverified data is
+        not confirmed fact.
       </section>
+
+      <DataStatus />
     </div>
   );
 }
