@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { DataStatus } from "@/components/DataStatus";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/faq",
   title: "FAQ — Affiliation, Time Budget Model & Privacy",
   description:
     "FAQ for the unofficial Dawnwalker Planner: affiliation, where the 30-day Time Budget (480 model units) comes from, Estimated/Reported/Verified labels, localStorage privacy, and how to report wrong costs.",
-};
+});
 
 const FAQS = [
   {
@@ -40,6 +42,9 @@ export default function FaqPage() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">FAQ</h1>
+        <h2 className="mt-3 font-display text-xl text-dusk-200">
+          Common questions about this fan planner
+        </h2>
         <p className="mt-2 text-dusk-400">
           Short answers. See also the{" "}
           <Link href="/disclaimer" className="text-ember-400 hover:underline">
@@ -55,17 +60,17 @@ export default function FaqPage() {
           .
         </p>
       </div>
-      <dl className="space-y-4">
+      <div className="space-y-4">
         {FAQS.map((item) => (
-          <div
+          <section
             key={item.q}
             className="rounded-xl border border-dusk-800 bg-night-900/40 p-4"
           >
-            <dt className="font-display text-lg text-dusk-50">{item.q}</dt>
-            <dd className="mt-2 text-sm text-dusk-300">{item.a}</dd>
-          </div>
+            <h3 className="font-display text-lg text-dusk-50">{item.q}</h3>
+            <p className="mt-2 text-sm text-dusk-300">{item.a}</p>
+          </section>
         ))}
-      </dl>
+      </div>
       <DataStatus />
     </div>
   );

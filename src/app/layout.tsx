@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Dawnwalker Planner",
   },
   description:
-    "Unofficial Blood of Dawnwalker fan planner for an estimated 30-day Time Budget (480 model units). Estimated time costs, presets, and beginner tips. Not affiliated with Rebel Wolves or Bandai Namco.",
+    "Unofficial Blood of Dawnwalker planner for an estimated 30-day Time Budget. Presets, time costs, and guides. Fan model—not official.",
   keywords: [
     "Blood of Dawnwalker",
     "Dawnwalker planner",

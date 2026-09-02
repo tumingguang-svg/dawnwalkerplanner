@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/how-to-plan-your-time",
   title: "How to Plan Your Time in Blood of Dawnwalker (Time Budget)",
   description:
     "Unofficial workflow for the Blood of Dawnwalker Time Budget planner: load a preset, add estimated costs from the catalog, protect a contingency buffer, and share a plan URL. Fan model units—not official Action Points.",
-};
+});
 
 export default function HowToPlanYourTimePage() {
   return (

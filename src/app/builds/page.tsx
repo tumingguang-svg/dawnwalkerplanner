@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/builds",
   title: "Build Ideas Hub — Vampire & Human Sketches",
   description:
     "Unofficial Blood of Dawnwalker build hub. Choose vampire or human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps; not official builds.",
-};
+});
 
 export default function BuildsHubPage() {
   return (

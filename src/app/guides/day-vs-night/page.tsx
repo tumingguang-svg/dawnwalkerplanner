@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/day-vs-night",
   title: "Dawnwalker Day vs Night — When to Spend Each Phase",
   description:
     "Unofficial Blood of Dawnwalker day vs night guide: how to allocate estimated day and night Time Budget units, avoid idle wallets, and plan phase-locked activities.",
-};
+});
 
 export default function DayVsNightPage() {
   return (

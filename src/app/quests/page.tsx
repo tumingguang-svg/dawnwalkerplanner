@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { QUEST_ENTRIES } from "@/data/quests";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/quests",
   title: "Quest Database — What This Catalog Tracks",
   description:
     "Unofficial Blood of Dawnwalker quest catalog schema: fields we will store after retail observation or cited player footage. Not a confirmed quest list. Estimated until verified.",
-};
+});
 
 const statusColor: Record<string, string> = {
   estimated: "text-ember-400 border-ember-600/40",

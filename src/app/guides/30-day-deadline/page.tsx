@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/30-day-deadline",
   title: "Blood of Dawnwalker 30-Day Deadline — Pacing Guide",
   description:
     "Unofficial Blood of Dawnwalker 30-day deadline guide: how to pace main path, side content, and contingency using an estimated Time Budget fan model—not official Action Points.",
-};
+});
 
 export default function ThirtyDayDeadlinePage() {
   return (

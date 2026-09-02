@@ -73,6 +73,9 @@ export function GuideLayout({
           {keywordNote && (
             <p className="text-xs text-dusk-600">{keywordNote}</p>
           )}
+          <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-dusk-500">
+            What this guide covers
+          </h3>
         </header>
         {children}
         <DataStatus lastReviewed={lastUpdated} {...dataStatus} />

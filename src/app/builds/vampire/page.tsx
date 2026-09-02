@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { buildsForPath } from "@/data/buildTemplates";
 import { BuildCard } from "@/components/BuildCard";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/builds/vampire",
   title: "Vampire Builds — Night & Occult Playstyles",
   description:
     "Unofficial Blood of Dawnwalker vampire build sketches: Night Stalker, Crimson Rite, and flexible romance paths with Estimated Time Budget tips.",
-};
+});
 
 export default function VampireBuildsPage() {
   const builds = buildsForPath("vampire");

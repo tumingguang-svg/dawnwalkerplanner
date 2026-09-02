@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/disclaimer",
   title: "Disclaimer",
   description:
     "Legal and affiliation disclaimer for the unofficial Dawnwalker Planner fan site.",
-};
+});
 
 export default function DisclaimerPage() {
   return (
@@ -12,7 +14,13 @@ export default function DisclaimerPage() {
       <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
         Disclaimer
       </h1>
+      <h2 className="font-display text-xl text-dusk-200">
+        Affiliation and fan-site terms
+      </h2>
       <section className="space-y-3 text-sm leading-relaxed">
+        <h3 className="font-display text-lg text-dusk-100">
+          Unofficial status
+        </h3>
         <p>
           Dawnwalker Planner (dawnwalkerplanner.org) is an unofficial,
           independent fan-made website created for educational and entertainment

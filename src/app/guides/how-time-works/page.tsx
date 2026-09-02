@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/how-time-works",
   title: "How Time Works in Blood of Dawnwalker (Fan Model)",
   description:
     "Unofficial explainer of how the Blood of Dawnwalker 30-day Time Budget fan model works: day units, night units, phases, and how to use Dawnwalker Planner without treating numbers as official Action Points.",
-};
+});
 
 export default function HowTimeWorksPage() {
   return (

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { MISSABLE_ENTRIES } from "@/data/missables";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/missables",
   title: "Missables Index — What This Catalog Tracks",
   description:
     "Unofficial Blood of Dawnwalker missables schema: timer windows and risk fields we will store after retail observation or cited footage. Not a confirmed missable list.",
-};
+});
 
 const SCHEMA_FIELDS = [
   {

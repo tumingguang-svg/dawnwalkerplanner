@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Spoiler } from "@/components/Spoiler";
 import { DataStatus } from "@/components/DataStatus";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/beginner",
   title: "Beginner Guide — First Week AP Habits",
   description:
     "Spoiler-light beginner tips for budgeting day and night Time Budget units in Blood of Dawnwalker. First-week habits, contingency buffer, and how to use the unofficial planner.",
-};
+});
 
 export default function BeginnerPage() {
   return (

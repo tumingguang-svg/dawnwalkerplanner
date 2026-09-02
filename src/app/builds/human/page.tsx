@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { buildsForPath } from "@/data/buildTemplates";
 import { BuildCard } from "@/components/BuildCard";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/builds/human",
   title: "Human Builds — Diplomat & Guardian Playstyles",
   description:
     "Unofficial Blood of Dawnwalker human build sketches: Blade Diplomat, Ward Guardian, and flexible romance paths with Estimated Time Budget tips.",
-};
+});
 
 export default function HumanBuildsPage() {
   const builds = buildsForPath("human");

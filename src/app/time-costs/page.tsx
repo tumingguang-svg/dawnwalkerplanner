@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
@@ -6,11 +7,12 @@ import { Spoiler } from "@/components/Spoiler";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/time-costs",
   title: "Time Costs Catalog — Estimated Time Budget Activities",
   description:
     "Browse estimated Time Budget costs for Blood of Dawnwalker activities, with Estimated / Reported / Verified status, last-verified dates, and source notes. Unofficial fan data.",
-};
+});
 
 const statusColor: Record<string, string> = {
   estimated: "text-ember-400 border-ember-600/40",

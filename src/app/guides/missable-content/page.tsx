@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { Spoiler } from "@/components/Spoiler";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/missable-content",
   title: "Blood of Dawnwalker Missable Content — Planning Guide",
   description:
     "Unofficial Blood of Dawnwalker missable content guide: how to flag timer-sensitive quests, relationships, and endings using Estimated planning habits—no invented Verified lists.",
-};
+});
 
 export default function MissableContentGuidePage() {
   return (

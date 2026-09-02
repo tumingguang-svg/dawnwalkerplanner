@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV = [
@@ -16,9 +17,14 @@ export function Header() {
     <header className="border-b border-dusk-800/80 bg-night-950/90 backdrop-blur sticky top-0 z-40">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
         <Link href="/" className="group flex items-center gap-2 min-h-11">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-ember-500 to-blood-600 text-sm font-bold text-white shadow-glow">
-            DW
-          </span>
+          <Image
+            src="/icon.png"
+            alt="Dawnwalker Planner logo"
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-full shadow-glow"
+            priority
+          />
           <div className="leading-tight">
             <div className="font-display text-lg tracking-wide text-dusk-50 group-hover:text-ember-400 transition-colors">
               Dawnwalker Planner

@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { AP_CONFIG } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/",
+  title: "The Blood of Dawnwalker Planner – 30-Day Time Budget, Quests & Builds",
+  description:
+    "Unofficial Blood of Dawnwalker planner for an estimated 30-day Time Budget. Presets, time costs, and guides. Fan model—not official.",
+  absoluteTitle: true,
+});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://dawnwalkerplanner.org";
@@ -99,52 +109,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {[
-          {
-            href: "/planner",
-            title: "30-day Time Budget planner",
-            body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
-          },
-          {
-            href: "/time-costs",
-            title: "Time cost catalog",
-            body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
-          },
-          {
-            href: "/builds",
-            title: "Build hubs",
-            body: "Vampire and human playstyle sketches with Time Budget tips—not skill-tree dumps.",
-          },
-          {
-            href: "/quests",
-            title: "Quest database",
-            body: "Schema of fields we will store after retail observation or cited footage—not a confirmed quest list.",
-          },
-          {
-            href: "/missables",
-            title: "Missables index",
-            body: "Timer-window schema. Stays empty until Estimated or Reported observations exist.",
-          },
-          {
-            href: "/guides/how-to-plan-your-time",
-            title: "Guides",
-            body: "Planner workflow, choices and consequences under limited time, deadline, day vs night, and missables.",
-          },
-        ].map((card) => (
-          <Link
-            key={card.href}
-            href={card.href}
-            className="card-surface group rounded-2xl p-5 transition-colors hover:border-ember-500/50"
-          >
-            <h2 className="font-display text-xl text-dusk-50 group-hover:text-ember-400 transition-colors">
-              {card.title}
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-dusk-400">
-              {card.body}
-            </p>
-          </Link>
-        ))}
+      <section className="space-y-4">
+        <h2 className="font-display text-2xl text-dusk-50">
+          Tools and guides on this site
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {[
+            {
+              href: "/planner",
+              title: "30-day Time Budget planner",
+              body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
+            },
+            {
+              href: "/time-costs",
+              title: "Time cost catalog",
+              body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
+            },
+            {
+              href: "/builds",
+              title: "Build hubs",
+              body: "Vampire and human playstyle sketches with Time Budget tips—not skill-tree dumps.",
+            },
+            {
+              href: "/quests",
+              title: "Quest database",
+              body: "Schema of fields we will store after retail observation or cited footage—not a confirmed quest list.",
+            },
+            {
+              href: "/missables",
+              title: "Missables index",
+              body: "Timer-window schema. Stays empty until Estimated or Reported observations exist.",
+            },
+            {
+              href: "/guides/how-to-plan-your-time",
+              title: "Guides",
+              body: "Planner workflow, choices and consequences under limited time, deadline, day vs night, and missables.",
+            },
+          ].map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="card-surface group rounded-2xl p-5 transition-colors hover:border-ember-500/50"
+            >
+              <h3 className="font-display text-xl text-dusk-50 group-hover:text-ember-400 transition-colors">
+                {card.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-dusk-400">
+                {card.body}
+              </p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="rounded-2xl border border-dusk-800/80 bg-night-950/50 p-5 sm:p-6 text-sm text-dusk-400">

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/choices-and-consequences",
   title: "Choices and Consequences in Blood of Dawnwalker (Limited Time)",
   description:
     "Unofficial Blood of Dawnwalker guide to choices and consequences under a limited Time Budget: how a choice becomes a consequence, then a time cost you can log in the planner. Estimated fan model—not confirmed retail outcomes.",
-};
+});
 
 export default function ChoicesAndConsequencesPage() {
   return (

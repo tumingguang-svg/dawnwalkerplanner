@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { AP_CONFIG } from "@/data/apConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/guides/can-you-do-everything",
   title: "Can You Do Everything in Blood of Dawnwalker?",
   description:
     "Unofficial answer to can you do everything in Blood of Dawnwalker: why a single 30-day pass rarely clears all content, and how to prioritize with an estimated Time Budget fan model.",
-};
+});
 
 export default function CanYouDoEverythingPage() {
   return (
