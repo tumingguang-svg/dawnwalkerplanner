@@ -3,9 +3,9 @@ import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
 import { Spoiler } from "@/components/Spoiler";
 
 export const metadata: Metadata = {
-  title: "Time Costs Catalog",
+  title: "Time Costs Catalog — Estimated AP Activities",
   description:
-    "Estimated Action Point costs for Blood of Dawnwalker activities, labeled by verification status.",
+    "Browse estimated Action Point costs for Blood of Dawnwalker activities, with verification status, last-verified dates, and source notes. Unofficial fan data.",
 };
 
 const statusColor: Record<string, string> = {
@@ -13,6 +13,11 @@ const statusColor: Record<string, string> = {
   unverified: "text-dusk-300 border-dusk-600",
   community: "text-dusk-100 border-dusk-500",
 };
+
+const showVerifiedCol = TIME_COST_ENTRIES.some(
+  (r) => r.lastVerified !== undefined
+);
+const showSourceCol = TIME_COST_ENTRIES.some((r) => r.sourceNote);
 
 export default function TimeCostsPage() {
   return (
@@ -22,8 +27,12 @@ export default function TimeCostsPage() {
           Time costs
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          Fan-estimated AP spends. Prefer this catalog for planner completeness
-          over perfect lore accuracy. Entries marked spoiler stay collapsed.
+          Fan-estimated AP spends for planning. Prefer a complete catalog over
+          perfect lore accuracy. Spoiler notes stay collapsed. After launch,
+          update{" "}
+          <code className="text-dusk-300">lastVerified</code> and{" "}
+          <code className="text-dusk-300">sourceNote</code> in the data file as
+          you confirm costs in-game.
         </p>
       </div>
 
@@ -36,6 +45,10 @@ export default function TimeCostsPage() {
               <th className="px-3 py-3">AP</th>
               <th className="px-3 py-3">Phase</th>
               <th className="px-3 py-3">Status</th>
+              {showVerifiedCol && (
+                <th className="px-3 py-3">Last verified</th>
+              )}
+              {showSourceCol && <th className="px-3 py-3">Source note</th>}
               <th className="px-3 py-3">Notes</th>
             </tr>
           </thead>
@@ -50,7 +63,9 @@ export default function TimeCostsPage() {
                 <td className="px-3 py-3 font-medium text-ember-400">
                   {row.apCost}
                 </td>
-                <td className="px-3 py-3 capitalize text-dusk-300">{row.phase}</td>
+                <td className="px-3 py-3 capitalize text-dusk-300">
+                  {row.phase}
+                </td>
                 <td className="px-3 py-3">
                   <span
                     className={`inline-block rounded border px-2 py-0.5 text-xs ${statusColor[row.verificationStatus]}`}
@@ -58,6 +73,20 @@ export default function TimeCostsPage() {
                     {row.verificationStatus}
                   </span>
                 </td>
+                {showVerifiedCol && (
+                  <td className="px-3 py-3 text-dusk-400 whitespace-nowrap">
+                    {row.lastVerified ?? (
+                      <span className="text-dusk-600">—</span>
+                    )}
+                  </td>
+                )}
+                {showSourceCol && (
+                  <td className="px-3 py-3 text-dusk-400 max-w-[12rem]">
+                    {row.sourceNote ?? (
+                      <span className="text-dusk-600">—</span>
+                    )}
+                  </td>
+                )}
                 <td className="px-3 py-3 text-dusk-400 max-w-xs">
                   {row.spoiler ? (
                     <Spoiler label="Reveal notes (spoiler)">
