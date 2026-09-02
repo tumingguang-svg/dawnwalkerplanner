@@ -11,3 +11,6 @@
 .env*
 !.env.example
 *.tsbuildinfo
+.open-next
+.wrangler
+.dev.vars
