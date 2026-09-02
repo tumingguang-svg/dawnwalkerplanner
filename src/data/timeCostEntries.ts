@@ -1,5 +1,17 @@
 import type { TimePhase, VerificationStatus } from "./apConfig";
 
+/**
+ * Time-cost catalog for the planner and /time-costs page.
+ *
+ * Post-launch owner updates:
+ * 1. Play or cite a patch/community observation for an activity.
+ * 2. Set `apCost` / `phase` to the observed values.
+ * 3. Set `verificationStatus` to "community" (or keep "estimated"/"unverified").
+ * 4. Fill `lastVerified` with an ISO date (YYYY-MM-DD) and optional `sourceNote`
+ *    (e.g. "patch 1.0.2", "personal NG playthrough").
+ * 5. Leave `lastVerified: null` for rows that still need a real check.
+ * Prefer shipping a complete estimated catalog over blank rows.
+ */
 export type TimeCostEntry = {
   id: string;
   name: string;
@@ -9,6 +21,10 @@ export type TimeCostEntry = {
   verificationStatus: VerificationStatus;
   notes: string;
   spoiler?: boolean;
+  /** Optional citation for how the cost was checked. */
+  sourceNote?: string;
+  /** ISO date (YYYY-MM-DD) of last in-game or patch verification, or null. */
+  lastVerified?: string | null;
 };
 
 /** Fan-estimated time costs. Prefer complete planner UX over perfect lore numbers. */
@@ -21,6 +37,8 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "estimated",
     notes: "Short hops inside the same ward may cost less.",
+    lastVerified: null,
+    sourceNote: "Pre-launch fan model",
   },
   {
     id: "travel-wilds",
@@ -30,6 +48,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "day",
     verificationStatus: "estimated",
     notes: "Longer routes and weather may increase cost.",
+    lastVerified: null,
   },
   {
     id: "main-scene",
@@ -39,6 +58,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "unverified",
     notes: "Typical cinematic / dialogue-heavy beat.",
+    lastVerified: null,
   },
   {
     id: "main-chapter",
@@ -49,6 +69,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     verificationStatus: "estimated",
     notes: "Boss gates and multi-stage set pieces.",
     spoiler: true,
+    lastVerified: null,
   },
   {
     id: "side-short",
@@ -58,6 +79,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "estimated",
     notes: "Fetch / talk / escort lite.",
+    lastVerified: null,
   },
   {
     id: "side-long",
@@ -67,6 +89,8 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "community",
     notes: "Multi-step district arcs.",
+    lastVerified: null,
+    sourceNote: "Aggregated from early community discussion (unconfirmed)",
   },
   {
     id: "explore-block",
@@ -76,6 +100,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "day",
     verificationStatus: "estimated",
     notes: "Loot, landmarks, ambient events.",
+    lastVerified: null,
   },
   {
     id: "night-hunt",
@@ -85,6 +110,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "night",
     verificationStatus: "estimated",
     notes: "Predator-focused nighttime activity.",
+    lastVerified: null,
   },
   {
     id: "stealth-infil",
@@ -94,6 +120,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "night",
     verificationStatus: "unverified",
     notes: "Detection failure may burn extra AP.",
+    lastVerified: null,
   },
   {
     id: "duel",
@@ -103,6 +130,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "day",
     verificationStatus: "estimated",
     notes: "Includes prep and aftermath dialogue.",
+    lastVerified: null,
   },
   {
     id: "social-salon",
@@ -112,6 +140,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "night",
     verificationStatus: "estimated",
     notes: "Reputation and rumor gathering.",
+    lastVerified: null,
   },
   {
     id: "romance-scene",
@@ -122,6 +151,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     verificationStatus: "estimated",
     notes: "Relationship progression beat.",
     spoiler: true,
+    lastVerified: null,
   },
   {
     id: "crafting-session",
@@ -131,6 +161,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "day",
     verificationStatus: "unverified",
     notes: "Vendor waits and recipe unlocks.",
+    lastVerified: null,
   },
   {
     id: "rest-recover",
@@ -140,6 +171,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "estimated",
     notes: "May advance phase without full day skip.",
+    lastVerified: null,
   },
   {
     id: "investigation",
@@ -149,6 +181,8 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "community",
     notes: "Clue boards and interrogations.",
+    lastVerified: null,
+    sourceNote: "Aggregated from early community discussion (unconfirmed)",
   },
   {
     id: "family-lead",
@@ -159,6 +193,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     verificationStatus: "estimated",
     notes: "High-priority personal quest beats.",
     spoiler: true,
+    lastVerified: null,
   },
   {
     id: "faction-mission",
@@ -168,6 +203,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "either",
     verificationStatus: "estimated",
     notes: "Alignment shifts possible.",
+    lastVerified: null,
   },
   {
     id: "market-day",
@@ -177,6 +213,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     phase: "day",
     verificationStatus: "estimated",
     notes: "Vendors rotate; stock is limited.",
+    lastVerified: null,
   },
   {
     id: "ritual",
@@ -187,6 +224,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     verificationStatus: "unverified",
     notes: "Failure states may lock content.",
     spoiler: true,
+    lastVerified: null,
   },
   {
     id: "ending-prep",
@@ -197,5 +235,6 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     verificationStatus: "estimated",
     notes: "Late-game commitment of remaining AP.",
     spoiler: true,
+    lastVerified: null,
   },
 ];
