@@ -68,4 +68,4 @@ Useful scripts:
 ## Legal
 
 Not affiliated with Rebel Wolves / Bandai Namco / The Blood of Dawnwalker (TM).
-Estimated data. Spoilers collapsed. No cheats.
+Estimated data. Spoilers collapsed. No cheats. 
