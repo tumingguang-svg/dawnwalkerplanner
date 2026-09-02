@@ -31,7 +31,10 @@ export const metadata: Metadata = {
   description:
     "Unofficial Blood of Dawnwalker planner for an estimated 30-day Time Budget. Presets, time costs, and guides. Fan model—not official.",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
   openGraph: {
