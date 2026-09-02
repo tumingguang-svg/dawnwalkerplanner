@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/faq",
@@ -40,6 +42,15 @@ const FAQS = [
 export default function FaqPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
+      <JsonLd
+        data={[
+          faqPageJsonLd(FAQS),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+        ]}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">FAQ</h1>
         <h2 className="mt-3 font-display text-xl text-dusk-200">

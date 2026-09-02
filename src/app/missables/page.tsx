@@ -5,6 +5,8 @@ import { MISSABLE_ENTRIES } from "@/data/missables";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/missables",
@@ -44,6 +46,12 @@ const SCHEMA_FIELDS = [
 export default function MissablesPage() {
   return (
     <div className="space-y-8">
+      <JsonLd
+        data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Missables", path: "/missables" },
+          ])}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Dawnwalker Missables – Planning for Timer Risks

@@ -6,6 +6,8 @@ import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { Spoiler } from "@/components/Spoiler";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/time-costs",
@@ -32,6 +34,21 @@ const showYoutubeCol = TIME_COST_ENTRIES.some((r) => r.youtubeSource);
 export default function TimeCostsPage() {
   return (
     <div className="space-y-6">
+      <JsonLd
+        data={[
+          itemListJsonLd({
+            name: "Dawnwalker Time Budget Costs (Estimated Catalog)",
+            description:
+              "ItemList of fan-estimated Time Budget activity costs for The Blood of Dawnwalker. Rows are Estimated (or later Reported/Verified) model units—not official Action Points. Unverified data is not confirmed fact; we do not invent Verified retail numbers.",
+            path: "/time-costs",
+            items: TIME_COST_ENTRIES.map((e) => ({ name: e.name })),
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Time costs", path: "/time-costs" },
+          ]),
+        ]}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Dawnwalker Time Budget Costs (Estimated Catalog)

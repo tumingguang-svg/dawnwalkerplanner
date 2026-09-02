@@ -5,6 +5,8 @@ import { QUEST_ENTRIES } from "@/data/quests";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/quests",
@@ -54,6 +56,12 @@ const SCHEMA_FIELDS = [
 export default function QuestsPage() {
   return (
     <div className="space-y-8">
+      <JsonLd
+        data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Quests", path: "/quests" },
+          ])}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Dawnwalker Quests – What We Track (Known Info)

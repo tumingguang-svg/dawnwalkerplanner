@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/disclaimer",
@@ -11,6 +13,12 @@ export const metadata: Metadata = pageMetadata({
 export default function DisclaimerPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6 text-dusk-300">
+      <JsonLd
+        data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Disclaimer", path: "/disclaimer" },
+          ])}
+      />
       <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
         Disclaimer
       </h1>

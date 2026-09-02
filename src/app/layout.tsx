@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cinzel, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
 const display = Cinzel({
@@ -28,14 +30,6 @@ export const metadata: Metadata = {
   },
   description:
     "Unofficial Blood of Dawnwalker planner for an estimated 30-day Time Budget. Presets, time costs, and guides. Fan model—not official.",
-  keywords: [
-    "Blood of Dawnwalker",
-    "Dawnwalker planner",
-    "30 day planner",
-    "Time Budget",
-    "dawnwalker day night",
-    "fan guide",
-  ],
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
@@ -75,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased flex min-h-screen flex-col">
+        <JsonLd data={organizationJsonLd()} />
         <Header />
         <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
           {children}

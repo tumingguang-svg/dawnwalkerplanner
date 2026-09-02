@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/privacy",
@@ -13,6 +15,12 @@ export const metadata: Metadata = pageMetadata({
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6 text-dusk-300">
+      <JsonLd
+        data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Privacy", path: "/privacy" },
+          ])}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Privacy Policy

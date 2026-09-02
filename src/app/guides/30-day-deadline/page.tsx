@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function ThirtyDayDeadlinePage() {
   return (
     <GuideLayout
+      path="/guides/30-day-deadline"
       title="Dawnwalker 30-Day Deadline"
       intro="How to treat the campaign month as a pacing problem: front-load what feels time-sensitive, park tourist content, and keep a contingency buffer in the fan Time Budget model."
       keywordNote="Primary focus: 30-day deadline (Dawnwalker)."

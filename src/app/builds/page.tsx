@@ -3,6 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds",
@@ -15,6 +17,20 @@ export const metadata: Metadata = pageMetadata({
 export default function BuildsHubPage() {
   return (
     <div className="space-y-8">
+      <JsonLd
+        data={[
+          articleJsonLd({
+            headline: "Dawnwalker Builds Hub",
+            description:
+              "Dawnwalker Builds Hub: unofficial vampire and human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps or official builds.",
+            path: "/builds",
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Builds", path: "/builds" },
+          ]),
+        ]}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Dawnwalker Builds Hub

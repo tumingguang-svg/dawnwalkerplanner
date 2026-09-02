@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function MissableContentGuidePage() {
   return (
     <GuideLayout
+      path="/guides/missable-content"
       title="Dawnwalker Missable Content"
       intro="A spoiler-light framework for spotting timer-sensitive content in a 30-day campaign. The missables index stays a shell until Estimated or Reported rows exist—we will not invent Verified checklists."
       keywordNote="Primary focus: missable content (Dawnwalker)."

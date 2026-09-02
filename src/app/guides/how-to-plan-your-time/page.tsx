@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function HowToPlanYourTimePage() {
   return (
     <GuideLayout
+      path="/guides/how-to-plan-your-time"
       title="Dawnwalker How to Plan Your Time"
       intro="A practical workflow for the unofficial 30-day ledger: turn Estimated activities into a visible budget, keep day and night wallets honest, and leave room for the choices you have not made yet."
       keywordNote="Primary focus: how to plan your time / Time Budget planner workflow."

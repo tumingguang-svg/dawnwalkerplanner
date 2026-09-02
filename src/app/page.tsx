@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { AP_CONFIG } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { homeGraphJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
@@ -13,48 +15,11 @@ export const metadata: Metadata = pageMetadata({
   absoluteTitle: true,
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://dawnwalkerplanner.org";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      name: "Dawnwalker Planner",
-      url: siteUrl,
-      description:
-        "Unofficial Blood of Dawnwalker fan planner for an estimated 30-day Time Budget (480 model units).",
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: "Dawnwalker Planner",
-      applicationCategory: "GameApplication",
-      operatingSystem: "Web",
-      url: `${siteUrl}/planner`,
-      description:
-        "Unofficial fan tool to budget an estimated 30-day Time Budget across a Blood of Dawnwalker campaign. Model units only—not official Action Points. Not affiliated with Rebel Wolves or Bandai Namco.",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
-      author: {
-        "@type": "Organization",
-        name: "Dawnwalker Planner (unofficial fan project)",
-      },
-    },
-  ],
-};
 
 export default function HomePage() {
   return (
     <div className="space-y-10 sm:space-y-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={homeGraphJsonLd()} />
 
       <section className="relative overflow-hidden rounded-3xl border border-dusk-800 shadow-glow min-h-[22rem] md:min-h-[26rem]">
         <Image

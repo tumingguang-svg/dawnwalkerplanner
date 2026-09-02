@@ -14,6 +14,7 @@ export const metadata: Metadata = pageMetadata({
 export default function ChoicesAndConsequencesPage() {
   return (
     <GuideLayout
+      path="/guides/choices-and-consequences"
       title="Dawnwalker Choices and Consequences"
       intro="In a 30-day campaign, a choice is not only a story fork. It spends a slice of the clock, closes or delays other options, and leaves a consequence you still have to budget for. This is a mechanism guide—not an ending list."
       keywordNote="Primary focus: choices and consequences + limited time (Dawnwalker)."

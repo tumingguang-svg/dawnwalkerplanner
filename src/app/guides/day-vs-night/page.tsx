@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function DayVsNightPage() {
   return (
     <GuideLayout
+      path="/guides/day-vs-night"
       title="Dawnwalker Day vs Night"
       intro="Daylight and darkness are not just mood—they are two wallets in the estimated Time Budget model. Here is how to keep both productive without assuming official Action Point rules."
       keywordNote="Primary focus: day vs night (Dawnwalker)."

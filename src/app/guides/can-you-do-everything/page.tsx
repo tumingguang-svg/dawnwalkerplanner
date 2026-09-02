@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function CanYouDoEverythingPage() {
   return (
     <GuideLayout
+      path="/guides/can-you-do-everything"
       title="Can You Do Everything in Dawnwalker?"
       intro="Short answer: plan as if you cannot. A fixed month plus branching priorities means completionism collides with the clock—especially if you treat fan model units as a hard ceiling for practice."
       keywordNote="Primary focus: can you do everything (Dawnwalker)."

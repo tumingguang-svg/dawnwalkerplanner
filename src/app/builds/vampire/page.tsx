@@ -5,6 +5,8 @@ import { buildsForPath } from "@/data/buildTemplates";
 import { BuildCard } from "@/components/BuildCard";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { DataStatus } from "@/components/DataStatus";
+import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds/vampire",
@@ -18,6 +20,21 @@ export default function VampireBuildsPage() {
   const builds = buildsForPath("vampire");
   return (
     <div className="space-y-6">
+      <JsonLd
+        data={[
+          articleJsonLd({
+            headline: "Dawnwalker Vampire Builds",
+            description:
+              "Dawnwalker Vampire Builds: unofficial night and occult playstyle sketches with Estimated Time Budget tips for The Blood of Dawnwalker.",
+            path: "/builds/vampire",
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Builds", path: "/builds" },
+            { name: "Vampire builds", path: "/builds/vampire" },
+          ]),
+        ]}
+      />
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-ember-400">
           <Link href="/builds" className="hover:underline">

@@ -29,5 +29,10 @@ export function pageMetadata(opts: {
       title: opts.title,
       description,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: opts.title,
+      description,
+    },
   };
 }

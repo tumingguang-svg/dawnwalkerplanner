@@ -15,6 +15,7 @@ export const metadata: Metadata = pageMetadata({
 export default function HowTimeWorksPage() {
   return (
     <GuideLayout
+      path="/guides/how-time-works"
       title="Dawnwalker How Time Works"
       intro="A spoiler-light overview of the campaign clock as a planning problem—and how this site’s estimated 30-day Time Budget model helps you think in day and night wallets."
       keywordNote="Primary focus: how time works (Dawnwalker)."

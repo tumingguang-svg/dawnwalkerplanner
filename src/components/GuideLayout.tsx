@@ -1,15 +1,24 @@
 import type { ReactNode } from "react";
 import { DataStatus, type DataStatusProps } from "./DataStatus";
 import { RelatedLinks, type RelatedLink } from "./RelatedLinks";
+import { JsonLd } from "./JsonLd";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  DEFAULT_DATE_MODIFIED,
+} from "@/lib/jsonld";
 
 type Props = {
   title: string;
   intro: string;
+  /** Canonical path for Article + breadcrumbs, e.g. /guides/how-time-works */
+  path: string;
   children: ReactNode;
   related?: RelatedLink[];
   lastUpdated?: string;
   keywordNote?: string;
   dataStatus?: DataStatusProps;
+  description?: string;
 };
 
 const GUIDE_LINKS: RelatedLink[] = [
@@ -53,14 +62,31 @@ const GUIDE_LINKS: RelatedLink[] = [
 export function GuideLayout({
   title,
   intro,
+  path,
   children,
   related,
-  lastUpdated = "2026-09-02",
+  lastUpdated = DEFAULT_DATE_MODIFIED,
   keywordNote,
   dataStatus,
+  description,
 }: Props) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem]">
+      <JsonLd
+        data={[
+          articleJsonLd({
+            headline: title,
+            description: description ?? intro,
+            path,
+            dateModified: lastUpdated,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Guides", path: "/guides/how-to-plan-your-time" },
+            { name: title, path },
+          ]),
+        ]}
+      />
       <article className="prose-invert max-w-3xl space-y-8">
         <header className="space-y-3">
           <p className="text-xs uppercase tracking-[0.2em] text-ember-400">

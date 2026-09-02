@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Spoiler } from "@/components/Spoiler";
 import { DataStatus } from "@/components/DataStatus";
 import { AP_CONFIG } from "@/data/apConfig";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/beginner",
@@ -16,6 +18,12 @@ export const metadata: Metadata = pageMetadata({
 export default function BeginnerPage() {
   return (
     <div className="prose-invert max-w-3xl space-y-8">
+      <JsonLd
+        data={breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Beginner guide", path: "/beginner" },
+          ])}
+      />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
           Dawnwalker Beginner Guide – First Week Time Budget
