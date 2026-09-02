@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     "30 day planner",
     "fan guide",
   ],
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
   openGraph: {
     title: "Dawnwalker Planner",
     description:
@@ -42,6 +46,21 @@ export const metadata: Metadata = {
     siteName: "Dawnwalker Planner",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Dawnwalker Planner — unofficial 480 AP fan tool",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dawnwalker Planner",
+    description:
+      "Unofficial 30-day / 480 AP Blood of Dawnwalker campaign planner.",
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -55,7 +74,9 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased flex min-h-screen flex-col">
         <Header />
-        <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-8">{children}</main>
+        <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

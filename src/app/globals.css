@@ -22,3 +22,42 @@ body {
 ::selection {
   background: rgba(224, 120, 48, 0.35);
 }
+
+@layer components {
+  .card-surface {
+    @apply border border-dusk-800 bg-night-900/40;
+  }
+
+  .tap-target {
+    @apply inline-flex min-h-11 min-w-11 items-center justify-center;
+  }
+
+  .ap-progress-track {
+    @apply h-3 overflow-hidden rounded-full bg-night-800 ring-1 ring-dusk-800/60;
+  }
+
+  .ap-progress-fill {
+    @apply h-full rounded-full transition-all duration-300 ease-out;
+  }
+
+  .ap-progress-fill--ok {
+    @apply bg-gradient-to-r from-ember-600 via-ember-500 to-ember-400;
+  }
+
+  .ap-progress-fill--warn {
+    @apply bg-gradient-to-r from-ember-500 to-blood-500;
+  }
+
+  .ap-progress-fill--over {
+    @apply bg-gradient-to-r from-blood-600 to-blood-400;
+  }
+}
+
+@media (max-width: 640px) {
+  button,
+  a,
+  select,
+  input {
+    touch-action: manipulation;
+  }
+}
