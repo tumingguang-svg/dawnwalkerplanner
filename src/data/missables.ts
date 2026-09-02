@@ -1,17 +1,22 @@
+import type { VerificationStatus, YoutubeSourceMeta } from "./apConfig";
+
 /**
- * Missable content index shell. Prefer linking to the guide until retail data lands.
- * Empty by default — do not invent missable lists as Verified.
+ * Missable-content catalog schema. Keep empty until an Estimated or Reported
+ * observation exists. Do not invent Verified missable lists.
  */
 export type MissableEntry = {
   id: string;
   name: string;
   window: string;
   risk: "low" | "medium" | "high" | "unknown";
-  verificationStatus: "estimated" | "reported" | "verified";
+  verificationStatus: VerificationStatus;
   notes: string;
   lastVerified?: string | null;
   sourceNote?: string;
+  platform?: string;
+  gameVersion?: string;
+  youtubeSource?: YoutubeSourceMeta;
 };
 
-/** Intentionally empty until Observed/Estimated entries are filled post-launch. */
+/** Empty until retail observation or a complete footage citation. */
 export const MISSABLE_ENTRIES: MissableEntry[] = [];

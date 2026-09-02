@@ -1,4 +1,8 @@
-import type { TimePhase, VerificationStatus } from "./apConfig";
+import type {
+  TimePhase,
+  VerificationStatus,
+  YoutubeSourceMeta,
+} from "./apConfig";
 
 /**
  * Time-cost catalog for the planner and /time-costs page.
@@ -10,10 +14,12 @@ import type { TimePhase, VerificationStatus } from "./apConfig";
  * 3. Set `verificationStatus` to "reported" (player/community note) or
  *    "verified" (confirmed against retail/patch), else keep "estimated".
  * 4. Fill `lastVerified` (YYYY-MM-DD), optional `sourceNote`, and optional
- *    `platform` / `patch` when known.
- * 5. Leave `lastVerified: null` for rows that still need a real check.
+ *    `platform` / `patch` / `gameVersion` when known.
+ * 5. YouTube-derived rows must set `youtubeSource` with URL, timestamp,
+ *    platform, game version, and verification date.
+ * 6. Leave `lastVerified: null` for rows that still need a real check.
  * Prefer shipping a complete estimated catalog over blank rows.
- * Do not invent Verified retail numbers.
+ * Do not invent Verified retail numbers. Unverified data is not fact.
  */
 export type TimeCostEntry = {
   id: string;
@@ -32,6 +38,13 @@ export type TimeCostEntry = {
   platform?: string;
   /** Optional patch / build id (e.g. 1.0.2). */
   patch?: string;
+  /** Optional game version label when distinct from patch. */
+  gameVersion?: string;
+  /**
+   * Required when the cost is derived from YouTube or similar footage.
+   * Incomplete citations must not be marked Verified.
+   */
+  youtubeSource?: YoutubeSourceMeta;
 };
 
 /** Fan-estimated time costs. Prefer complete planner UX over perfect lore numbers. */

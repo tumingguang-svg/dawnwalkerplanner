@@ -96,11 +96,12 @@ export default function CanYouDoEverythingPage() {
           <Link href="/time-costs" className="text-ember-400 hover:underline">
             /time-costs
           </Link>{" "}
-          and empty shells on{" "}
+          and empty catalogs on{" "}
           <Link href="/quests" className="text-ember-400 hover:underline">
             /quests
           </Link>{" "}
-          as Reported rows land post-launch.
+          as Reported rows land post-launch. Those pages describe schema, not
+          confirmed quest lists.
         </p>
       </section>
     </GuideLayout>

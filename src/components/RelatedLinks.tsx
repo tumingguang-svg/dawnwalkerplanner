@@ -17,6 +17,16 @@ const DEFAULT_LINKS: RelatedLink[] = [
     label: "Time costs catalog",
     description: "Browse Estimated / Reported / Verified activity costs.",
   },
+  {
+    href: "/guides/how-to-plan-your-time",
+    label: "How to plan your time",
+    description: "Time Budget planner workflow.",
+  },
+  {
+    href: "/guides/choices-and-consequences",
+    label: "Choices and consequences",
+    description: "Limited time turns choices into trade-offs.",
+  },
 ];
 
 type Props = {
@@ -30,7 +40,9 @@ export function RelatedLinks({
   links = DEFAULT_LINKS,
   extra = [],
 }: Props) {
-  const items = [...links, ...extra];
+  const items = [...links, ...extra].filter(
+    (item, index, arr) => arr.findIndex((x) => x.href === item.href) === index
+  );
   return (
     <aside className="rounded-2xl border border-dusk-800 bg-night-900/40 p-5">
       <h2 className="font-display text-lg text-dusk-50">{title}</h2>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildsForPath } from "@/data/buildTemplates";
 import { BuildCard } from "@/components/BuildCard";
 import { RelatedLinks } from "@/components/RelatedLinks";
+import { DataStatus } from "@/components/DataStatus";
 
 export const metadata: Metadata = {
   title: "Vampire Builds — Night & Occult Playstyles",
@@ -62,6 +63,7 @@ export default function VampireBuildsPage() {
           },
         ]}
       />
+      <DataStatus />
     </div>
   );
 }

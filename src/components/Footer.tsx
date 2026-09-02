@@ -58,6 +58,18 @@ export function Footer() {
             Guides
           </Link>
           <Link
+            href="/guides/how-to-plan-your-time"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            How to plan
+          </Link>
+          <Link
+            href="/guides/choices-and-consequences"
+            className="inline-flex min-h-10 items-center hover:text-dusk-200"
+          >
+            Choices
+          </Link>
+          <Link
             href="/faq"
             className="inline-flex min-h-10 items-center hover:text-dusk-200"
           >
