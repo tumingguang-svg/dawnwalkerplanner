@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import Image from "next/image";
 import Link from "next/link";
 import { AP_CONFIG } from "@/data/apConfig";
 import { DataStatus } from "@/components/DataStatus";
@@ -55,9 +56,18 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="relative overflow-hidden rounded-3xl border border-dusk-800 bg-night-900/60 px-6 py-12 shadow-glow md:px-12 md:py-14">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(224,120,48,0.15),transparent_45%)]" />
-        <div className="relative max-w-2xl space-y-5">
+      <section className="relative overflow-hidden rounded-3xl border border-dusk-800 shadow-glow min-h-[22rem] md:min-h-[26rem]">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Atmospheric gothic city silhouette under a crimson moon — original fan-site artwork, not official game art"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="(max-width: 1152px) 100vw, 1152px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-night-950/95 via-night-950/80 to-night-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-transparent to-night-950/40" />
+        <div className="relative max-w-2xl space-y-4 px-6 py-10 md:px-12 md:py-14">
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs uppercase tracking-[0.25em] text-ember-400">
               Unofficial fan site
@@ -69,30 +79,18 @@ export default function HomePage() {
           <h1 className="font-display text-4xl leading-tight text-dusk-50 md:text-5xl">
             Dawnwalker Planner
           </h1>
-          <p className="text-lg text-dusk-200 md:text-xl">
+          <p className="text-lg text-dusk-100 md:text-xl">
             Free 30-day Time Budget tool for The Blood of Dawnwalker
           </p>
-          <p className="font-display text-xl text-ember-400/90 md:text-2xl">
+          <p className="font-display text-lg text-ember-400/90 md:text-xl">
             Budget every night before the dawn breaks
           </p>
-          <p className="text-lg text-dusk-300">
-            Dawnwalker Planner is a free, browser-based ledger for an estimated{" "}
-            <strong className="text-dusk-100">
-              {AP_CONFIG.totalDays}-day Time Budget
-            </strong>{" "}
-            ({AP_CONFIG.totalAp} model units: {AP_CONFIG.dayAp} day +{" "}
-            {AP_CONFIG.nightAp} night). Load presets, add catalog costs, autosave
-            locally, and share a plan URL—without dumping spoilers in your face.
+          <p className="text-sm text-dusk-300 md:text-base max-w-xl">
+            Plan an estimated {AP_CONFIG.totalDays}-day campaign ({AP_CONFIG.totalAp}{" "}
+            model units). Presets, catalog costs, local autosave, share URLs—fan
+            model, not official Action Points.
           </p>
-          <p className="text-sm text-dusk-500">
-            Model units are a fan planning shorthand, not a claim about official
-            Action Points. See the{" "}
-            <Link href="/disclaimer" className="text-ember-400 hover:underline">
-              disclaimer
-            </Link>
-            .
-          </p>
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <Link
               href="/planner"
               className="inline-flex min-h-11 items-center justify-center rounded-lg bg-ember-600 px-6 py-3 text-sm font-semibold text-white shadow-glow hover:bg-ember-500"
@@ -101,21 +99,88 @@ export default function HomePage() {
             </Link>
             <Link
               href="/time-costs"
-              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-600 px-5 py-3 text-sm font-medium text-dusk-100 hover:border-ember-500"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
             >
               Browse time costs
             </Link>
-            <Link
-              href="/guides/how-time-works"
-              className="inline-flex min-h-11 items-center justify-center px-2 py-3 text-sm text-dusk-400 underline-offset-4 hover:text-ember-400 hover:underline"
+            <a
+              href="#guide"
+              className="inline-flex min-h-11 items-center justify-center px-2 py-3 text-sm text-dusk-300 underline-offset-4 hover:text-ember-400 hover:underline"
             >
-              How time works
-            </Link>
+              Read the guide
+            </a>
           </div>
+        </div>
+</section>
+
+      <section id="tools" className="space-y-4">
+        <h2 className="font-display text-2xl text-dusk-50">
+          Tools and guides on this site
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {[
+            {
+              href: "/planner",
+              title: "30-day Time Budget planner",
+              body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
+            },
+            {
+              href: "/time-costs",
+              title: "Time cost catalog",
+              body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
+            },
+            {
+              href: "/builds",
+              title: "Build hubs",
+              body: "Vampire and human playstyle sketches with Time Budget tips—not skill-tree dumps.",
+            },
+            {
+              href: "/quests",
+              title: "Quest database",
+              body: "Currently known information and the fields we will store after retail observation—not a confirmed quest list.",
+            },
+            {
+              href: "/missables",
+              title: "Missables index",
+              body: "Planning for timer risks from public marketing pressure. Empty verified table until observations exist.",
+            },
+            {
+              href: "/guides/how-to-plan-your-time",
+              title: "Guides",
+              body: "Planner workflow, choices and consequences under limited time, deadline, day vs night, and missables.",
+            },
+          ].map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="card-surface group rounded-2xl p-5 transition-colors hover:border-ember-500/50"
+            >
+              <h3 className="font-display text-xl text-dusk-50 group-hover:text-ember-400 transition-colors">
+                {card.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-dusk-400">
+                {card.body}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <article className="prose-invert mx-auto max-w-3xl space-y-10 text-dusk-300">
+      <div className="relative overflow-hidden rounded-2xl border border-dusk-800">
+        <Image
+          src="/section-ember.jpg"
+          alt="Abstract ember light through dark gothic arches — original fan-site artwork"
+          width={1200}
+          height={400}
+          className="h-32 w-full object-cover opacity-85 md:h-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-transparent" />
+        <p className="absolute bottom-3 left-4 right-4 font-display text-lg text-dusk-50 md:text-xl">
+          How Dawnwalker Planner thinks about time
+        </p>
+      </div>
+
+      <article id="guide" className="prose-invert mx-auto max-w-3xl space-y-10 text-dusk-300">
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-dusk-50">
             What is a Time Budget in Blood of Dawnwalker planning?
@@ -392,60 +457,7 @@ export default function HomePage() {
         </section>
       </article>
 
-      <section className="space-y-4">
-        <h2 className="font-display text-2xl text-dusk-50">
-          Tools and guides on this site
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {[
-            {
-              href: "/planner",
-              title: "30-day Time Budget planner",
-              body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
-            },
-            {
-              href: "/time-costs",
-              title: "Time cost catalog",
-              body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
-            },
-            {
-              href: "/builds",
-              title: "Build hubs",
-              body: "Vampire and human playstyle sketches with Time Budget tips—not skill-tree dumps.",
-            },
-            {
-              href: "/quests",
-              title: "Quest database",
-              body: "Currently known information and the fields we will store after retail observation—not a confirmed quest list.",
-            },
-            {
-              href: "/missables",
-              title: "Missables index",
-              body: "Planning for timer risks from public marketing pressure. Empty verified table until observations exist.",
-            },
-            {
-              href: "/guides/how-to-plan-your-time",
-              title: "Guides",
-              body: "Planner workflow, choices and consequences under limited time, deadline, day vs night, and missables.",
-            },
-          ].map((card) => (
-            <Link
-              key={card.href}
-              href={card.href}
-              className="card-surface group rounded-2xl p-5 transition-colors hover:border-ember-500/50"
-            >
-              <h3 className="font-display text-xl text-dusk-50 group-hover:text-ember-400 transition-colors">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-dusk-400">
-                {card.body}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="rounded-2xl border border-dusk-800/80 bg-night-950/50 p-5 sm:p-6 text-sm text-dusk-400">
+      <section id="before-you-play" className="rounded-2xl border border-dusk-800/80 bg-night-950/50 p-5 sm:p-6 text-sm text-dusk-400">
         <h2 className="font-display text-lg text-dusk-200">Before you play</h2>
         <ul className="mt-3 list-disc space-y-1.5 pl-5">
           <li>This site is not affiliated with Rebel Wolves or Bandai Namco.</li>
