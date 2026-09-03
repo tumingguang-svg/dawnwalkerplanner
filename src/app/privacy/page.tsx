@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/privacy",
   title: "Privacy Policy",
   description:
-    "Privacy policy for Dawnwalker Planner: localStorage plans, no required accounts, contact email, and how we handle future analytics or ads.",
+    "Privacy policy for Dawnwalker Planner: localStorage plans, no required accounts, contact email, Google Analytics 4 traffic stats, localStorage plans, and how we handle ads if added later.",
 });
 
 export default function PrivacyPage() {
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="mt-2 text-sm text-dusk-500">
-          Last updated: September 2, 2026 · Applies to dawnwalkerplanner.org
+          Last updated: September 3, 2026 · Applies to dawnwalkerplanner.org
         </p>
       </div>
 
@@ -83,11 +83,28 @@ export default function PrivacyPage() {
           Analytics, ads, and cookies
         </h2>
         <p>
+          We use <strong className="text-dusk-200">Google Analytics 4</strong>{" "}
+          (measurement ID{" "}
+          <code className="text-dusk-200">G-ESM3XP79QD</code>) to understand
+          aggregate traffic (pages viewed, approximate location, device type).
+          Google may set cookies or use similar identifiers for this purpose.
+          See{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            className="text-ember-400 hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Google&apos;s Privacy Policy
+          </a>
+          . We do not sell personal data.
+        </p>
+        <p>
           As of the last-updated date above, this site does not run third-party
           advertising networks or a separate cookie consent banner for marketing
-          cookies. If we later add analytics (for example traffic stats) or ads
-          (for example AdSense), we will update this policy and, where required,
-          disclose those vendors and any non-essential cookies.
+          ads. If we later add ads (for example AdSense), we will update this
+          policy and, where required, disclose those vendors and any additional
+          non-essential cookies.
         </p>
       </section>
 

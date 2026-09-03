@@ -3,6 +3,7 @@ import { Cinzel, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { organizationJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased flex min-h-screen flex-col">
+        <GoogleAnalytics />
         <JsonLd data={organizationJsonLd()} />
         <Header />
         <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
