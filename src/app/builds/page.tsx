@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/builds",
   title: "Dawnwalker Builds Hub",
   description:
-    "Dawnwalker Builds Hub: unofficial vampire and human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps or official builds.",
+    "Dawnwalker Builds Hub (stub): Estimated playstyle sketches only. Not a skill-tree dump—use the Time Segment planner for launch-week decisions.",
   absoluteTitle: true,
 });
 
@@ -22,7 +22,7 @@ export default function BuildsHubPage() {
           articleJsonLd({
             headline: "Dawnwalker Builds Hub",
             description:
-              "Dawnwalker Builds Hub: unofficial vampire and human playstyle sketches with Estimated Time Budget tips. Not skill-tree dumps or official builds.",
+              "Dawnwalker Builds Hub (stub): Estimated playstyle sketches only. Not a skill-tree dump—use the Time Segment planner for launch-week decisions.",
             path: "/builds",
           }),
           breadcrumbJsonLd([
@@ -36,10 +36,27 @@ export default function BuildsHubPage() {
           Dawnwalker Builds Hub
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          Lightweight playstyle sketches split by vampire-leaning and
-          human-leaning routes. Every template is Estimated and meant to pair
-          with the Time Budget planner—not a Verified skill-tree dump.
+          Lightweight playstyle sketches. This hub is a{" "}
+          <strong className="text-dusk-200">stub</strong>—not a full skill-tree
+          wiki. Focus stays on Time Budget planning; detailed builds come later
+          when we have Reported perk costs.
         </p>
+      </div>
+
+      <div className="rounded-xl border border-ember-600/40 bg-ember-600/10 px-4 py-3 text-sm text-ember-400">
+        Stub status: vampire/human cards are Estimated placeholders. Prefer{" "}
+        <Link href="/planner" className="underline hover:text-ember-300">
+          Time Segment planner
+        </Link>
+        ,{" "}
+        <Link href="/guides/quest-order" className="underline hover:text-ember-300">
+          quest order
+        </Link>
+        , and{" "}
+        <Link href="/missables" className="underline hover:text-ember-300">
+          missables
+        </Link>{" "}
+        for launch-week play.
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">

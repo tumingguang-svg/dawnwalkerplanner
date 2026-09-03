@@ -1,15 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { AP_CONFIG, VERIFICATION_LABELS } from "@/data/apConfig";
 import {
-  PLANNER_CATALOG_ENTRIES,
+  ESTIMATED_PLACEHOLDER_TIME_COSTS,
   REPORTED_PROLOGUE_TIME_COSTS,
   TIME_COST_ENTRIES,
   type TimeCostEntry,
 } from "@/data/timeCostEntries";
 import { PRESETS, type PresetItem } from "@/data/presets";
 import type { TimePhase } from "@/data/apConfig";
+import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 
 export type PlanLine = {
   id: string;
@@ -20,6 +22,7 @@ export type PlanLine = {
 };
 
 const STORAGE_KEY = "dawnwalker-planner-v1";
+const PROGRESS_KEY = "dawnwalker-planner-progress-v1";
 
 function uid() {
   return Math.random().toString(36).slice(2, 10);
@@ -57,46 +60,118 @@ function phaseLabel(phase: TimePhase) {
   return "Either phase";
 }
 
+function lineFromEntry(entry: TimeCostEntry): Omit<PlanLine, "id"> {
+  return {
+    label: entry.name,
+    apCost: entry.apCost,
+    phase: entry.phase,
+    entryId: entry.id,
+  };
+}
+
 export function PlannerClient() {
   const totalAp = AP_CONFIG.totalAp;
   const [lines, setLines] = useState<PlanLine[]>([]);
   const [customLabel, setCustomLabel] = useState("");
-  const [customCost, setCustomCost] = useState(2);
-  const [customPhase, setCustomPhase] = useState<TimePhase>("either");
+  const [customCost, setCustomCost] = useState(1);
+  const [customPhase, setCustomPhase] = useState<TimePhase>("day");
   const [selectedEntry, setSelectedEntry] = useState(
-    REPORTED_PROLOGUE_TIME_COSTS[0]?.id ?? TIME_COST_ENTRIES[0]?.id ?? ""
+    REPORTED_PROLOGUE_TIME_COSTS[0]?.id ?? ""
   );
+  const [showLegacy, setShowLegacy] = useState(false);
+  const [currentDay, setCurrentDay] = useState(1);
+  const [currentPhase, setCurrentPhase] = useState<"day" | "night">("day");
   const [hydrated, setHydrated] = useState(false);
   const [shareMsg, setShareMsg] = useState("");
+  const [addFlash, setAddFlash] = useState("");
   const [undoStack, setUndoStack] = useState<PlanLine[][]>([]);
+
+  const catalogEntries = useMemo(() => {
+    return showLegacy
+      ? [...REPORTED_PROLOGUE_TIME_COSTS, ...ESTIMATED_PLACEHOLDER_TIME_COSTS]
+      : REPORTED_PROLOGUE_TIME_COSTS;
+  }, [showLegacy]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const shared = params.get("plan");
+    let initial: PlanLine[] = [];
     if (shared) {
       const decoded = decodePlan(shared);
-      if (decoded) {
-        setLines(decoded);
-        setHydrated(true);
-        return;
+      if (decoded) initial = decoded;
+    } else {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw) as PlanLine[];
+          if (Array.isArray(parsed)) initial = parsed;
+        }
+      } catch {
+        /* ignore */
       }
     }
+
+    const addId = params.get("add");
+    const addName = params.get("name");
+    const addCost = params.get("cost");
+    const addPhase = params.get("phase");
+    if (addId) {
+      const entry = TIME_COST_ENTRIES.find((e) => e.id === addId);
+      if (entry) {
+        initial = [...initial, { ...lineFromEntry(entry), id: uid() }];
+        setAddFlash(`Added “${entry.name}” (${entry.apCost} segments).`);
+        setSelectedEntry(entry.id);
+      }
+    } else if (addName != null && addCost != null) {
+      const phase: TimePhase =
+        addPhase === "night" || addPhase === "day" ? addPhase : "either";
+      const line = {
+        id: uid(),
+        label: addName,
+        apCost: Math.max(0, Number(addCost) || 0),
+        phase,
+      };
+      initial = [...initial, line];
+      setAddFlash(`Added “${addName}” (${line.apCost} segments).`);
+    }
+
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as PlanLine[];
-        if (Array.isArray(parsed)) setLines(parsed);
+      const prog = localStorage.getItem(PROGRESS_KEY);
+      if (prog) {
+        const p = JSON.parse(prog) as { day?: number; phase?: string };
+        if (p.day && p.day >= 1 && p.day <= 30) setCurrentDay(p.day);
+        if (p.phase === "day" || p.phase === "night") setCurrentPhase(p.phase);
       }
     } catch {
       /* ignore */
     }
+
+    setLines(initial);
     setHydrated(true);
+
+    if (addId || addName) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("add");
+      url.searchParams.delete("name");
+      url.searchParams.delete("cost");
+      url.searchParams.delete("phase");
+      url.searchParams.delete("plan");
+      window.history.replaceState({}, "", url.pathname + (url.search ? url.search : ""));
+    }
   }, []);
 
   useEffect(() => {
     if (!hydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(lines));
   }, [lines, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    localStorage.setItem(
+      PROGRESS_KEY,
+      JSON.stringify({ day: currentDay, phase: currentPhase })
+    );
+  }, [currentDay, currentPhase, hydrated]);
 
   const used = useMemo(
     () => lines.reduce((sum, l) => sum + (Number(l.apCost) || 0), 0),
@@ -114,6 +189,13 @@ export function PlannerClient() {
   const eitherUsed = lines
     .filter((l) => l.phase === "either")
     .reduce((s, l) => s + l.apCost, 0);
+
+  const phaseCap =
+    currentPhase === "day" ? AP_CONFIG.dayAp : AP_CONFIG.nightAp;
+  const phaseTagged = currentPhase === "day" ? dayUsed : nightUsed;
+  const phaseRemaining = phaseCap - phaseTagged - eitherUsed;
+  const oneSegmentWarn = phaseRemaining <= 1;
+  const phaseOver = phaseRemaining < 0;
 
   const pushUndo = useCallback((snapshot: PlanLine[]) => {
     setUndoStack((prev) => [...prev.slice(-19), snapshot]);
@@ -172,24 +254,33 @@ export function PlannerClient() {
     });
   };
 
-  const selectedCatalog = TIME_COST_ENTRIES.find((e) => e.id === selectedEntry);
+  const selectedCatalog = catalogEntries.find((e) => e.id === selectedEntry)
+    ?? TIME_COST_ENTRIES.find((e) => e.id === selectedEntry);
 
   const addFromCatalog = () => {
     const entry = selectedCatalog;
     if (!entry) return;
-    addLine({
-      label: entry.name,
-      apCost: entry.apCost,
-      phase: entry.phase,
-      entryId: entry.id,
-    });
+    if (oneSegmentWarn && entry.apCost > 1) {
+      const ok = window.confirm(
+        `Only ${Math.max(0, phaseRemaining)} segment(s) left this ${currentPhase}. “${entry.name}” costs ${entry.apCost}. Multi-step quests can fail with 1 segment left (Polygon). Add anyway?`
+      );
+      if (!ok) return;
+    }
+    addLine(lineFromEntry(entry));
   };
 
   const addCustom = () => {
     if (!customLabel.trim()) return;
+    const cost = Math.max(0, Number(customCost) || 0);
+    if (oneSegmentWarn && cost > 1) {
+      const ok = window.confirm(
+        `Only ${Math.max(0, phaseRemaining)} segment(s) left this ${currentPhase}. Add a ${cost}-segment line anyway?`
+      );
+      if (!ok) return;
+    }
     addLine({
       label: customLabel.trim(),
-      apCost: Math.max(0, Number(customCost) || 0),
+      apCost: cost,
       phase: customPhase,
     });
     setCustomLabel("");
@@ -212,97 +303,177 @@ export function PlannerClient() {
       ? "ap-progress-fill ap-progress-fill--warn"
       : "ap-progress-fill ap-progress-fill--ok";
 
-  const budgetSummary = (
-    <>
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 className="font-display text-xl text-dusk-50 sm:text-2xl">
-            Time Budget
-          </h2>
-          <p className="mt-1 text-sm text-dusk-400">{AP_CONFIG.label}</p>
-          <p className="mt-1 text-xs text-ember-400">{AP_CONFIG.note}</p>
-        </div>
-        <div className="text-right">
-          <div
-            className={`text-3xl font-display ${
-              overBudget ? "text-blood-400" : "text-ember-400"
-            }`}
-          >
-            {remaining}
-          </div>
-          <div className="text-xs uppercase tracking-wider text-dusk-400">
-            Segments remaining
-          </div>
-          <div className="mt-1 text-sm text-dusk-300">
-            Used {used} / {totalAp}
-          </div>
-        </div>
-      </div>
-      <div
-        className="ap-progress-track mt-3"
-        role="progressbar"
-        aria-valuenow={used}
-        aria-valuemin={0}
-        aria-valuemax={totalAp}
-        aria-label="Time Segments used"
-      >
-        <div
-          className={barClass}
-          style={{ width: `${overBudget ? 100 : pct}%` }}
-        />
-      </div>
-      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-dusk-400">
-        <span>Day-tagged: {dayUsed}</span>
-        <span>Night-tagged: {nightUsed}</span>
-        <span>Either: {eitherUsed}</span>
-        {overBudget && (
-          <span className="font-medium text-blood-400">
-            Over budget by {Math.abs(remaining)} segments — trim the plan.
-          </span>
-        )}
-        {!overBudget && nearBudget && (
-          <span className="font-medium text-ember-400">
-            Low remaining segments — leave contingency if you can.
-          </span>
-        )}
-      </div>
-    </>
-  );
+  const recommend = REPORTED_PROLOGUE_TIME_COSTS.filter(
+    (e) => e.category === "Prologue" && e.apCost <= Math.max(0, phaseRemaining)
+  ).slice(0, 5);
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Sticky mobile segment summary */}
       <div className="sticky top-[3.25rem] z-30 -mx-4 border-b border-dusk-800/80 bg-night-950/95 px-4 py-3 backdrop-blur sm:hidden">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-[10px] uppercase tracking-wider text-dusk-500">
-              Remaining
+              Day {currentDay} · {currentPhase}
             </div>
             <div
               className={`font-display text-2xl leading-none ${
-                overBudget ? "text-blood-400" : "text-ember-400"
+                phaseOver || oneSegmentWarn ? "text-blood-400" : "text-ember-400"
               }`}
             >
-              {remaining} segments
+              {phaseRemaining} left
             </div>
           </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-right text-xs text-dusk-400">
-              {used} / {totalAp} used
-            </div>
-            <div className="ap-progress-track mt-1.5">
-              <div
-                className={barClass}
-                style={{ width: `${overBudget ? 100 : pct}%` }}
-              />
-            </div>
+          <div className="min-w-0 flex-1 text-right text-xs text-dusk-400">
+            Campaign {used}/{totalAp}
           </div>
         </div>
       </div>
 
-      <section className="card-surface rounded-2xl p-4 shadow-glow sm:p-5">
-        {budgetSummary}
+      {addFlash && (
+        <p className="rounded-lg border border-ember-600/40 bg-ember-600/10 px-3 py-2 text-sm text-ember-400">
+          {addFlash}
+        </p>
+      )}
+
+      <section className="card-surface rounded-2xl p-4 shadow-glow sm:p-5 space-y-4">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="font-display text-xl text-dusk-50 sm:text-2xl">
+              Current progress
+            </h2>
+            <p className="mt-1 text-sm text-dusk-400">{AP_CONFIG.label}</p>
+          </div>
+          <div className="text-right">
+            <div
+              className={`text-3xl font-display ${
+                overBudget ? "text-blood-400" : "text-ember-400"
+              }`}
+            >
+              {remaining}
+            </div>
+            <div className="text-xs uppercase tracking-wider text-dusk-400">
+              Campaign segments left
+            </div>
+            <div className="mt-1 text-sm text-dusk-300">
+              Used {used} / {totalAp}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-3">
+          <label className="block space-y-1">
+            <span className="text-xs uppercase tracking-wider text-dusk-500">
+              Current day
+            </span>
+            <input
+              type="number"
+              min={1}
+              max={30}
+              value={currentDay}
+              onChange={(e) =>
+                setCurrentDay(Math.min(30, Math.max(1, Number(e.target.value) || 1)))
+              }
+              className="w-full min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2 text-sm text-dusk-100"
+            />
+          </label>
+          <label className="block space-y-1">
+            <span className="text-xs uppercase tracking-wider text-dusk-500">
+              Current phase
+            </span>
+            <select
+              value={currentPhase}
+              onChange={(e) =>
+                setCurrentPhase(e.target.value === "night" ? "night" : "day")
+              }
+              className="w-full min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2 text-sm text-dusk-100"
+            >
+              <option value="day">Day ({AP_CONFIG.dayAp} segments)</option>
+              <option value="night">Night ({AP_CONFIG.nightAp} segments)</option>
+            </select>
+          </label>
+          <div className="rounded-lg border border-dusk-800 bg-night-950/60 px-3 py-2">
+            <div className="text-xs uppercase tracking-wider text-dusk-500">
+              This {currentPhase} left
+            </div>
+            <div
+              className={`font-display text-2xl ${
+                phaseOver || oneSegmentWarn ? "text-blood-400" : "text-dusk-50"
+              }`}
+            >
+              {phaseRemaining}
+              <span className="text-sm text-dusk-500"> / {phaseCap}</span>
+            </div>
+            <div className="text-xs text-dusk-500">
+              Tagged {phaseTagged} + either {eitherUsed}
+            </div>
+          </div>
+        </div>
+
+        {(oneSegmentWarn || phaseOver) && (
+          <div className="rounded-lg border border-blood-600/50 bg-blood-600/10 px-3 py-2 text-sm text-blood-400">
+            {phaseOver
+              ? `This ${currentPhase} is over budget by ${Math.abs(phaseRemaining)} segments — remove lines or switch phase.`
+              : `Only ${phaseRemaining} segment(s) left this ${currentPhase}. Do not start a multi-step hourglass quest (Polygon: can fail with no rewards). Prefer 0-cost or 1-segment Reported rows.`}
+          </div>
+        )}
+
+        <div
+          className="ap-progress-track"
+          role="progressbar"
+          aria-valuenow={used}
+          aria-valuemin={0}
+          aria-valuemax={totalAp}
+          aria-label="Campaign Time Segments used"
+        >
+          <div className={barClass} style={{ width: `${overBudget ? 100 : pct}%` }} />
+        </div>
+        <p className="text-xs text-dusk-500">{AP_CONFIG.note}</p>
       </section>
+
+      {recommend.length > 0 && (
+        <section className="card-surface rounded-xl p-4 space-y-3">
+          <h3 className="font-display text-lg text-dusk-50">
+            Fits remaining {currentPhase} ({Math.max(0, phaseRemaining)} segments)
+          </h3>
+          <ul className="space-y-2">
+            {recommend.map((e) => (
+              <li
+                key={e.id}
+                className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-dusk-800/80 bg-night-950/50 px-3 py-2"
+              >
+                <div>
+                  <span className="text-sm text-dusk-100">{e.name}</span>
+                  <span className="ml-2 text-xs text-dusk-500">
+                    {e.apCost} seg · <ConfidenceBadge status={e.verificationStatus} />
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (oneSegmentWarn && e.apCost > 1) {
+                      const ok = window.confirm(
+                        `Low segments left. Add “${e.name}” (${e.apCost}) anyway?`
+                      );
+                      if (!ok) return;
+                    }
+                    addLine(lineFromEntry(e));
+                  }}
+                  className="inline-flex min-h-9 items-center rounded-md border border-ember-600/50 px-2.5 text-xs text-ember-400 hover:bg-ember-600/10"
+                >
+                  Add
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-dusk-600">
+            See{" "}
+            <Link href="/guides/quest-order" className="text-ember-400 hover:underline">
+              quest order
+            </Link>{" "}
+            for the full pre-Mass route.
+          </p>
+        </section>
+      )}
 
       <section className="grid gap-3 sm:gap-4 md:grid-cols-3">
         {PRESETS.map((preset) => (
@@ -325,12 +496,21 @@ export function PlannerClient() {
         <div className="card-surface space-y-4 rounded-xl p-4">
           <div>
             <h3 className="font-display text-xl text-dusk-50">
-              Quick-add from catalog
+              Quick-add (Reported)
             </h3>
             <p className="mt-1 text-xs text-dusk-500">
-              Reported prologue/mechanics rows are listed first. Legacy estimates are demoted—prefer real quest costs.
+              Default catalog is launch-week Reported only. Legacy estimates stay hidden until you opt in.
             </p>
           </div>
+          <label className="flex items-center gap-2 text-sm text-dusk-300">
+            <input
+              type="checkbox"
+              checked={showLegacy}
+              onChange={(e) => setShowLegacy(e.target.checked)}
+              className="rounded border-dusk-600"
+            />
+            Show experimental / Legacy estimates
+          </label>
           <label className="block space-y-1.5">
             <span className="text-xs uppercase tracking-wider text-dusk-500">
               Activity
@@ -341,7 +521,7 @@ export function PlannerClient() {
               className="w-full min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             >
               {Array.from(
-                PLANNER_CATALOG_ENTRIES.reduce((map, e) => {
+                catalogEntries.reduce((map, e) => {
                   const list = map.get(e.category) ?? [];
                   list.push(e);
                   map.set(e.category, list);
@@ -370,8 +550,8 @@ export function PlannerClient() {
             <p className="rounded-lg border border-dusk-800/80 bg-night-950/50 px-3 py-2 text-xs text-dusk-400">
               <span className="text-dusk-200">{selectedCatalog.name}</span>
               {" — "}
-              {selectedCatalog.apCost} segments ({phaseLabel(selectedCatalog.phase)}),{" "}
-              {VERIFICATION_LABELS[selectedCatalog.verificationStatus]}.{" "}
+              {selectedCatalog.apCost} segments ({phaseLabel(selectedCatalog.phase)}).{" "}
+              <ConfidenceBadge status={selectedCatalog.verificationStatus} />{" "}
               {selectedCatalog.notes}
             </p>
           )}
@@ -405,9 +585,9 @@ export function PlannerClient() {
               aria-label="Phase"
               className="min-h-11 flex-1 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             >
-              <option value="either">Either phase</option>
               <option value="day">Day</option>
               <option value="night">Night</option>
+              <option value="either">Either phase</option>
             </select>
           </div>
           <button
@@ -456,21 +636,9 @@ export function PlannerClient() {
                 Your ledger is empty
               </p>
               <p className="max-w-sm text-sm text-dusk-500">
-                Load a preset above, quick-add from the catalog, or invent a
-                custom cost. Plans autosave in this browser.
+                Load a prologue preset, add Reported rows, or open a quest page
+                and tap Add to Planner.
               </p>
-              <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {PRESETS.slice(0, 2).map((preset) => (
-                  <button
-                    key={preset.id}
-                    type="button"
-                    onClick={() => applyPreset(preset.id)}
-                    className="inline-flex min-h-10 items-center rounded-lg border border-ember-600/40 px-3 py-2 text-xs font-medium text-ember-400 hover:bg-ember-600/10"
-                  >
-                    Try “{preset.name}”
-                  </button>
-                ))}
-              </div>
             </div>
           ) : (
             <ul className="max-h-[28rem] space-y-2 overflow-y-auto pr-1">
@@ -501,10 +669,9 @@ export function PlannerClient() {
       </section>
 
       <p className="text-xs text-dusk-600">
-        Plan autosaves to localStorage in this browser. Share URLs encode your
-        current list (no account). Values remain Estimated or Reported Time Segments—not official Action Points.
-        Undo restores the previous plan state after add, remove, clear, or
-        preset load.
+        Progress (day/phase) and plan autosave in this browser. Share URLs encode
+        the plan list only. Time Segments are a fan ledger—not official Action
+        Points.
       </p>
     </div>
   );

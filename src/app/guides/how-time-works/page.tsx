@@ -21,6 +21,54 @@ export default function HowTimeWorksPage() {
       keywordNote="Primary focus: how time works (Dawnwalker)."
       lastUpdated="2026-09-03"
     >
+      <section className="space-y-3 rounded-xl border border-ember-600/30 bg-ember-600/5 p-4 text-dusk-300">
+        <h2 className="font-display text-xl text-dusk-50">
+          Time Cost Cheat Sheet (Reported)
+        </h2>
+        <p className="text-sm text-dusk-400">
+          Launch-week defaults. Planner interactive units stay an Estimated fan ledger.
+        </p>
+        <ul className="grid gap-2 text-sm sm:grid-cols-2">
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Day / Night bar</strong> — 8 + 8 segments (IGN, PC Gamer, Polygon, Falcon). Rage “10” footnoted only.
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Typical quest</strong> — ~1 segment; hangouts may cost extra (Falcon).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Zero-cost XP</strong> — Enter Not, Dead Drop, If a Tree Falls (IGN / PC Gamer).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Withering Away</strong> — ~2; finish before Mass (IGN + Lunar).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Caught stealing</strong> — 4 segments (PC Gamer).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Skill / perk at shrine</strong> — ~1 segment (Polygon / AltChar).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">≤1 segment left</strong> — do not start multi-step hourglass quests (Polygon).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Campaign model</strong> — 30 × (8+8) = 480 Time Segments (Estimated planner ledger).
+          </li>
+        </ul>
+        <p className="text-sm">
+          <Link href="/planner" className="text-ember-400 hover:underline">
+            Open planner
+          </Link>
+          {" · "}
+          <Link href="/guides/quest-order" className="text-ember-400 hover:underline">
+            Quest order
+          </Link>
+          {" · "}
+          <Link href="/time-costs" className="text-ember-400 hover:underline">
+            Full time costs
+          </Link>
+        </p>
+      </section>
+
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
           Time is a scarce resource

@@ -7,6 +7,8 @@ import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { AddToPlannerButton } from "@/components/AddToPlannerButton";
+import { QUEST_TO_COST_ID } from "@/lib/plannerLinks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/quests",
@@ -190,6 +192,7 @@ export default function QuestsPage() {
                 <th className="px-3 py-3">Status</th>
                 <th className="px-3 py-3">Missable risk</th>
                 <th className="px-3 py-3">Notes</th>
+                <th className="px-3 py-3">Planner</th>
               </tr>
             </thead>
             <tbody>
@@ -241,6 +244,14 @@ export default function QuestsPage() {
                         {row.youtubeSource.timestamp}
                       </span>
                     )}
+                  </td>
+                  <td className="px-3 py-3 whitespace-nowrap">
+                    <AddToPlannerButton
+                      entryId={QUEST_TO_COST_ID[row.id]}
+                      name={row.name}
+                      cost={row.estimatedAp ?? 0}
+                      phase={row.phase}
+                    />
                   </td>
                 </tr>
               ))}

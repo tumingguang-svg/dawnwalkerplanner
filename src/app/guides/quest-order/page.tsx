@@ -3,6 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
 import { PROLOGUE_DAY1_ROUTE } from "@/data/questOrder";
+import { AddToPlannerButton } from "@/components/AddToPlannerButton";
+import { QUEST_TO_COST_ID } from "@/lib/plannerLinks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/quest-order",
@@ -66,6 +68,7 @@ export default function QuestOrderPage() {
                 <th className="px-3 py-3">Segments</th>
                 <th className="px-3 py-3">Running</th>
                 <th className="px-3 py-3">Tip</th>
+                <th className="px-3 py-3">Planner</th>
               </tr>
             </thead>
             <tbody>
@@ -95,6 +98,14 @@ export default function QuestOrderPage() {
                     {step.runningTotal}/{route.budgetSegments}
                   </td>
                   <td className="px-3 py-3 text-dusk-400 max-w-md">{step.tip}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">
+                    <AddToPlannerButton
+                      entryId={QUEST_TO_COST_ID[step.questId]}
+                      name={step.name}
+                      cost={step.segments}
+                      phase="day"
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>
