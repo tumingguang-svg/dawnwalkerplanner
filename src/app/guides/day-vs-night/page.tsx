@@ -19,6 +19,7 @@ export default function DayVsNightPage() {
       title="Dawnwalker Day vs Night"
       intro="Daylight and darkness are not just mood—they are two wallets in the estimated Time Budget model. Here is how to keep both productive without assuming official Action Point rules."
       keywordNote="Primary focus: day vs night (Dawnwalker)."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">Two wallets, one month</h2>
@@ -42,8 +43,8 @@ export default function DayVsNightPage() {
           <li>Formal duels and other public confrontations</li>
         </ul>
         <p className="text-sm text-dusk-500">
-          Phase locks in the catalog are Estimated until Reported or Verified
-          against retail play.
+          Phase locks in the legacy catalog are Estimated. Prologue rows are
+          Reported as day (before Mass). Neither tier is Verified in-house play.
         </p>
       </section>
 

@@ -6,9 +6,9 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/how-time-works",
-  title: "Dawnwalker How Time Works – 30-Day Time Budget Fan Model",
+  title: "Dawnwalker How Time Works – 8 Segments Reported, 480 Fan Model",
   description:
-    "Dawnwalker how time works: estimated 30-day Time Budget fan model for The Blood of Dawnwalker—day units, night units, phases. Not official AP.",
+    "Dawnwalker how time works: Reported 8 day + 8 night segments from launch-week guides, plus the estimated 30-day Time Budget fan model. Not official AP.",
   absoluteTitle: true,
 });
 
@@ -17,8 +17,9 @@ export default function HowTimeWorksPage() {
     <GuideLayout
       path="/guides/how-time-works"
       title="Dawnwalker How Time Works"
-      intro="A spoiler-light overview of the campaign clock as a planning problem—and how this site’s estimated 30-day Time Budget model helps you think in day and night wallets."
+      intro="How the time bar is Reported to work at retail launch week, and how this site’s Estimated 30-day Time Budget model maps those segments into a planner ledger."
       keywordNote="Primary focus: how time works (Dawnwalker)."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -35,20 +36,64 @@ export default function HowTimeWorksPage() {
 
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
+          Day and night: 8 segments Reported
+        </h2>
+        <p>
+          Launch-week guides and tip videos Report that the day time bar has{" "}
+          <strong className="text-dusk-100">8 segments</strong>; when it fills,
+          night begins. The same 8-segment night bar is Reported by Falcon YT
+          (8 day + 8 night, 480 tokens across 30 days), PC Gamer, Polygon, and
+          IGN YT. Time advances on hourglass-marked actions; the number is
+          segments (IGN). Explore/walk is often free (IGN, Boomstick narration).
+        </p>
+        <p className="text-sm text-dusk-500">
+          Footnote: RageGaming spoken narration says{" "}
+          <strong className="text-dusk-300">10 notches</strong> for day and
+          night. That conflicts with the majority sources. This site’s default
+          stays 8 + 8. Interactive planner units remain{" "}
+          <strong className="text-dusk-300">Estimated</strong>; the 8-segment
+          mechanic may be described as{" "}
+          <strong className="text-dusk-300">Reported</strong>. Not Verified
+          in-house play.
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            Shrine-to-shrine fast travel seems 0 time (RageGaming, Reported).
+          </li>
+          <li>
+            Shrine Wait can burn large chunks—avoid casual use (Rage). Cost
+            unknown; no invented number.
+          </li>
+          <li>
+            Caught stealing hits the bar hard; PC Gamer Reports{" "}
+            <strong className="text-dusk-100">4</strong> segments.
+          </li>
+          <li>
+            Skills/perks at shrines often cost ~1 segment (Polygon / AltChar).
+          </li>
+          <li>
+            Quests typically ~1 segment; NPC hangouts may cost extra (Falcon).
+          </li>
+        </ul>
+      </section>
+
+      <section className="space-y-3 text-dusk-300">
+        <h2 className="font-display text-xl text-dusk-50">
           Our estimated Time Budget model
         </h2>
         <p>
-          Dawnwalker Planner uses an estimated fan model:{" "}
+          Dawnwalker Planner still uses an estimated fan model for interactive
+          units:{" "}
           <strong className="text-dusk-100">
             {AP_CONFIG.totalDays} days × ({AP_CONFIG.dayAp} day +{" "}
             {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} model units
           </strong>
-          . Those units are a ledger shorthand for the interactive{" "}
+          . Those units are a ledger shorthand for the{" "}
           <Link href="/planner" className="text-ember-400 hover:underline">
             planner
           </Link>
-          —not a claim that the shipped game exposes official Action Points with
-          those exact values.
+          —not official Action Points. The 8+8 default now matches the Reported
+          segment counts above.
         </p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
@@ -75,11 +120,19 @@ export default function HowTimeWorksPage() {
           <Link href="/time-costs" className="text-ember-400 hover:underline">
             /time-costs
           </Link>{" "}
-          carry a verification tier. Estimated means fan planning guess.
-          Reported means a player note that is not yet treated as retail-stable.
+          carry a verification tier. Estimated means fan planning guess
+          (including leftover generic placeholders). Reported means a cited
+          guide or YouTube observation that is not yet in-house Verified.
           Verified is reserved for costs confirmed against the released game or
           a named patch—with a date or source. This site does not invent
           Verified numbers.
+        </p>
+        <p className="text-sm text-dusk-500">
+          LunarGaming launch-week narration (label carefully as Estimated /
+          Reported, not Verified): main story may fit in about 10 focused days;
+          ~20 days of sides if you are saving the family; ~40 days for
+          “everything” implies a reload / family-die route. Treat those as
+          pacing hunches, not hard numbers.
         </p>
       </section>
 

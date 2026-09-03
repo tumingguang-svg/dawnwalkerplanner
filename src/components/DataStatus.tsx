@@ -7,7 +7,7 @@ import {
 } from "@/data/apConfig";
 
 export type DataStatusProps = {
-  /** Page-level status. Defaults to Estimated until a retail check exists. */
+  /** Page-level status. Defaults to Estimated for the planner model. */
   status?: VerificationStatus;
   lastReviewed?: string;
   lastVerified?: string | null;
@@ -28,8 +28,8 @@ const statusBadge: Record<VerificationStatus, string> = {
 
 /**
  * Compact data-honesty footer for content pages.
- * Keep status Estimated (and lastVerified empty) until gameplay, official
- * notes, or fully cited player footage exist. Never present guesses as fact.
+ * Keep lastVerified empty until in-house Verified play exists. Pages may pass
+ * status="reported" for launch-week guide/YouTube fills. Never present guesses as fact.
  */
 export function DataStatus({
   status = SITE_DATA_STATUS.status,

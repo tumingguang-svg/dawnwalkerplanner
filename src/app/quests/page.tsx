@@ -10,9 +10,9 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/quests",
-  title: "Dawnwalker Quests – What We Track (Known Info)",
+  title: "Dawnwalker Quests – Reported Prologue Catalog",
   description:
-    "Dawnwalker quests: currently known information for The Blood of Dawnwalker. Time pressure from public marketing, planner use, and fields we will store after retail data.",
+    "Dawnwalker prologue quests with Reported time-segment costs from launch-week guides and YouTube narration. Not Verified in-house play.",
   absoluteTitle: true,
 });
 
@@ -26,30 +26,30 @@ const SCHEMA_FIELDS = [
   {
     field: "name / type",
     meaning:
-      "Working title and bucket: main, side, personal, or faction. Titles stay generic until observed.",
+      "Working title and bucket: main, side, personal, or faction.",
   },
   {
     field: "estimatedAp",
     meaning:
-      "Time Budget model units, or null. Null means pending—not zero cost.",
+      "Time Budget model units (one unit ≈ one time-bar segment). Null means pending—not zero. Zero is an observed free quest.",
   },
   {
     field: "phase",
-    meaning: "day, night, either, or unknown until the lock is observed.",
+    meaning: "day, night, either, or unknown. Prologue rows are day (before Mass).",
   },
   {
     field: "verificationStatus",
     meaning:
-      "Estimated (default), Reported, or Verified. Pre-release values stay Estimated.",
+      "Estimated, Reported, or Verified. These prologue rows are Reported—not Verified.",
   },
   {
     field: "missableRisk",
-    meaning: "low, medium, high, or unknown. Unknown until a window is cited.",
+    meaning: "low, medium, high, or unknown.",
   },
   {
     field: "lastVerified / source",
     meaning:
-      "Date plus source note. YouTube-derived rows also store URL, timestamp, platform, and game version.",
+      "Date plus source note. YouTube-derived rows store URL, timestamp (full-video narration is allowed), platform, and game version.",
   },
 ];
 
@@ -64,104 +64,92 @@ export default function QuestsPage() {
       />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Dawnwalker Quests – What We Track (Known Info)
+          Dawnwalker Quests – Reported Prologue Catalog
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          An honest summary of what is currently known about quest-shaped
-          content in The Blood of Dawnwalker from public marketing—and what
-          this unofficial catalog will store once retail observation exists. Not
-          a finished quest list. Not Verified retail costs.
+          Launch-week <strong className="text-dusk-200">Reported</strong>{" "}
+          prologue rows from written guides and YouTube tip narration (reviewed
+          2026-09-03). Planner defaults use conservative segment costs. Nothing
+          here is in-house <strong className="text-dusk-200">Verified</strong>.
         </p>
       </div>
 
       <article className="prose-invert max-w-3xl space-y-6 text-dusk-300">
         <section className="space-y-3">
           <h2 className="font-display text-xl text-dusk-50">
-            Time pressure is the known premise—not a spoiler checklist
+            Prologue 8-segment tips
           </h2>
           <p>
-            Public materials for Blood of Dawnwalker have framed the campaign
-            around a scarce window of nights and days. That marketing premise is
-            enough to justify planning tools. It is not enough to invent named
-            quests, hard deadlines, or Verified Action Point costs. Players keep
-            asking for quest databases because RPG communities expect sortable
-            tables. Until someone can cite retail play or fully sourced footage,
-            the honest answer is thinner: the game sells time pressure; the
-            concrete quest roster is still pending observation.
+            Guides and tip videos Report that the day time bar has{" "}
+            <strong className="text-dusk-100">8 segments</strong> before Mass
+            (IGN, PC Gamer, Polygon, Falcon). There are about{" "}
+            <strong className="text-dusk-100">13 named prologue quests</strong>{" "}
+            plus extras (bandit camp / treasure). You cannot finish every
+            hourglass chain on one day bar.
           </p>
-          <p>
-            Treat “currently known information” as a category that includes
-            tone, structure, and planning advice—not fake row counts. We know
-            fans will want to distinguish main-path beats, side explorations,
-            personal leads, and faction work. We know day and night matter as
-            separate planning wallets in our estimated Time Budget model. We do
-            not know the official names, order, or unit costs of every chain.
-            Publishing invented titles would help SEO briefly and hurt trust
-            forever. Dawnwalker Planner chooses trust.
+          <ul className="list-disc space-y-1.5 pl-5">
+            <li>
+              Do not start a multi-step quest with 1 segment left—it can fail
+              with no rewards (Polygon).
+            </li>
+            <li>
+              Grab zero-cost XP first: Enter Not, Dead Drop, If a Tree Falls
+              (IGN / PC Gamer, 0 segments).
+            </li>
+            <li>
+              <strong className="text-dusk-100">Deep Down / Lazar:</strong> if
+              the search resolves after 5 segments have already passed, Lazar is
+              reported dead; ≤4 passed → alive (IGN).
+            </li>
+            <li>
+              <strong className="text-dusk-100">Withering Away:</strong> finish
+              and save Esme/mom with the correct herb instructions before Mass
+              (IGN + LunarGaming narration).
+            </li>
+            <li>
+              Unfinished clock-icon sides fail when Blood Mass begins
+              (GameSpot / PowerPyx).
+            </li>
+          </ul>
+          <p className="text-sm text-dusk-500">
+            RageGaming spoken “10 notches” conflicts with the 8-segment default.
+            This site follows 8. See{" "}
+            <Link
+              href="/guides/how-time-works"
+              className="text-ember-400 hover:underline"
+            >
+              how time works
+            </Link>{" "}
+            and the{" "}
+            <Link href="/missables" className="text-ember-400 hover:underline">
+              missables index
+            </Link>
+            .
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="font-display text-xl text-dusk-50">
-            How to use the planner and guides until retail data exists
+            How to use these rows in the planner
           </h2>
           <p>
-            Until this table fills with Observed rows, plan with mechanisms
-            instead of spoilers. Open the{" "}
+            Quick-add matching Prologue / Mechanics rows in the{" "}
             <Link href="/planner" className="text-ember-400 hover:underline">
               Dawnwalker Planner
             </Link>{" "}
-            and budget an estimated 30-day Time Budget with presets and custom
-            lines. Pull activity-level guesses from the{" "}
+            or browse{" "}
             <Link href="/time-costs" className="text-ember-400 hover:underline">
-              time costs catalog
+              time costs
             </Link>
-            —still Estimated, still labeled. Read{" "}
-            <Link
-              href="/guides/choices-and-consequences"
-              className="text-ember-400 hover:underline"
-            >
-              choices and consequences
-            </Link>{" "}
-            for the choice → consequence → time cost loop, and{" "}
+            . Interactive units stay an Estimated 8+8 model. Quest segment
+            numbers below are Reported. Workflow:{" "}
             <Link
               href="/guides/how-to-plan-your-time"
               className="text-ember-400 hover:underline"
             >
               how to plan your time
-            </Link>{" "}
-            for a practical workflow.
-          </p>
-          <p>
-            A useful pre-release habit: reserve ledger space for “unknown main
-            beats,” “unknown personal leads,” and a contingency buffer instead of
-            pretending you already know every side chain. When a friend shares a
-            rumor, log it as a custom Estimated line with a note—not as Verified.
-            When retail launches, swap rumors for cited rows. That workflow is
-            why this page stays indexable even while the data table is almost
-            empty: it explains the gap instead of hiding behind noindex.
-          </p>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="font-display text-xl text-dusk-50">
-            What the future quest database will store
-          </h2>
-          <p>
-            Each future row is meant to answer planning questions, not to dump
-            story. We store a working name and type bucket; an estimated Time
-            Budget cost (or null when pending); a phase tag for day, night,
-            either, or unknown; a verification status; a missable-risk hint; and
-            citation fields so Reported or Verified claims can be audited.
-            YouTube-derived values need URL, timestamp, platform, game version,
-            and verification date before they can climb past Estimated.
-          </p>
-          <p>
-            Null estimated cost means “not yet measured,” never “free.” Unknown
-            missable risk means we refuse to guess a timer. Schema example rows
-            exist only so the columns are readable in the UI. They are not real
-            quests. When real observations arrive, example scaffolding will give
-            way to cited entries—or stay empty longer if sources remain thin.
+            </Link>
+            .
           </p>
         </section>
       </article>
@@ -185,11 +173,11 @@ export default function QuestsPage() {
 
       <section className="space-y-3">
         <h2 className="font-display text-xl text-dusk-50">
-          Quest table — no verified retail rows yet
+          Prologue quest table (Reported)
         </h2>
         <p className="text-sm text-dusk-500">
-          Honest empty-ish state: only a schema illustration appears below. No
-          verified Blood of Dawnwalker quest costs are published here.
+          {QUEST_ENTRIES.length} rows. Status is Reported for every row. Zero
+          means a cited free quest, not “pending.”
         </p>
         <div className="overflow-x-auto rounded-xl border border-dusk-800">
           <table className="min-w-full text-left text-sm">
@@ -235,8 +223,22 @@ export default function QuestsPage() {
                   <td className="px-3 py-3 text-dusk-400 max-w-sm">
                     {row.notes}
                     {row.sourceNote && (
-                      <span className="mt-1 block text-xs text-dusk-600">
+                      <span className="mt-1 block text-xs text-dusk-600 break-all">
                         {row.sourceNote}
+                      </span>
+                    )}
+                    {row.youtubeSource && (
+                      <span className="mt-1 block text-xs text-dusk-600">
+                        <a
+                          href={row.youtubeSource.url}
+                          className="text-ember-400 hover:underline break-all"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          {row.youtubeSource.url}
+                        </a>
+                        {" · "}
+                        {row.youtubeSource.timestamp}
                       </span>
                     )}
                   </td>
@@ -247,13 +249,17 @@ export default function QuestsPage() {
         </div>
       </section>
 
-      <DataStatus />
+      <DataStatus
+        status="reported"
+        lastReviewed="2026-09-03"
+        source="IGN YT, PC Gamer, Polygon, GameSpot, Falcon YT"
+      />
       <RelatedLinks
         extra={[
           {
-            href: "/guides/choices-and-consequences",
-            label: "Choices and consequences",
-            description: "Choice → consequence → time cost → planner.",
+            href: "/guides/how-time-works",
+            label: "How time works",
+            description: "8-segment Reported mechanics + Estimated planner model.",
           },
           {
             href: "/guides/missable-content",
@@ -263,7 +269,7 @@ export default function QuestsPage() {
           {
             href: "/missables",
             label: "Missables index",
-            description: "Timer-risk planning summary—empty until observed.",
+            description: "Reported prologue lock windows.",
           },
         ]}
       />

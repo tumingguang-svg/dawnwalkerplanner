@@ -30,7 +30,9 @@ export default function BeginnerPage() {
         </h1>
         <p className="mt-2 text-dusk-400">
           A short, spoiler-light orientation for planning your first campaign
-          around an estimated {AP_CONFIG.totalDays}-day Time Budget ({AP_CONFIG.totalAp} model units).
+          around an estimated {AP_CONFIG.totalDays}-day Time Budget ({AP_CONFIG.totalAp}{" "}
+          model units). Day/night 8 segments are Reported; planner units stay
+          Estimated.
         </p>
       </div>
 
@@ -53,6 +55,15 @@ export default function BeginnerPage() {
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">First-week habits</h2>
         <ol className="list-decimal space-y-2 pl-5">
+          <li>
+            Prologue: ~13 quests vs 8 Reported day segments before Mass. Do
+            zero-cost XP first; finish Withering Away / Esme; do not start a
+            multi-step quest with 1 segment left. See{" "}
+            <Link href="/quests" className="text-ember-400 hover:underline">
+              quest tips
+            </Link>
+            .
+          </li>
           <li>Finish one main beat before opening three side chains.</li>
           <li>Keep a 16–24 unit contingency for travel and failures.</li>
           <li>Spend at least one night unit on information gathering early.</li>

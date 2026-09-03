@@ -19,6 +19,7 @@ export default function CanYouDoEverythingPage() {
       title="Can You Do Everything in Dawnwalker?"
       intro="Short answer: plan as if you cannot. A fixed month plus branching priorities means completionism collides with the clock—especially if you treat fan model units as a hard ceiling for practice."
       keywordNote="Primary focus: can you do everything (Dawnwalker)."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -100,12 +101,18 @@ export default function CanYouDoEverythingPage() {
           <Link href="/time-costs" className="text-ember-400 hover:underline">
             /time-costs
           </Link>{" "}
-          and empty catalogs on{" "}
+          and the Reported prologue catalog on{" "}
           <Link href="/quests" className="text-ember-400 hover:underline">
             /quests
-          </Link>{" "}
-          as Reported rows land post-launch. Those pages describe schema, not
-          confirmed quest lists.
+          </Link>
+          . Those pages are still not Verified quest lists.
+        </p>
+        <p className="text-sm text-dusk-500">
+          LunarGaming launch-week narration (Estimated/Reported only, not
+          Verified): main story may fit in about 10 focused days; ~20 days of
+          sides if you are saving the family; ~40 days for “everything” implies
+          a reload / family-die route. Use that as pacing color, not a hard
+          budget.
         </p>
       </section>
     </GuideLayout>

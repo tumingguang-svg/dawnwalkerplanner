@@ -5,7 +5,7 @@ export const SITE_URL =
 
 export const SITE_NAME = "Dawnwalker Planner";
 export const CONTACT_EMAIL = "contact@dawnwalkerplanner.org";
-export const DEFAULT_DATE_MODIFIED = "2026-09-02";
+export const DEFAULT_DATE_MODIFIED = "2026-09-03";
 
 export type BreadcrumbItem = {
   name: string;

@@ -18,6 +18,7 @@ export default function ChoicesAndConsequencesPage() {
       title="Dawnwalker Choices and Consequences"
       intro="In a 30-day campaign, a choice is not only a story fork. It spends a slice of the clock, closes or delays other options, and leaves a consequence you still have to budget for. This is a mechanism guide—not an ending list."
       keywordNote="Primary focus: choices and consequences + limited time (Dawnwalker)."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -32,8 +33,12 @@ export default function ChoicesAndConsequencesPage() {
         </p>
         <p className="text-sm text-dusk-500">
           We do not list specific endings, rewards, or plot locks here. Those
-          stay unstated until they are observed in retail play or fully cited
-          footage. Treat this page as Estimated planning hygiene.
+          stay unstated here. Named prologue lock windows live on{" "}
+          <Link href="/missables" className="text-ember-400 hover:underline">
+            /missables
+          </Link>{" "}
+          as Reported rows, not Verified endings. Treat this page as planning
+          hygiene.
         </p>
       </section>
 
