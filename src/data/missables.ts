@@ -81,4 +81,77 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
       "Starting a multi-step quest with 1 segment left can fail with no rewards if the next objective still needs time (Polygon).",
     sourceNote: SOURCE_URLS.polygonMassQuests,
   },
+  {
+    id: "missable-30-day-family-rescue",
+    name: "In the Nick of Time (30-day family rescue)",
+    window: "Rescue family within 30 in-game days after Prologue",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx trophy guide marks this MISSABLE and calls the 30-day family rescue the overall most missable requirement. If time runs out, the trophy cannot be earned.",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+  },
+  {
+    id: "missable-bittersweet-toast",
+    name: "The Bittersweet Toast (timed duel)",
+    window:
+      "Optional sub-quest of The Gilded Gauntlet before dueling Ambrus; then ~3 days / 48 segments to duel on time",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx calls this highly missable. Fail states include killing Codrin or leaving mid-ritual; after the toast, a timed window remains to duel Ambrus.",
+    sourceNote: SOURCE_URLS.powerpyxBittersweet,
+  },
+  {
+    id: "missable-together-forever",
+    name: "Together Forever (Home Sweet Home dream loop)",
+    window:
+      "Home Sweet Home (Silts Tower): complete 4 dream cycles, stay on the 5th — do not escape via the well",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx marks the trophy MISSABLE. Escaping via the well early misses the secret Together Forever ending path.",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+  },
+  {
+    id: "missable-mothers-plea",
+    name: "A Mother's Plea (hidden time-sensitive)",
+    window:
+      "Hidden Court/side activity via Lacra → Song of the Mountain; time-sensitive once started",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx walkthrough: hidden, missable, and time-sensitive; tied to Lacra / Osha side lines and chains toward The Heart Wants What It Wants.",
+    sourceNote: SOURCE_URLS.powerpyxWalkthrough,
+  },
+  {
+    id: "missable-misery-loves-company",
+    name: "Misery Loves Company (Lacra optional before Midnight Reckoning)",
+    window: "Complete The Night of Horrors before Lacra ending quest Midnight Reckoning",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx trophy guide: MISSABLE. Optional Lacra quest The Night of Horrors must be done before Midnight Reckoning.",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+  },
+  {
+    id: "missable-the-manumit",
+    name: "The Manumit (Crake optionals before Rise at Dawn)",
+    window: "Distant Shadows → A Closer Look before Rise at Dawn",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx trophy guide: MISSABLE. Complete optional Crake quests Distant Shadows and A Closer Look before Rise at Dawn.",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+  },
+  {
+    id: "missable-uphill-battle",
+    name: "Uphill Battle (full ending on Duelist)",
+    window: "Start and finish at least one full ending on Duelist from the start of the playthrough",
+    risk: "high",
+    ...REPORTED_LAUNCH,
+    notes:
+      "PowerPyx trophy guide: MISSABLE. Requires a full ending that saves Laslea on Duelist; early endings may not count.",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+  },
 ];

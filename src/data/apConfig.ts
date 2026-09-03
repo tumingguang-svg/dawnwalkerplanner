@@ -80,6 +80,12 @@ export const SOURCE_URLS = {
     "https://www.powerpyx.com/blood-of-dawnwalker-withering-away-walkthrough/",
   powerpyxCovenant:
     "https://www.powerpyx.com/blood-of-dawnwalker-sacred-covenant-walkthrough/",
+  powerpyxTrophy:
+    "https://www.powerpyx.com/the-blood-of-dawnwalker-trophy-guide-roadmap/",
+  powerpyxBittersweet:
+    "https://www.powerpyx.com/blood-of-dawnwalker-the-bittersweet-toast-walkthrough/",
+  powerpyxWalkthrough:
+    "https://www.powerpyx.com/the-blood-of-dawnwalker-walkthrough-all-quests/",
 } as const;
 
 /** Sitewide page-level data banner defaults. Planner units stay Estimated. */
