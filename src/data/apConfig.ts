@@ -2,12 +2,15 @@ export const AP_CONFIG = {
   totalDays: 30,
   dayAp: 8,
   nightAp: 8,
+  /** User-facing unit name for planner UI. */
+  unitLabel: "Time Segments",
+  unitLabelShort: "segments",
   get totalAp() {
     return this.totalDays * (this.dayAp + this.nightAp);
   },
   /** Fan model units for the interactive planner (not official Action Points). */
-  label: "Estimated 30-day Time Budget · 480 model units (30 × 8 day + 8 night)",
-  note: "Fan planning model. Interactive planner units stay Estimated. Mechanics copy may say day/night 8 segments Reported (IGN + PC Gamer + Polygon + Falcon YT). RageGaming spoken “10 notches” day and night is a conflicting footnote only—not the site default. Not official Action Points.",
+  label: "Fan planning model · 480 Time Segments (30 × 8 day + 8 night)",
+  note: "Interactive planner uses Time Segments as a fan ledger (not official Action Points). Day/night 8+8 is Reported (IGN, PC Gamer, Polygon, Falcon YT). RageGaming “10 notches” is a footnote only. The 480 total is a planning model for budgeting across 30 days.",
 } as const;
 
 /** Verification tiers for catalog costs and quest shells. */
@@ -92,7 +95,7 @@ export const SITE_DATA_STATUS = {
       | undefined,
   youtube: undefined as YoutubeSourceMeta | undefined,
   basis:
-    "Interactive Time Budget units remain an Estimated fan model (30 × 8 day + 8 night = 480). Day/night 8-segment mechanics are Reported from IGN, PC Gamer, Polygon, and Falcon YT. RageGaming spoken “10 notches” is footnoted only. Prologue catalogs are a Reported mix from guides and tip videos—not in-house Verified play.",
+    "Interactive Time Segment budget remains an Estimated fan model (30 × 8 day + 8 night = 480). Day/night 8-segment mechanics are Reported from IGN, PC Gamer, Polygon, and Falcon YT. RageGaming spoken “10 notches” is footnoted only. Prologue catalogs are a Reported mix from guides and tip videos—not in-house Verified play.",
   pendingNote:
     "Launch-week Reported fill (2026-09-03) from guides and YouTube narration. In-house Verified play still pending. Reported is not Verified.",
 };

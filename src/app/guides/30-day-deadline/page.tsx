@@ -28,7 +28,7 @@ export default function ThirtyDayDeadlinePage() {
           A fixed campaign window rewards players who decide early what
           “enough” looks like. Trying to finish every district tour, romance
           beat, and faction errand in one pass is how ledgers go red. Our
-          estimated model assumes {AP_CONFIG.totalAp} model units across{" "}
+          estimated model assumes {AP_CONFIG.totalAp} Time Segments across{" "}
           {AP_CONFIG.totalDays} days—useful for practice, not a promise about
           official Action Points.
         </p>

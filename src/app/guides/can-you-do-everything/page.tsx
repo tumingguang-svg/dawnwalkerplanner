@@ -17,7 +17,7 @@ export default function CanYouDoEverythingPage() {
     <GuideLayout
       path="/guides/can-you-do-everything"
       title="Can You Do Everything in Dawnwalker?"
-      intro="Short answer: plan as if you cannot. A fixed month plus branching priorities means completionism collides with the clock—especially if you treat fan model units as a hard ceiling for practice."
+      intro="Short answer: plan as if you cannot. A fixed month plus branching priorities means completionism collides with the clock—especially if you treat fan Time Segments as a hard ceiling for practice."
       keywordNote="Primary focus: can you do everything (Dawnwalker)."
       lastUpdated="2026-09-03"
     >
@@ -28,7 +28,7 @@ export default function CanYouDoEverythingPage() {
         <p>
           Side chains, romance beats, faction missions, exploration blocks, and
           ending preparation all compete for the same estimated Time Budget. Our
-          fan ledger tops out at {AP_CONFIG.totalAp} model units across{" "}
+          fan ledger tops out at {AP_CONFIG.totalAp} Time Segments across{" "}
           {AP_CONFIG.totalDays} days. Even if the shipped game’s exact economy
           differs, the structural lesson holds: saying yes to everything means
           saying no to contingency.

@@ -23,6 +23,11 @@ type Props = {
 
 const GUIDE_LINKS: RelatedLink[] = [
   {
+    href: "/guides/quest-order",
+    label: "Quest order",
+    description: "Prologue Time Segment spend order.",
+  },
+  {
     href: "/guides/how-time-works",
     label: "How time works",
     description: "Day, night, and the fan Time Budget model.",

@@ -5,6 +5,7 @@ const NAV = [
   { href: "/", label: "Home" },
   { href: "/planner", label: "Planner" },
   { href: "/time-costs", label: "Time Costs" },
+  { href: "/guides/quest-order", label: "Quest Order" },
   { href: "/quests", label: "Quests" },
   { href: "/missables", label: "Missables" },
   { href: "/builds", label: "Builds" },
@@ -30,7 +31,7 @@ export function Header() {
               Dawnwalker Planner
             </div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-dusk-400">
-              Unofficial · 30-day Time Budget model
+              Unofficial · Time Segments planner
             </div>
           </div>
         </Link>

@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/planner",
   title: "Dawnwalker Planner – Interactive 30-Day Time Budget",
   description:
-    "Interactive Dawnwalker Planner: budget an estimated 30-day Time Budget (480 model units), load presets, undo, autosave locally, and share plan URLs.",
+    "Interactive Dawnwalker Planner: budget an estimated 30-day Time Budget (480 Time Segments), load presets, undo, autosave locally, and share plan URLs.",
   absoluteTitle: true,
 });
 
@@ -26,7 +26,7 @@ export default function PlannerPage() {
             url: "/planner",
             name: "Dawnwalker Planner",
             description:
-              "Free unofficial web GameApplication for budgeting an estimated 30-day Time Budget (480 model units) in The Blood of Dawnwalker. Fan model units only—not official Action Points.",
+              "Free unofficial web GameApplication for budgeting an estimated 30-day Time Budget (480 Time Segments) in The Blood of Dawnwalker. Fan Time Segments only—not official Action Points.",
           }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -39,13 +39,13 @@ export default function PlannerPage() {
           Dawnwalker Planner – Interactive 30-Day Time Budget
         </h1>
         <h2 className="mt-2 font-display text-lg text-dusk-300">
-          Budget day and night model units
+          Budget day and night Time Segments
         </h2>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Model a campaign with an estimated 30-day Time Budget (480 model
           units: 30 × 8 day + 8 night). Load a preset, quick-add catalog costs,
           or invent custom line items. Your plan stays in this browser and can
-          be shared via URL. These are fan model units—not a claim about
+          be shared via URL. These are fan Time Segments—not a claim about
           official Action Points. See{" "}
           <Link
             href="/guides/how-to-plan-your-time"
@@ -108,21 +108,21 @@ export default function PlannerPage() {
 
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-dusk-50">
-            The 480 model units (30 × 8 day + 8 night) — Estimated
+            The 480 Time Segments (30 × 8 day + 8 night) — Estimated
           </h2>
           <p>
             Our fan model is deliberately simple. Each campaign day is treated
             as two wallets:{" "}
             <strong className="text-dusk-100">
-              {AP_CONFIG.dayAp} day units
+              {AP_CONFIG.dayAp} day segments
             </strong>{" "}
             and{" "}
             <strong className="text-dusk-100">
-              {AP_CONFIG.nightAp} night units
+              {AP_CONFIG.nightAp} night segments
             </strong>
             . Multiply by {AP_CONFIG.totalDays} days and you get{" "}
             <strong className="text-dusk-100">
-              {AP_CONFIG.totalAp} model units
+              {AP_CONFIG.totalAp} Time Segments
             </strong>{" "}
             total—often written as “8 day + 8 night × 30.” That arithmetic is{" "}
             <strong className="text-dusk-100">Estimated</strong>. It is a
@@ -137,7 +137,7 @@ export default function PlannerPage() {
             either. Day tags drain the daylight wallet. Night tags drain the
             darkness wallet. Either tags can flex depending on how you schedule
             the activity. The split exists so you do not empty an entire month
-            of night units on daytime social calls and then wonder why the
+            of night segments on daytime social calls and then wonder why the
             nocturnal half of Blood of Dawnwalker feels rushed.
           </p>
           <p>
@@ -222,9 +222,9 @@ export default function PlannerPage() {
           <p>
             Official Action Points—or whatever economy the released Blood of
             Dawnwalker uses—belong to Rebel Wolves and their publishing
-            partners. Dawnwalker Planner’s model units belong to a fan ledger.
+            partners. Dawnwalker Planner’s Time Segments belong to a fan ledger.
             Similar words do not make them the same system. If a streamer says
-            “AP” and our UI says “model units,” assume they might be talking past
+            “AP” and our UI says “Time Segments,” assume they might be talking past
             each other until someone cites retail evidence with platform, patch,
             and date.
           </p>

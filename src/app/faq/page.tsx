@@ -19,11 +19,11 @@ const FAQS = [
   },
   {
     q: "Where does the 480 Time Budget total come from?",
-    a: "It is a fan planning model: 30 days × 8 day units + 8 night units. Interactive units stay Estimated. Launch-week guides and YouTube narration Report 8 day + 8 night segments (IGN, PC Gamer, Polygon, Falcon YT). RageGaming spoken “10 notches” is a conflicting footnote only—not the site default. Not official Action Points.",
+    a: "It is a fan planning model: 30 days × 8 day + 8 night Time Segments (480). The interactive ledger stays Estimated as a planning tool. Launch-week guides and YouTube narration Report 8 day + 8 night segments (IGN, PC Gamer, Polygon, Falcon YT). RageGaming spoken “10 notches” is a conflicting footnote only—not the site default. Not labeled as official Action Points—use Time Segments.",
   },
   {
     q: "What do Estimated, Reported, and Verified mean?",
-    a: "Estimated = fan planning guess (including leftover generic catalog placeholders and the interactive 480-unit model). Reported = cited player, guide, or YouTube observation not yet treated as in-house Verified. Verified = checked against the released game / patch with a date or source note. Launch-week prologue tables are Reported, not Verified. YouTube-derived rows must keep source URL, timestamp (full-video narration is allowed), platform, game version, and verification date. We never invent Verified numbers.",
+    a: "Estimated = fan planning guess (Legacy catalog placeholders + interactive 480-segment ledger). Reported = cited player, guide, or YouTube observation not yet treated as in-house Verified. Verified = checked against the released game / patch with a date or source note. Launch-week prologue tables are Reported, not Verified. YouTube-derived rows must keep source URL, timestamp (full-video narration is allowed), platform, game version, and verification date. We never invent Verified numbers.",
   },
   {
     q: "Does the planner store my data on a server?",

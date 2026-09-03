@@ -58,18 +58,18 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "travel-district",
     name: "Travel between districts",
-    category: "Travel",
+    category: "Legacy estimate",
     apCost: 2,
     phase: "either",
     verificationStatus: "estimated",
     notes: "Short hops inside the same ward may cost less.",
     lastVerified: null,
-    sourceNote: "Pre-launch fan model",
+    sourceNote: "Legacy estimate — pre-launch fan placeholder, not a retail quest cost",
   },
   {
     id: "travel-wilds",
     name: "Expedition to the wilds",
-    category: "Travel",
+    category: "Legacy estimate",
     apCost: 4,
     phase: "day",
     verificationStatus: "estimated",
@@ -79,7 +79,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "main-scene",
     name: "Main story scene block",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 4,
     phase: "either",
     verificationStatus: "estimated",
@@ -89,7 +89,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "main-chapter",
     name: "Main chapter climax",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 8,
     phase: "either",
     verificationStatus: "estimated",
@@ -100,7 +100,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "side-short",
     name: "Short side objective",
-    category: "Side",
+    category: "Legacy estimate",
     apCost: 2,
     phase: "either",
     verificationStatus: "estimated",
@@ -110,7 +110,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "side-long",
     name: "Long side chain",
-    category: "Side",
+    category: "Legacy estimate",
     apCost: 6,
     phase: "either",
     verificationStatus: "reported",
@@ -121,7 +121,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "explore-block",
     name: "Open exploration block",
-    category: "Exploration",
+    category: "Legacy estimate",
     apCost: 3,
     phase: "day",
     verificationStatus: "estimated",
@@ -131,7 +131,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "night-hunt",
     name: "Night hunt patrol",
-    category: "Combat",
+    category: "Legacy estimate",
     apCost: 3,
     phase: "night",
     verificationStatus: "estimated",
@@ -141,7 +141,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "stealth-infil",
     name: "Stealth infiltration",
-    category: "Combat",
+    category: "Legacy estimate",
     apCost: 4,
     phase: "night",
     verificationStatus: "estimated",
@@ -151,7 +151,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "duel",
     name: "Formal duel / arena",
-    category: "Combat",
+    category: "Legacy estimate",
     apCost: 3,
     phase: "day",
     verificationStatus: "estimated",
@@ -161,7 +161,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "social-salon",
     name: "Salon / court social",
-    category: "Social",
+    category: "Legacy estimate",
     apCost: 2,
     phase: "night",
     verificationStatus: "estimated",
@@ -171,7 +171,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "romance-scene",
     name: "Companion romance scene",
-    category: "Social",
+    category: "Legacy estimate",
     apCost: 3,
     phase: "either",
     verificationStatus: "estimated",
@@ -182,7 +182,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "crafting-session",
     name: "Crafting / upgrade session",
-    category: "Systems",
+    category: "Legacy estimate",
     apCost: 2,
     phase: "day",
     verificationStatus: "estimated",
@@ -192,7 +192,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "rest-recover",
     name: "Rest & recover",
-    category: "Systems",
+    category: "Legacy estimate",
     apCost: 1,
     phase: "either",
     verificationStatus: "estimated",
@@ -202,7 +202,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "investigation",
     name: "Investigation puzzle",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 3,
     phase: "either",
     verificationStatus: "reported",
@@ -213,7 +213,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "family-lead",
     name: "Family rescue lead",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 5,
     phase: "either",
     verificationStatus: "estimated",
@@ -224,7 +224,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "faction-mission",
     name: "Faction mission",
-    category: "Side",
+    category: "Legacy estimate",
     apCost: 4,
     phase: "either",
     verificationStatus: "estimated",
@@ -234,7 +234,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "market-day",
     name: "Market day shopping",
-    category: "Systems",
+    category: "Legacy estimate",
     apCost: 1,
     phase: "day",
     verificationStatus: "estimated",
@@ -244,7 +244,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "ritual",
     name: "Occult ritual attempt",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 5,
     phase: "night",
     verificationStatus: "estimated",
@@ -255,7 +255,7 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
   {
     id: "ending-prep",
     name: "Ending preparation block",
-    category: "Story",
+    category: "Legacy estimate",
     apCost: 8,
     phase: "either",
     verificationStatus: "estimated",
@@ -461,4 +461,10 @@ export const REPORTED_PROLOGUE_TIME_COSTS = TIME_COST_ENTRIES.filter(
 export const ESTIMATED_PLACEHOLDER_TIME_COSTS = TIME_COST_ENTRIES.filter(
   (entry) => !isLaunchWeekReported(entry)
 );
+
+/** Prefer these in Planner quick-add (Reported first). */
+export const PLANNER_CATALOG_ENTRIES = [
+  ...REPORTED_PROLOGUE_TIME_COSTS,
+  ...ESTIMATED_PLACEHOLDER_TIME_COSTS,
+];
 

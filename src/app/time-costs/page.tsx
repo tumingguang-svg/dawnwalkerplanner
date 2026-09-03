@@ -42,7 +42,7 @@ function TimeCostTable({ rows }: { rows: TimeCostEntry[] }) {
           <tr>
             <th className="px-3 py-3">Activity</th>
             <th className="px-3 py-3">Category</th>
-            <th className="px-3 py-3">Units</th>
+            <th className="px-3 py-3">Segments</th>
             <th className="px-3 py-3">Phase</th>
             <th className="px-3 py-3">Status</th>
             {showVerifiedCol && <th className="px-3 py-3">Last verified</th>}
@@ -194,19 +194,17 @@ export default function TimeCostsPage() {
 
       <section className="space-y-3">
         <h2 className="font-display text-xl text-dusk-50">
-          Estimated fan-model placeholders (legacy)
+          Legacy estimates (do not treat as retail costs)
         </h2>
         <p className="text-sm text-dusk-500">
-          {ESTIMATED_PLACEHOLDER_TIME_COSTS.length} pre-launch / generic
-          planner rows. Kept so the interactive catalog still has travel,
-          story, and systems shapes. Not prologue observations.
+          {ESTIMATED_PLACEHOLDER_TIME_COSTS.length} pre-launch generic placeholders (Travel / Romance / Main scene, etc.). Demoted so they are not mistaken for retail quest costs. Prefer Reported rows and /quests.
         </p>
         <TimeCostTable rows={ESTIMATED_PLACEHOLDER_TIME_COSTS} />
       </section>
 
       <p className="text-xs text-dusk-600">
         {TIME_COST_ENTRIES.length} entries total. Values are Estimated or
-        Reported fan model units unless later marked Verified against the
+        Reported Time Segments unless later marked Verified against the
         released game. Unverified data is not confirmed fact.
       </p>
       <DataStatus
@@ -216,6 +214,11 @@ export default function TimeCostsPage() {
       />
       <RelatedLinks
         extra={[
+          {
+            href: "/guides/quest-order",
+            label: "Quest order",
+            description: "Prologue spend order by Time Segments.",
+          },
           {
             href: "/quests",
             label: "Quest catalog",

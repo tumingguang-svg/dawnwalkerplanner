@@ -14,47 +14,56 @@ export type PlanPreset = {
   items: PresetItem[];
 };
 
+/**
+ * Presets built from launch-week Reported prologue rows (not legacy estimates).
+ * Costs are time-bar segments. See /guides/quest-order for the full route.
+ */
 export const PRESETS: PlanPreset[] = [
   {
-    id: "save-family-fast",
-    name: "Save Family Fast",
+    id: "prologue-safe-family",
+    name: "Prologue: Save Esme + Lazar",
     description:
-      "Prioritize critical story beats and family-related objectives. Leaves little room for side exploration.",
+      "Zero-cost XP first, Deep Down early for Lazar, finish Withering Away before Mass. Uses Reported segment costs.",
     items: [
-      { entryId: "main-act1", label: "Main path — early acts (est.)", apCost: 48, phase: "either" },
-      { entryId: "family-urgent", label: "Family rescue chain (est.)", apCost: 56, phase: "either" },
-      { entryId: "travel-hub", label: "Hub travel blocks (est.)", apCost: 24, phase: "day" },
-      { entryId: "night-intel", label: "Night intel & contacts (est.)", apCost: 32, phase: "night" },
-      { entryId: "boss-gates", label: "Major confrontation gates (est.)", apCost: 40, phase: "either" },
-      { entryId: "buffer", label: "Contingency buffer", apCost: 16, phase: "either" },
+      { entryId: "prologue-cost-zero-xp", label: "Enter Not (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-zero-xp", label: "Dead Drop (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-zero-xp", label: "If a Tree Falls (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-deep-down", label: "Deep Down (1) — before 5 segments passed", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-withering-away", label: "Withering Away (2) — must before Mass", apCost: 2, phase: "day" },
+      { entryId: "prologue-cost-live-bait", label: "Live Bait (1) — skip tag", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-typical-side", label: "Someone Needs A Lesson (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-typical-side", label: "Blasphemy (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-typical-side", label: "Disturbed (1) — skip bury extra", apCost: 1, phase: "day" },
     ],
   },
   {
-    id: "balanced-explore",
-    name: "Balanced Explore",
+    id: "prologue-max-xp",
+    name: "Prologue: Max free XP",
     description:
-      "Split Time Budget units between story progress, districts, and optional encounters without overcommitting.",
+      "Grab every 0-segment quest, then high-value hourglass sides. Still finish Withering Away before Mass.",
     items: [
-      { entryId: "main-steady", label: "Main path — steady pace (est.)", apCost: 64, phase: "either" },
-      { entryId: "districts", label: "District exploration (est.)", apCost: 48, phase: "day" },
-      { entryId: "side-quests", label: "Side objectives pack (est.)", apCost: 40, phase: "either" },
-      { entryId: "night-hunt", label: "Night hunting & stealth (est.)", apCost: 36, phase: "night" },
-      { entryId: "social", label: "Social / reputation beats (est.)", apCost: 28, phase: "day" },
-      { entryId: "flex", label: "Flexible reserve", apCost: 32, phase: "either" },
+      { entryId: "prologue-cost-zero-xp", label: "Enter Not (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-zero-xp", label: "Dead Drop (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-zero-xp", label: "If a Tree Falls (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-withering-away", label: "Withering Away (2)", apCost: 2, phase: "day" },
+      { entryId: "prologue-cost-deep-down", label: "Deep Down (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-on-the-run", label: "On The Run (2)", apCost: 2, phase: "day" },
+      { entryId: "prologue-cost-typical-side", label: "Blasphemy (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-live-bait", label: "Live Bait (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-bandits-treasure", label: "Bandits’ Treasure Map (2) — optional squeeze", apCost: 2, phase: "day" },
     ],
   },
   {
-    id: "romance-priority",
-    name: "Romance Priority",
+    id: "prologue-minimal",
+    name: "Prologue: Minimal Mass-safe",
     description:
-      "Front-load companion and relationship scenes while keeping enough Time Budget units to finish the campaign.",
+      "Bare minimum before Blood Mass: Esme medicine + a little XP. Leaves segments for mistakes.",
     items: [
-      { entryId: "romance-arc", label: "Romance / companion arc (est.)", apCost: 48, phase: "either" },
-      { entryId: "gift-social", label: "Gifts & social evenings (est.)", apCost: 24, phase: "night" },
-      { entryId: "main-min", label: "Main path — minimum viable (est.)", apCost: 72, phase: "either" },
-      { entryId: "jealousy", label: "Rival / jealousy beats (est.)", apCost: 16, phase: "day" },
-      { entryId: "explore-lite", label: "Light exploration (est.)", apCost: 32, phase: "day" },
-      { entryId: "reserve", label: "Ending-prep reserve", apCost: 24, phase: "either" },
+      { entryId: "prologue-cost-zero-xp", label: "Enter Not (0)", apCost: 0, phase: "day" },
+      { entryId: "prologue-cost-withering-away", label: "Withering Away (2)", apCost: 2, phase: "day" },
+      { entryId: "prologue-cost-live-bait", label: "Live Bait (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-deep-down", label: "Deep Down (1)", apCost: 1, phase: "day" },
+      { entryId: "prologue-cost-typical-side", label: "Like Father, Like Son (1) — optional", apCost: 1, phase: "day" },
     ],
   },
 ];

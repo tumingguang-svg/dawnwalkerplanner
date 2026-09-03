@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/builds",
     "/builds/vampire",
     "/builds/human",
+    "/guides/quest-order",
     "/guides/how-time-works",
     "/guides/how-to-plan-your-time",
     "/guides/choices-and-consequences",
@@ -31,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/planner",
     "/guides/how-time-works",
+    "/guides/quest-order",
     "/guides/how-to-plan-your-time",
     "/guides/choices-and-consequences",
   ]);

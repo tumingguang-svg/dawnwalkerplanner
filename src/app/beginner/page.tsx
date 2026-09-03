@@ -31,7 +31,7 @@ export default function BeginnerPage() {
         <p className="mt-2 text-dusk-400">
           A short, spoiler-light orientation for planning your first campaign
           around an estimated {AP_CONFIG.totalDays}-day Time Budget ({AP_CONFIG.totalAp}{" "}
-          model units). Day/night 8 segments are Reported; planner units stay
+          Time Segments). Day/night 8 segments are Reported; planner units stay
           Estimated.
         </p>
       </div>
@@ -39,14 +39,14 @@ export default function BeginnerPage() {
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">The Time Budget loop</h2>
         <p>
-          Treat each day as two wallets: {AP_CONFIG.dayAp} day units and{" "}
-          {AP_CONFIG.nightAp} night units in our fan model. Some activities
+          Treat each day as two wallets: {AP_CONFIG.dayAp} day segments and{" "}
+          {AP_CONFIG.nightAp} night segments in our fan model. Some activities
           accept either phase; others are locked to daylight or darkness. When
           you are unsure, log the cost as &quot;either&quot; in the planner and
           refine later.
         </p>
         <p>
-          Over thirty days that yields {AP_CONFIG.totalAp} model units total.
+          Over thirty days that yields {AP_CONFIG.totalAp} Time Segments total.
           That number is an estimated Time Budget fan model—not official Action
           Points. Verify against your own play once patches land.
         </p>

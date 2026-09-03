@@ -10,7 +10,12 @@ const DEFAULT_LINKS: RelatedLink[] = [
   {
     href: "/planner",
     label: "Time Budget planner",
-    description: "Budget an estimated 30-day campaign ledger.",
+    description: "Budget 480 Time Segments across 30 days.",
+  },
+  {
+    href: "/guides/quest-order",
+    label: "Quest order",
+    description: "Prologue spend order by Time Segments.",
   },
   {
     href: "/time-costs",

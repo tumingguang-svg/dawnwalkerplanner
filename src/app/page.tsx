@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
   title: "Dawnwalker Planner – Free 30-Day Time Budget Tool for Blood of Dawnwalker",
   description:
-    "Free Dawnwalker Planner: unofficial 30-day Time Budget tool for The Blood of Dawnwalker. Presets, catalog costs, share URLs—fan model, not official AP.",
+    "Free Dawnwalker Time & Quest Planner: 30 days × 8+8 Time Segments, quest order, missables. Fan planning model—not official Action Points.",
   absoluteTitle: true,
 });
 
@@ -38,7 +38,7 @@ export default function HomePage() {
               Unofficial fan site
             </p>
             <span className="rounded-full border border-ember-600/50 bg-ember-600/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ember-400">
-              Time Budget · estimated
+              Time Segments · Reported 8+8
             </span>
           </div>
           <h1 className="font-display text-4xl leading-tight text-dusk-50 md:text-5xl">
@@ -51,29 +51,29 @@ export default function HomePage() {
             Budget every night before the dawn breaks
           </p>
           <p className="text-sm text-dusk-300 md:text-base max-w-xl">
-            Plan an estimated {AP_CONFIG.totalDays}-day campaign ({AP_CONFIG.totalAp}{" "}
-            model units). Presets, catalog costs, local autosave, share URLs—fan
-            model, not official Action Points.
+            Plan your {AP_CONFIG.totalDays} days × {AP_CONFIG.dayAp}+{AP_CONFIG.nightAp}{" "}
+            Time Segments ({AP_CONFIG.totalAp} total fan ledger). Track quest costs,
+            avoid missables—not official Action Points.
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-1">
             <Link
               href="/planner"
               className="inline-flex min-h-11 items-center justify-center rounded-lg bg-ember-600 px-6 py-3 text-sm font-semibold text-white shadow-glow hover:bg-ember-500"
             >
-              Open interactive planner
+              Start planning
             </Link>
             <Link
-              href="/time-costs"
+              href="/guides/quest-order"
               className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
             >
-              Browse time costs
+              Quest order
             </Link>
-            <a
-              href="#guide"
-              className="inline-flex min-h-11 items-center justify-center px-2 py-3 text-sm text-dusk-300 underline-offset-4 hover:text-ember-400 hover:underline"
+            <Link
+              href="/missables"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
             >
-              Read the guide
-            </a>
+              Missables
+            </Link>
           </div>
         </div>
 </section>
@@ -86,13 +86,18 @@ export default function HomePage() {
           {[
             {
               href: "/planner",
-              title: "30-day Time Budget planner",
-              body: "Add costs, load presets, track remaining model units, undo mistakes, autosave locally, and share a URL.",
+              title: "30-day Time Segment planner",
+              body: "Add Reported quest costs, load prologue presets, track remaining Time Segments, autosave, share a URL.",
+            },
+            {
+              href: "/guides/quest-order",
+              title: "Prologue quest order",
+              body: "Spend order before Blood Mass: zero-cost XP, Lazar deadline, Esme must-do.",
             },
             {
               href: "/time-costs",
               title: "Time cost catalog",
-              body: "Estimated activities with Estimated / Reported / Verified labels, source notes, and collapsed spoilers.",
+              body: "Reported prologue/mechanics first; Legacy estimates demoted. Estimated / Reported / Verified labels.",
             },
             {
               href: "/builds",
@@ -196,7 +201,7 @@ export default function HomePage() {
             Dawnwalker Planner therefore separates three ideas that players often
             blur together. First, the narrative premise of a limited campaign
             window drawn from public marketing. Second, our estimated fan model
-            of {AP_CONFIG.totalAp} model units across {AP_CONFIG.totalDays} days.
+            of {AP_CONFIG.totalAp} Time Segments across {AP_CONFIG.totalDays} days.
             Third, whatever official Action Point or time economy Rebel Wolves
             ships in the released game. Mixing those three into one confident
             table is how fan sites accidentally publish fiction as fact. We keep
@@ -206,7 +211,7 @@ export default function HomePage() {
 
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-dusk-50">
-            How the estimated 30-day / 480 model units work
+            How the estimated 30-day / 480 Time Segments work
           </h2>
           <p>
             Our fan model is deliberately simple. Each campaign day is treated as
@@ -220,7 +225,7 @@ export default function HomePage() {
             </strong>
             . Multiply by {AP_CONFIG.totalDays} days and you get{" "}
             <strong className="text-dusk-100">
-              {AP_CONFIG.totalAp} model units
+              {AP_CONFIG.totalAp} Time Segments
             </strong>{" "}
             total—often written as “8 day + 8 night × 30.” That arithmetic is
             Estimated. It is a planning scaffold, not a leaked spreadsheet and
@@ -265,7 +270,7 @@ export default function HomePage() {
             economy differs. A fixed month rewards players who decide early what
             “enough” looks like. Trying to finish every district tour, romance
             beat, and faction errand in one pass is how ledgers go red. Whether
-            your personal Time Budget ends up at 480 model units or some other
+            your personal Time Budget ends up at 480 Time Segments or some other
             shape after retail, the habit of leaving contingency is what survives
             the patch notes.
           </p>
@@ -331,7 +336,7 @@ export default function HomePage() {
             </Link>{" "}
             so the day/night wallets make sense. Second, open the planner and
             load a preset close to your intended pace. Third, protect a
-            contingency buffer—sixteen to twenty-four model units is a common
+            contingency buffer—sixteen to twenty-four Time Segments is a common
             starter range in our guides—before you fill every remaining slot with
             tourist content. Fourth, mark anything that feels timer-sensitive in
             your notes and check the{" "}
@@ -376,9 +381,9 @@ export default function HomePage() {
           <p>
             Official Action Points—or whatever economy the released Blood of
             Dawnwalker uses—belong to Rebel Wolves and their publishing
-            partners. Dawnwalker Planner’s model units belong to a fan ledger.
+            partners. Dawnwalker Planner’s Time Segments belong to a fan ledger.
             Similar words do not make them the same system. If a streamer says
-            “AP” and our UI says “model units,” assume they might be talking past
+            “AP” and our UI says “Time Segments,” assume they might be talking past
             each other until someone cites retail evidence with platform, patch,
             and date.
           </p>

@@ -24,8 +24,8 @@ export default function DayVsNightPage() {
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">Two wallets, one month</h2>
         <p>
-          In our fan model each day grants {AP_CONFIG.dayAp} day units and{" "}
-          {AP_CONFIG.nightAp} night units. Overspend one wallet while ignoring
+          In our fan model each day grants {AP_CONFIG.dayAp} day segments and{" "}
+          {AP_CONFIG.nightAp} night segments. Overspend one wallet while ignoring
           the other and you create artificial scarcity. Tagging costs as day,
           night, or either in the{" "}
           <Link href="/planner" className="text-ember-400 hover:underline">
@@ -63,11 +63,11 @@ export default function DayVsNightPage() {
           >
             build sketches
           </Link>{" "}
-          often front-load night units; human-leaning{" "}
+          often front-load night segments; human-leaning{" "}
           <Link href="/builds/human" className="text-ember-400 hover:underline">
             builds
           </Link>{" "}
-          may burn more day units on diplomacy and defense.
+          may burn more day segments on diplomacy and defense.
         </p>
       </section>
 

@@ -86,7 +86,7 @@ export default function HowTimeWorksPage() {
           units:{" "}
           <strong className="text-dusk-100">
             {AP_CONFIG.totalDays} days × ({AP_CONFIG.dayAp} day +{" "}
-            {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} model units
+            {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} Time Segments
           </strong>
           . Those units are a ledger shorthand for the{" "}
           <Link href="/planner" className="text-ember-400 hover:underline">

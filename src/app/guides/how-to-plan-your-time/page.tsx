@@ -29,7 +29,7 @@ export default function HowToPlanYourTimePage() {
           Dawnwalker Planner uses an estimated fan model:{" "}
           <strong className="text-dusk-100">
             {AP_CONFIG.totalDays} days × ({AP_CONFIG.dayAp} day +{" "}
-            {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} model units
+            {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} Time Segments
           </strong>
           . Those units are a ledger shorthand—not official Action Points.
           Interactive planner units stay Estimated. Prologue quest and
@@ -54,7 +54,11 @@ export default function HowToPlanYourTimePage() {
           named quests. You cannot do every hourglass chain. Do zero-cost XP
           first; finish Withering Away / Esme before Mass; resolve Deep Down
           before 5 segments have already passed if Lazar matters; do not start
-          a multi-step quest with 1 segment left. Full table:{" "}
+          a multi-step quest with 1 segment left. Full order:{" "}
+          <Link href="/guides/quest-order" className="text-ember-400 hover:underline">
+            quest order
+          </Link>
+          . Full table:{" "}
           <Link href="/quests" className="text-ember-400 hover:underline">
             quest catalog
           </Link>

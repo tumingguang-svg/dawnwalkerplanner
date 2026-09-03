@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AP_CONFIG, VERIFICATION_LABELS } from "@/data/apConfig";
 import {
+  PLANNER_CATALOG_ENTRIES,
+  REPORTED_PROLOGUE_TIME_COSTS,
   TIME_COST_ENTRIES,
   type TimeCostEntry,
 } from "@/data/timeCostEntries";
@@ -62,7 +64,7 @@ export function PlannerClient() {
   const [customCost, setCustomCost] = useState(2);
   const [customPhase, setCustomPhase] = useState<TimePhase>("either");
   const [selectedEntry, setSelectedEntry] = useState(
-    TIME_COST_ENTRIES[0]?.id ?? ""
+    REPORTED_PROLOGUE_TIME_COSTS[0]?.id ?? TIME_COST_ENTRIES[0]?.id ?? ""
   );
   const [hydrated, setHydrated] = useState(false);
   const [shareMsg, setShareMsg] = useState("");
@@ -229,7 +231,7 @@ export function PlannerClient() {
             {remaining}
           </div>
           <div className="text-xs uppercase tracking-wider text-dusk-400">
-            Units remaining
+            Segments remaining
           </div>
           <div className="mt-1 text-sm text-dusk-300">
             Used {used} / {totalAp}
@@ -242,7 +244,7 @@ export function PlannerClient() {
         aria-valuenow={used}
         aria-valuemin={0}
         aria-valuemax={totalAp}
-        aria-label="Time Budget units used"
+        aria-label="Time Segments used"
       >
         <div
           className={barClass}
@@ -255,12 +257,12 @@ export function PlannerClient() {
         <span>Either: {eitherUsed}</span>
         {overBudget && (
           <span className="font-medium text-blood-400">
-            Over budget by {Math.abs(remaining)} units — trim the plan.
+            Over budget by {Math.abs(remaining)} segments — trim the plan.
           </span>
         )}
         {!overBudget && nearBudget && (
           <span className="font-medium text-ember-400">
-            Low remaining units — leave contingency if you can.
+            Low remaining segments — leave contingency if you can.
           </span>
         )}
       </div>
@@ -269,7 +271,7 @@ export function PlannerClient() {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Sticky mobile AP summary */}
+      {/* Sticky mobile segment summary */}
       <div className="sticky top-[3.25rem] z-30 -mx-4 border-b border-dusk-800/80 bg-night-950/95 px-4 py-3 backdrop-blur sm:hidden">
         <div className="flex items-center justify-between gap-3">
           <div>
@@ -281,7 +283,7 @@ export function PlannerClient() {
                 overBudget ? "text-blood-400" : "text-ember-400"
               }`}
             >
-              {remaining} units
+              {remaining} segments
             </div>
           </div>
           <div className="min-w-0 flex-1">
@@ -313,7 +315,7 @@ export function PlannerClient() {
             <div className="font-display text-lg text-dusk-50">{preset.name}</div>
             <p className="mt-2 text-sm text-dusk-400">{preset.description}</p>
             <div className="mt-3 text-xs text-ember-400">
-              Load preset ({preset.items.reduce((s, i) => s + i.apCost, 0)} units)
+              Load preset ({preset.items.reduce((s, i) => s + i.apCost, 0)} segments)
             </div>
           </button>
         ))}
@@ -326,8 +328,7 @@ export function PlannerClient() {
               Quick-add from catalog
             </h3>
             <p className="mt-1 text-xs text-dusk-500">
-              Pick a Reported prologue/mechanics row or an Estimated
-              placeholder, then add it to your plan in one tap.
+              Reported prologue/mechanics rows are listed first. Legacy estimates are demoted—prefer real quest costs.
             </p>
           </div>
           <label className="block space-y-1.5">
@@ -340,7 +341,7 @@ export function PlannerClient() {
               className="w-full min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             >
               {Array.from(
-                TIME_COST_ENTRIES.reduce((map, e) => {
+                PLANNER_CATALOG_ENTRIES.reduce((map, e) => {
                   const list = map.get(e.category) ?? [];
                   list.push(e);
                   map.set(e.category, list);
@@ -369,7 +370,7 @@ export function PlannerClient() {
             <p className="rounded-lg border border-dusk-800/80 bg-night-950/50 px-3 py-2 text-xs text-dusk-400">
               <span className="text-dusk-200">{selectedCatalog.name}</span>
               {" — "}
-              {selectedCatalog.apCost} units ({phaseLabel(selectedCatalog.phase)}),{" "}
+              {selectedCatalog.apCost} segments ({phaseLabel(selectedCatalog.phase)}),{" "}
               {VERIFICATION_LABELS[selectedCatalog.verificationStatus]}.{" "}
               {selectedCatalog.notes}
             </p>
@@ -395,7 +396,7 @@ export function PlannerClient() {
               min={0}
               value={customCost}
               onChange={(e) => setCustomCost(Number(e.target.value))}
-              aria-label="Custom Time Budget cost"
+              aria-label="Custom Time Segment cost"
               className="w-28 min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             />
             <select
@@ -481,7 +482,7 @@ export function PlannerClient() {
                   <div>
                     <div className="text-sm text-dusk-100">{line.label}</div>
                     <div className="text-xs text-dusk-500">
-                      {line.apCost} units · {phaseLabel(line.phase)}
+                      {line.apCost} segments · {phaseLabel(line.phase)}
                     </div>
                   </div>
                   <button
@@ -501,7 +502,7 @@ export function PlannerClient() {
 
       <p className="text-xs text-dusk-600">
         Plan autosaves to localStorage in this browser. Share URLs encode your
-        current list (no account). Values remain Estimated or Reported fan model units—not official Action Points.
+        current list (no account). Values remain Estimated or Reported Time Segments—not official Action Points.
         Undo restores the previous plan state after add, remove, clear, or
         preset load.
       </p>
