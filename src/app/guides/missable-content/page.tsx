@@ -17,8 +17,9 @@ export default function MissableContentGuidePage() {
     <GuideLayout
       path="/guides/missable-content"
       title="Dawnwalker Missable Content"
-      intro="A spoiler-light framework for spotting timer-sensitive content in a 30-day campaign. The missables index stays a shell until Estimated or Reported rows exist—we will not invent Verified checklists."
+      intro="A spoiler-light framework for spotting timer-sensitive content in a 30-day campaign. The missables index now has launch-week Reported prologue rows—we still will not invent Verified checklists."
       keywordNote="Primary focus: missable content (Dawnwalker)."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -28,7 +29,9 @@ export default function MissableContentGuidePage() {
           Missable means you can lock yourself out of a beat by advancing the
           campaign clock, skipping a conversation window, or committing to a
           conflicting branch. It does not mean every side activity is secretly
-          on a hard timer. Until retail notes exist, treat high-stakes personal
+          on a hard timer. Launch-week guides now Report a few prologue windows
+          (Esme/Mass, Lazar/Deep Down, unfinished sides after Mass). Treat
+          those as Reported, not Verified, and still treat high-stakes personal
           leads as higher risk than tourist exploration.
         </p>
       </section>
@@ -46,7 +49,7 @@ export default function MissableContentGuidePage() {
             <Link href="/missables" className="text-ember-400 hover:underline">
               missables index
             </Link>{" "}
-            once you have an Estimated or Reported note—never as fake Verified.
+            (Reported prologue rows live there now)—never as fake Verified.
           </li>
         </ul>
       </section>
@@ -77,9 +80,9 @@ export default function MissableContentGuidePage() {
           </li>
           <li>
             <Link href="/quests" className="text-ember-400 hover:underline">
-              Quest catalog schema
+              Quest catalog
             </Link>{" "}
-            — fields stored after observation, not a finished quest list.
+            — Reported prologue table and 8-segment tips.
           </li>
           <li>
             <Link

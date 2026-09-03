@@ -9,8 +9,8 @@ Domain: https://dawnwalkerplanner.org
 - / — home
 - /planner — interactive planner
 - /time-costs — AP catalog
-- /quests — quest catalog schema (fills after observation)
-- /missables — missables schema (empty until observed)
+- /quests — Reported prologue quest catalog + 8-segment tips
+- /missables — Reported prologue missables
 - /beginner — tips
 - /builds — templates
 - /guides/how-time-works — time model
@@ -19,7 +19,7 @@ Domain: https://dawnwalkerplanner.org
 - /faq — FAQ
 - /disclaimer — legal
 
-Data honesty: see [docs/DATA.md](docs/DATA.md) and [CONTRIBUTING.md](CONTRIBUTING.md). Unverified values are not confirmed fact. Pre-release numbers stay Estimated.
+Data honesty: see [docs/DATA.md](docs/DATA.md) and [CONTRIBUTING.md](CONTRIBUTING.md). Unverified values are not confirmed fact. Planner units stay Estimated. Prologue tables may be Reported. Never invent Verified.
 
 ## Local development
 

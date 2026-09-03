@@ -199,7 +199,8 @@ export default function PlannerPage() {
             the ending. It budgets romance and social evenings early, keeps a
             minimum viable main path, and still protects an ending-prep reserve.
             It is not a guarantee that every affection beat exists at the costs
-            shown—those rows remain Estimated until observed in retail.
+            shown—those preset rows remain Estimated. Prologue catalog rows on
+            /quests and /time-costs are Reported, not Verified.
           </p>
           <p>
             After any preset, open a few catalog quick-adds, mark day versus
@@ -231,7 +232,7 @@ export default function PlannerPage() {
             This free web tool is published as a GameApplication-style planner
             for rehearsal only. We do not host cheats, trainers, save editors,
             or exploit instructions. We write original planning copy and keep
-            quest or missable tables honest when observations are still missing.
+            quest or missable tables honest (Reported is not Verified).
             For legal and affiliation notes, read the{" "}
             <Link href="/disclaimer" className="text-ember-400 hover:underline">
               disclaimer
@@ -240,7 +241,8 @@ export default function PlannerPage() {
             <Link href="/faq" className="text-ember-400 hover:underline">
               FAQ
             </Link>
-            . For Estimated activity rows you can quick-add here, open{" "}
+            . For Reported prologue rows and Estimated placeholders you can
+            quick-add here, open{" "}
             <Link href="/time-costs" className="text-ember-400 hover:underline">
               /time-costs
             </Link>
@@ -261,10 +263,10 @@ export default function PlannerPage() {
             .
           </p>
           <p>
-            When retail data arrives, expect the catalog to grow carefully. We
-            would rather publish fewer rows with source notes than a wall of
-            confident fiction. Until then, use this Dawnwalker Planner the way
-            you would use a pencil itinerary for a trip whose train schedules
+            Expect the catalog to grow carefully. We would rather publish fewer
+            rows with source notes than a wall of confident fiction. Use this
+            Dawnwalker Planner the way you would use a pencil itinerary for a
+            trip whose train schedules
             are still drafts: useful for deciding what matters, never a promise
             that every stop will cost exactly what you wrote down.
           </p>

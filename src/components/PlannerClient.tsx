@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AP_CONFIG, VERIFICATION_LABELS } from "@/data/apConfig";
-import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
+import {
+  TIME_COST_ENTRIES,
+  type TimeCostEntry,
+} from "@/data/timeCostEntries";
 import { PRESETS, type PresetItem } from "@/data/presets";
 import type { TimePhase } from "@/data/apConfig";
 
@@ -323,7 +326,8 @@ export function PlannerClient() {
               Quick-add from catalog
             </h3>
             <p className="mt-1 text-xs text-dusk-500">
-              Pick an estimated activity, then add it to your plan in one tap.
+              Pick a Reported prologue/mechanics row or an Estimated
+              placeholder, then add it to your plan in one tap.
             </p>
           </div>
           <label className="block space-y-1.5">
@@ -335,12 +339,30 @@ export function PlannerClient() {
               onChange={(e) => setSelectedEntry(e.target.value)}
               className="w-full min-h-11 rounded-lg border border-dusk-700 bg-night-950 px-3 py-2.5 text-sm text-dusk-100"
             >
-              {TIME_COST_ENTRIES.map((e) => (
-                <option key={e.id} value={e.id}>
-                  {e.name} · {e.apCost} · {phaseLabel(e.phase)} ·{" "}
-                  {VERIFICATION_LABELS[e.verificationStatus]}
-                </option>
-              ))}
+              {Array.from(
+                TIME_COST_ENTRIES.reduce((map, e) => {
+                  const list = map.get(e.category) ?? [];
+                  list.push(e);
+                  map.set(e.category, list);
+                  return map;
+                }, new Map<string, TimeCostEntry[]>())
+              )
+                .sort(([a], [b]) => {
+                  const rank = (c: string) =>
+                    c === "Prologue" ? 0 : c === "Mechanics" ? 1 : 2;
+                  const d = rank(a) - rank(b);
+                  return d !== 0 ? d : a.localeCompare(b);
+                })
+                .map(([category, entries]) => (
+                  <optgroup key={category} label={category}>
+                    {entries.map((e) => (
+                      <option key={e.id} value={e.id}>
+                        {e.name} · {e.apCost} · {phaseLabel(e.phase)} ·{" "}
+                        {VERIFICATION_LABELS[e.verificationStatus]}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
             </select>
           </label>
           {selectedCatalog && (

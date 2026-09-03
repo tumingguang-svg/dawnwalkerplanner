@@ -3,6 +3,12 @@ import type {
   VerificationStatus,
   YoutubeSourceMeta,
 } from "./apConfig";
+import {
+  SOURCE_URLS,
+  YT_FALCON_TIME,
+  YT_IGN_PROLOGUE,
+  YT_RAGE_TIPS,
+} from "./apConfig";
 
 /**
  * Time-cost catalog for the planner and /time-costs page.
@@ -257,4 +263,202 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     spoiler: true,
     lastVerified: null,
   },
+  {
+    id: "mech-hourglass-default",
+    name: "Hourglass-marked activity (default)",
+    category: "Mechanics",
+    apCost: 1,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "Time advances on hourglass-marked actions; the number is segments (IGN). Quests typically ~1 segment; NPC hangouts / extra scenes may cost more (Falcon).",
+    lastVerified: "2026-09-03",
+    sourceNote: `IGN YT + Falcon YT. ${SOURCE_URLS.ignTime}`,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "mech-caught-stealing",
+    name: "Caught stealing",
+    category: "Mechanics",
+    apCost: 4,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "Time bar hit hard if caught stealing. PC Gamer reports 4 segments (guide).",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+  },
+  {
+    id: "mech-shrine-fast-travel",
+    name: "Shrine-to-shrine fast travel",
+    category: "Mechanics",
+    apCost: 0,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "Shrine-to-shrine fast travel seems 0 time (RageGaming spoken tip). Not the same as Shrine Wait, which can burn large chunks—avoid casual Wait; cost unknown so no invented number.",
+    lastVerified: "2026-09-03",
+    sourceNote: "RageGaming YT full-video narration.",
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_RAGE_TIPS,
+  },
+  {
+    id: "mech-skill-unlock",
+    name: "Skill / perk unlock at shrine",
+    category: "Mechanics",
+    apCost: 1,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "Skills/perks at shrines often cost ~1 segment (Polygon / AltChar / reviews). A few upgrades may cost more; check the hourglass before committing.",
+    lastVerified: "2026-09-03",
+    sourceNote: `${SOURCE_URLS.polygonTime} ${SOURCE_URLS.altcharTime}`,
+    gameVersion: "retail launch week Sep 2026",
+  },
+  {
+    id: "mech-explore-walk-free",
+    name: "Explore / walk (no hourglass)",
+    category: "Mechanics",
+    apCost: 0,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "Explore and walk often cost 0. Many small activities are free (IGN, Boomstick tip narration). Only hourglass actions spend segments.",
+    lastVerified: "2026-09-03",
+    sourceNote: `IGN article + IGN YT. ${SOURCE_URLS.ignTime}`,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "mech-zero-cost-predator-xp",
+    name: "Zero-cost predator / kill XP",
+    category: "Mechanics",
+    apCost: 0,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "IGN tip narration: some predator / kill XP loops do not spend time segments. Still skip if they distract from Mass deadlines.",
+    lastVerified: "2026-09-03",
+    sourceNote: "IGN YT “other ways to earn” narration.",
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "prologue-cost-withering-away",
+    name: "Prologue: Withering Away",
+    category: "Prologue",
+    apCost: 2,
+    phase: "day",
+    verificationStatus: "reported",
+    notes:
+      "Main prologue. Default 2 (PC Gamer). Storm / extra Anca scene +1 (IGN).",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+    spoiler: true,
+  },
+  {
+    id: "prologue-cost-live-bait",
+    name: "Prologue: Live Bait",
+    category: "Prologue",
+    apCost: 1,
+    phase: "day",
+    verificationStatus: "reported",
+    notes: "Base 1; playing tag +1 (IGN / PC Gamer).",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "prologue-cost-deep-down",
+    name: "Prologue: Deep Down",
+    category: "Prologue",
+    apCost: 1,
+    phase: "day",
+    verificationStatus: "reported",
+    notes:
+      "Quest ~1. Lazar deadline: after 5 segments already passed → dead (IGN).",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+    spoiler: true,
+  },
+  {
+    id: "prologue-cost-on-the-run",
+    name: "Prologue: On The Run",
+    category: "Prologue",
+    apCost: 2,
+    phase: "day",
+    verificationStatus: "reported",
+    notes: "PC Gamer 2⌛. Conservative default vs IGN XP-focus.",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "prologue-cost-zero-xp",
+    name: "Prologue: zero-cost XP trio",
+    category: "Prologue",
+    apCost: 0,
+    phase: "day",
+    verificationStatus: "reported",
+    notes:
+      "Enter Not + Dead Drop + If a Tree Falls: 0 segments, ~100 XP each (IGN / PC Gamer). Bandit camp nearby is not free.",
+    lastVerified: "2026-09-03",
+    sourceNote: SOURCE_URLS.pcgamerPrologue,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
+  {
+    id: "prologue-cost-typical-side",
+    name: "Prologue: typical 1-segment side",
+    category: "Prologue",
+    apCost: 1,
+    phase: "day",
+    verificationStatus: "reported",
+    notes:
+      "Blasphemy, Someone Needs A Lesson, Disturbed (base), Into The Den, Like Father Like Son, Page-Turner stay, bandit-camp engage. Falcon: hangouts may add extra.",
+    lastVerified: "2026-09-03",
+    sourceNote: `${SOURCE_URLS.pcgamerPrologue} Falcon YT ${YT_FALCON_TIME.url}`,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_FALCON_TIME,
+  },
+  {
+    id: "prologue-cost-bandits-treasure",
+    name: "Prologue: Bandits’ Treasure Map",
+    category: "Prologue",
+    apCost: 2,
+    phase: "day",
+    verificationStatus: "reported",
+    notes:
+      "Polygon lists 2 for the Laslea Glen treasure chain. Camp engage alone is 1 (IGN). GameSpot split may differ.",
+    lastVerified: "2026-09-03",
+    sourceNote: `${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamespotPrologue}`,
+    gameVersion: "retail launch week Sep 2026",
+    youtubeSource: YT_IGN_PROLOGUE,
+  },
 ];
+
+const LAUNCH_WEEK_REPORTED_CATEGORIES = new Set(["Prologue", "Mechanics"]);
+
+export function isLaunchWeekReported(entry: TimeCostEntry): boolean {
+  return (
+    entry.verificationStatus === "reported" &&
+    LAUNCH_WEEK_REPORTED_CATEGORIES.has(entry.category)
+  );
+}
+
+export const REPORTED_PROLOGUE_TIME_COSTS = TIME_COST_ENTRIES.filter(
+  isLaunchWeekReported
+);
+
+export const ESTIMATED_PLACEHOLDER_TIME_COSTS = TIME_COST_ENTRIES.filter(
+  (entry) => !isLaunchWeekReported(entry)
+);
+

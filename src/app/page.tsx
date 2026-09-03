@@ -102,12 +102,12 @@ export default function HomePage() {
             {
               href: "/quests",
               title: "Quest database",
-              body: "Currently known information and the fields we will store after retail observation—not a confirmed quest list.",
+              body: "Launch-week Reported prologue quest table and 8-segment tips—not a Verified retail list.",
             },
             {
               href: "/missables",
               title: "Missables index",
-              body: "Planning for timer risks from public marketing pressure. Empty verified table until observations exist.",
+              body: "Reported prologue lock windows (Esme, Lazar, Mass, half-quest fail). Not a Verified checklist.",
             },
             {
               href: "/guides/how-to-plan-your-time",
@@ -256,9 +256,9 @@ export default function HomePage() {
             a player or video source described a cost with enough detail to cite,
             but we have not yet treated it as Verified. Verified is reserved for
             values confirmed against the released game under documented
-            conditions. We do not invent Verified retail quest costs. If a table
-            looks thin, that emptiness is honesty—not a missing dump of invented
-            numbers.
+            conditions. We do not invent Verified retail quest costs. Prologue
+            tables are a Reported mix from guides and YouTube narration, not
+            in-house Verified play.
           </p>
           <p>
             The 480 total also teaches a pacing lesson even if the shipped
@@ -334,11 +334,12 @@ export default function HomePage() {
             contingency buffer—sixteen to twenty-four model units is a common
             starter range in our guides—before you fill every remaining slot with
             tourist content. Fourth, mark anything that feels timer-sensitive in
-            your notes even if the{" "}
+            your notes and check the{" "}
             <Link href="/missables" className="text-ember-400 hover:underline">
               missables index
             </Link>{" "}
-            is still empty. Fifth, share the URL if you want a second opinion.
+            for Reported prologue windows. Fifth, share the URL if you want a
+            second opinion.
           </p>
           <p>
             If you are brand new to the setting’s planning problems, the{" "}

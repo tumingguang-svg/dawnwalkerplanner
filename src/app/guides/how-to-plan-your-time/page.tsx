@@ -17,8 +17,9 @@ export default function HowToPlanYourTimePage() {
     <GuideLayout
       path="/guides/how-to-plan-your-time"
       title="Dawnwalker How to Plan Your Time"
-      intro="A practical workflow for the unofficial 30-day ledger: turn Estimated activities into a visible budget, keep day and night wallets honest, and leave room for the choices you have not made yet."
+      intro="A practical workflow for the unofficial 30-day ledger: turn Reported prologue rows and Estimated placeholders into a visible budget, keep day and night wallets honest, and leave room for the choices you have not made yet."
       keywordNote="Primary focus: how to plan your time / Time Budget planner workflow."
+      lastUpdated="2026-09-03"
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -30,9 +31,34 @@ export default function HowToPlanYourTimePage() {
             {AP_CONFIG.totalDays} days × ({AP_CONFIG.dayAp} day +{" "}
             {AP_CONFIG.nightAp} night) = {AP_CONFIG.totalAp} model units
           </strong>
-          . Those units are a ledger shorthand—not a claim about official Action
-          Points. Catalog costs stay Estimated until they are checked in retail
-          play or fully cited footage.
+          . Those units are a ledger shorthand—not official Action Points.
+          Interactive planner units stay Estimated. Prologue quest and
+          mechanics rows on{" "}
+          <Link href="/time-costs" className="text-ember-400 hover:underline">
+            /time-costs
+          </Link>{" "}
+          and{" "}
+          <Link href="/quests" className="text-ember-400 hover:underline">
+            /quests
+          </Link>{" "}
+          are a launch-week Reported fill—not in-house Verified.
+        </p>
+      </section>
+
+      <section className="space-y-3 text-dusk-300">
+        <h2 className="font-display text-xl text-dusk-50">
+          Prologue 8-segment tips
+        </h2>
+        <p>
+          Before Mass you have about 8 Reported day segments and roughly 13
+          named quests. You cannot do every hourglass chain. Do zero-cost XP
+          first; finish Withering Away / Esme before Mass; resolve Deep Down
+          before 5 segments have already passed if Lazar matters; do not start
+          a multi-step quest with 1 segment left. Full table:{" "}
+          <Link href="/quests" className="text-ember-400 hover:underline">
+            quest catalog
+          </Link>
+          .
         </p>
       </section>
 
@@ -55,8 +81,8 @@ export default function HowToPlanYourTimePage() {
             <Link href="/time-costs" className="text-ember-400 hover:underline">
               time costs catalog
             </Link>{" "}
-            . Note phase tags (day / night / either) and the verification
-            label. Do not treat Estimated numbers as confirmed retail costs.
+            . Reported Prologue / Mechanics rows sit above the legacy Estimated
+            placeholders. Do not treat either tier as Verified retail costs.
           </li>
           <li>
             Quick-add catalog rows you expect to take, or add a custom line
