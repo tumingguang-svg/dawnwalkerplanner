@@ -105,8 +105,9 @@ export default function QuestsPage() {
             </li>
             <li>
               <strong className="text-dusk-100">Withering Away:</strong> finish
-              and save Esme/mom with the correct herb instructions before Mass
-              (IGN + LunarGaming narration).
+              before Mass; brew{" "}
+              <strong className="text-dusk-100">hot water + three spoonfuls</strong>{" "}
+              (PC Gamer / PowerPyx / GameSpot).
             </li>
             <li>
               Unfinished clock-icon sides fail when Blood Mass begins

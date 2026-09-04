@@ -46,10 +46,11 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     estimatedAp: 2,
     phase: "day",
     ...REPORTED_LAUNCH,
+    lastVerified: "2026-09-04",
     missableRisk: "high",
     notes:
-      "Must finish before Mass or mom/Esme suffers. Planner default 2 segments (PC Gamer table). Staying for the storm / extra Anca scene +1 hour (IGN). Main prologue.",
-    sourceNote: `IGN YT + PC Gamer table. ${SOURCE_URLS.pcgamerPrologue}`,
+      "Must finish before Mass or Esme dies. Brew: hot water + three spoonfuls (PC Gamer / PowerPyx / GameSpot). Planner default 2 segments (PC Gamer table). PowerPyx lists base 1 at Anca leave (+1 if Page-Turner stay); Gamer Guides notes mid-quest options can push ~2–4 — keep default 2, footnote range. Storm / Page-Turner stay +1 (IGN / PowerPyx).",
+    sourceNote: `PC Gamer table + Anca recipe; PowerPyx Withering Away; GameSpot save-mom; Gamer Guides time mgmt. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.pcgamerAncaRecipe} ${SOURCE_URLS.powerpyxWithering} ${SOURCE_URLS.gamespotEsme} ${SOURCE_URLS.gamerGuidesTime}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {

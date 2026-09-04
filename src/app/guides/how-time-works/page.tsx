@@ -19,7 +19,7 @@ export default function HowTimeWorksPage() {
       title="Dawnwalker How Time Works"
       intro="How the time bar is Reported to work at retail launch week, and how this site’s Estimated 30-day Time Budget model maps those segments into a planner ledger."
       keywordNote="Primary focus: how time works (Dawnwalker)."
-      lastUpdated="2026-09-03"
+      lastUpdated="2026-09-04"
     >
       <section className="space-y-3 rounded-xl border border-ember-600/30 bg-ember-600/5 p-4 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -39,16 +39,22 @@ export default function HowTimeWorksPage() {
             <strong className="text-dusk-100">Zero-cost XP</strong> — Enter Not, Dead Drop, If a Tree Falls (IGN / PC Gamer).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
-            <strong className="text-dusk-100">Withering Away</strong> — ~2; finish before Mass (IGN + Lunar).
+            <strong className="text-dusk-100">Withering Away</strong> — ~2 default (PCG); brew hot water + 3 spoonfuls; finish before Mass.
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
             <strong className="text-dusk-100">Caught stealing</strong> — 4 segments (PC Gamer).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
-            <strong className="text-dusk-100">Skill / perk at shrine</strong> — ~1 segment (Polygon / AltChar).
+            <strong className="text-dusk-100">Skill / perk at shrine</strong> — ~1 each; full tree can burn days (Gamer Guides).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
             <strong className="text-dusk-100">≤1 segment left</strong> — do not start multi-step hourglass quests (Polygon).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Shrine Wait</strong> — up to 16 ticks in one commit (Gamer Guides); avoid casual Wait.
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Free ticks</strong> — explore, combat, craft, loot, buy/sell, survey towers (Gamer Guides).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
             <strong className="text-dusk-100">Campaign model</strong> — 30 × (8+8) = 480 Time Segments (Estimated planner ledger).
@@ -109,8 +115,10 @@ export default function HowTimeWorksPage() {
             Shrine-to-shrine fast travel seems 0 time (RageGaming, Reported).
           </li>
           <li>
-            Shrine Wait can burn large chunks—avoid casual use (Rage). Cost
-            unknown; no invented number.
+            Shrine Wait can advance up to{" "}
+            <strong className="text-dusk-100">16</strong> ticks in one commit
+            (Gamer Guides). Avoid casual Wait — spend those ticks on skills or
+            quests instead.
           </li>
           <li>
             Caught stealing hits the bar hard; PC Gamer Reports{" "}
@@ -118,9 +126,14 @@ export default function HowTimeWorksPage() {
           </li>
           <li>
             Skills/perks at shrines often cost ~1 segment (Polygon / AltChar).
+            Gamer Guides warns Swordmastery alone can total 90+ ticks if maxed;
+            a realistic leveling budget is still multi-day (~5–7 days across a
+            playthrough).
           </li>
           <li>
-            Quests typically ~1 segment; NPC hangouts may cost extra (Falcon).
+            Free without hourglass: explore, combat, crafting, looting chests,
+            buy/sell, climbing survey towers (Gamer Guides). Quests typically ~1
+            segment; NPC hangouts may cost extra (Falcon).
           </li>
         </ul>
       </section>

@@ -78,8 +78,8 @@ export default function MissablesPage() {
             clock, skipping a conversation window, or committing to a conflicting
             branch. Public marketing already sold limited time. Launch-week
             guides now name a few prologue windows: Mass cuts unfinished sides;
-            Lazar’s Deep Down search has a segment deadline; Esme’s medicine
-            has to be right before the ceremony.
+            Lazar’s Deep Down search has a segment deadline; Esme’s brew must be
+            hot water + three spoonfuls before the ceremony (PC Gamer / PowerPyx).
           </p>
           <p>
             Pair this index with the{" "}
@@ -89,6 +89,13 @@ export default function MissablesPage() {
             (8-segment tips) and the{" "}
             <Link href="/planner" className="text-ember-400 hover:underline">
               Time Budget planner
+            </Link>
+            . Brew steps also live on{" "}
+            <Link
+              href="/guides/choices-and-consequences"
+              className="text-ember-400 hover:underline"
+            >
+              choices
             </Link>
             . Still keep contingency in the ledger—Reported is not Verified.
           </p>

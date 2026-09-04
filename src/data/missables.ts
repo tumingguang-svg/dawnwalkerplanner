@@ -31,12 +31,13 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
   {
     id: "missable-esme-medicine",
     name: "Save Esme / mom (Withering Away herbs)",
-    window: "Before Blood Mass — finish Withering Away with the correct herb instructions",
+    window: "Before Blood Mass — finish Withering Away with the correct brew (hot water + three spoonfuls)",
     risk: "high",
     ...REPORTED_LAUNCH,
+    lastVerified: "2026-09-04",
     notes:
-      "Save Esme/mom by following Anca’s herb instructions and completing Withering Away before Mass. Wrong prep or an unfinished main beat is reported to go badly at the ceremony (IGN + LunarGaming tip narration).",
-    sourceNote: `IGN YT + LunarGaming launch-week narration. Ceremony fail state also noted by PowerPyx. ${SOURCE_URLS.powerpyxCovenant}`,
+      "Brew steps (Reported): choose Use hot water, then Add three spoonfuls of herbs (PC Gamer Anca recipe; PowerPyx Withering Away; GameSpot save-mom). Anca’s spoken tip: three scoops with water hot but not boiling. Wrong prep or unfinished Withering Away before Mass/Sacred Covenant → Esme dies (PowerPyx fail state). IGN + LunarGaming also flag the ceremony fail.",
+    sourceNote: `PC Gamer recipe + PowerPyx walkthrough + GameSpot. Ceremony also IGN YT / LunarGaming. ${SOURCE_URLS.pcgamerAncaRecipe} ${SOURCE_URLS.powerpyxWithering} ${SOURCE_URLS.gamespotEsme}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {

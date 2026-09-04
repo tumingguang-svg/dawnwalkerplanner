@@ -74,7 +74,7 @@ export const PROLOGUE_DAY1_ROUTE: QuestOrderRoute = {
       name: "Withering Away",
       segments: 2,
       runningTotal: 3,
-      tip: "Must finish before Mass or Esme/mom suffers. Staying for the storm/Page-Turner is +1.",
+      tip: "Must finish before Mass. Brew: hot water + three spoonfuls (PC Gamer / PowerPyx). Storm/Page-Turner stay +1.",
       risk: "high",
     },
     {
