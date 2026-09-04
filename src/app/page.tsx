@@ -9,9 +9,9 @@ import { homeGraphJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: "Dawnwalker Planner – Free 30-Day Time Budget Tool for Blood of Dawnwalker",
+  title: "Blood of Dawnwalker Guide & Planner – Quests, Builds & Time Budget",
   description:
-    "Free Dawnwalker Time & Quest Planner: 30 days × 8+8 Time Segments, quest order, missables. Fan planning model—not official Action Points.",
+    "Blood of Dawnwalker guide & planner: quest order, missables, builds, and a free 30-day Time Segments planner. Fan planning model—not official Action Points.",
   absoluteTitle: true,
 });
 
@@ -42,10 +42,10 @@ export default function HomePage() {
             </span>
           </div>
           <h1 className="font-display text-4xl leading-tight text-dusk-50 md:text-5xl">
-            Dawnwalker Planner
+            Blood of Dawnwalker Guide &amp; Planner
           </h1>
           <p className="text-lg text-dusk-100 md:text-xl">
-            Free 30-day Time Budget tool for The Blood of Dawnwalker
+            Quest guides, builds, missables, time costs — and a free 30-day planner
           </p>
           <p className="font-display text-lg text-ember-400/90 md:text-xl">
             Budget every night before the dawn breaks
@@ -73,6 +73,18 @@ export default function HomePage() {
               className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
             >
               Missables
+            </Link>
+            <Link
+              href="/builds"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
+            >
+              Builds
+            </Link>
+            <Link
+              href="/beginner"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-dusk-500/80 bg-night-950/50 px-5 py-3 text-sm font-medium text-dusk-100 backdrop-blur hover:border-ember-500"
+            >
+              Beginner guide
             </Link>
           </div>
         </div>

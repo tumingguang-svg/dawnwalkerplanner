@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Dawnwalker Planner — Unofficial 30-Day Time Budget Fan Tool",
+      "Blood of Dawnwalker Guide & Planner — Quests, Builds & Time",
     template: "%s | Dawnwalker Planner",
   },
   description:
-    "Unofficial Blood of Dawnwalker planner for an estimated 30-day Time Budget. Presets, time costs, and guides. Fan model—not official.",
+    "Blood of Dawnwalker guide & planner: quest order, missables, builds, and a free 30-day Time Segments planner. Fan model—not official.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
   openGraph: {
-    title: "Dawnwalker Planner",
+    title: "Blood of Dawnwalker Guide & Planner",
     description:
-      "Plan your unofficial 30-day Time Budget for Blood of Dawnwalker (fan model units).",
+      "Quest guides, builds, missables, and a free 30-day Time Segments planner for Blood of Dawnwalker.",
     url: siteUrl,
     siteName: "Dawnwalker Planner",
     locale: "en_US",
@@ -51,15 +51,15 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Dawnwalker Planner — unofficial 30-day Time Budget fan tool",
+        alt: "Blood of Dawnwalker Guide & Planner — quests, builds & time budget",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dawnwalker Planner",
+    title: "Blood of Dawnwalker Guide & Planner",
     description:
-      "Unofficial 30-day Time Budget planner for Blood of Dawnwalker (fan model).",
+      "Quest guides, builds, missables, and a free 30-day Time Segments planner for Blood of Dawnwalker.",
     images: ["/og.png"],
   },
   robots: { index: true, follow: true },

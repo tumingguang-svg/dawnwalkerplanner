@@ -9,7 +9,7 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/beginner",
-  title: "Dawnwalker Beginner Guide – First Week Time Budget",
+  title: "Blood of Dawnwalker Beginner Guide – First Week Time Budget",
   description:
     "Dawnwalker beginner guide: first-week Time Budget habits for The Blood of Dawnwalker—day/night wallets, contingency buffer, and the unofficial planner.",
   absoluteTitle: true,
@@ -26,7 +26,7 @@ export default function BeginnerPage() {
       />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Dawnwalker Beginner Guide – First Week Time Budget
+          Blood of Dawnwalker Beginner Guide
         </h1>
         <p className="mt-2 text-dusk-400">
           A short, spoiler-light orientation for planning your first campaign

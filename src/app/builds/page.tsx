@@ -8,9 +8,9 @@ import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/builds",
-  title: "Dawnwalker Builds Hub",
+  title: "Blood of Dawnwalker Builds – Time-Efficient Vampire & Human Routes",
   description:
-    "Dawnwalker Builds Hub (stub): Estimated playstyle sketches only. Not a skill-tree dump—use the Time Segment planner for launch-week decisions.",
+    "Blood of Dawnwalker builds: time-efficient vampire and human routes (stub). Not Deepwoken Dawnwalker oath builds—use the Time Segment planner for launch-week decisions.",
   absoluteTitle: true,
 });
 
@@ -20,9 +20,9 @@ export default function BuildsHubPage() {
       <JsonLd
         data={[
           articleJsonLd({
-            headline: "Dawnwalker Builds Hub",
+            headline: "Blood of Dawnwalker Builds – Time-Efficient Vampire & Human Routes",
             description:
-              "Dawnwalker Builds Hub (stub): Estimated playstyle sketches only. Not a skill-tree dump—use the Time Segment planner for launch-week decisions.",
+              "Blood of Dawnwalker builds: time-efficient vampire and human routes (stub). Not Deepwoken Dawnwalker oath builds—use the Time Segment planner for launch-week decisions.",
             path: "/builds",
           }),
           breadcrumbJsonLd([
@@ -33,13 +33,19 @@ export default function BuildsHubPage() {
       />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Dawnwalker Builds Hub
+          Blood of Dawnwalker Builds
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          Lightweight playstyle sketches. This hub is a{" "}
-          <strong className="text-dusk-200">stub</strong>—not a full skill-tree
-          wiki. Focus stays on Time Budget planning; detailed builds come later
-          when we have Reported perk costs.
+          Time-efficient vampire and human route sketches for{" "}
+          <strong className="text-dusk-200">Blood of Dawnwalker</strong>. This
+          hub is a <strong className="text-dusk-200">stub</strong>—not a full
+          skill-tree wiki and not Deepwoken&apos;s Dawnwalker oath builds. Prefer
+          the{" "}
+          <Link href="/planner" className="text-ember-400 hover:underline">
+            Time Segment planner
+          </Link>{" "}
+          for launch-week decisions; detailed builds come later when we have
+          Reported perk costs.
         </p>
       </div>
 
