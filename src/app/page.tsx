@@ -90,6 +90,92 @@ export default function HomePage() {
         </div>
 </section>
 
+
+      <section id="start-here" className="space-y-4">
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-[0.2em] text-ember-400">
+            Questions players actually ask
+          </p>
+          <h2 className="font-display text-2xl text-dusk-50 md:text-3xl">
+            Start here
+          </h2>
+          <p className="max-w-2xl text-sm text-dusk-400 md:text-base">
+            Jump straight to the guides that match common search intents—time,
+            quest order, missables, builds, and the 30-day planner.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              href: "/guides/how-time-works",
+              q: "How does time work?",
+              blurb: "Day/night wallets, Time Segments, and the scarce campaign clock.",
+            },
+            {
+              href: "/guides/quest-order",
+              q: "What should I do before Blood Mass?",
+              blurb: "Prologue spend order, zero-cost XP, and early priorities.",
+            },
+            {
+              href: "/guides/can-you-do-everything",
+              q: "Can you complete all prologue quests?",
+              blurb: "What fits before Mass—and what usually gets cut.",
+            },
+            {
+              href: "/missables",
+              q: "Can Esme or Lazar die? What is missable?",
+              blurb: "Reported lock windows and characters you can lose.",
+            },
+            {
+              href: "/guides/day-vs-night",
+              q: "When should I act by day vs night?",
+              blurb: "Which activities belong in daylight vs darkness.",
+            },
+            {
+              href: "/guides/choices-and-consequences",
+              q: "How do choices and consequences work?",
+              blurb: "Trade-offs when every detour spends scarce time.",
+            },
+            {
+              href: "/beginner",
+              q: "Where should beginners start?",
+              blurb: "First-week habits without dumping endings.",
+            },
+            {
+              href: "/time-costs",
+              q: "Does exploration cost time?",
+              blurb: "Reported and estimated costs for quests and roaming.",
+            },
+            {
+              href: "/planner",
+              q: "How do I plan my 30 days?",
+              blurb: "Free Time Segment planner with presets and share URLs.",
+            },
+            {
+              href: "/builds",
+              q: "What builds work in Blood of Dawnwalker?",
+              blurb: "Vampire and human playstyle hubs with time tips.",
+            },
+          ].map((item) => (
+            <Link
+              key={item.href + item.q}
+              href={item.href}
+              className="card-surface group flex flex-col rounded-2xl p-4 transition-colors hover:border-ember-500/50 sm:p-5"
+            >
+              <h3 className="font-display text-lg leading-snug text-dusk-50 group-hover:text-ember-400 transition-colors">
+                {item.q}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-dusk-400">
+                {item.blurb}
+              </p>
+              <span className="mt-3 text-xs font-medium uppercase tracking-wider text-ember-500/80 group-hover:text-ember-400">
+                Read guide →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section id="tools" className="space-y-4">
         <h2 className="font-display text-2xl text-dusk-50">
           Tools and guides on this site
@@ -158,7 +244,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-transparent" />
         <p className="absolute bottom-3 left-4 right-4 font-display text-lg text-dusk-50 md:text-xl">
-          How Dawnwalker Planner thinks about time
+          Deeper reading: how Dawnwalker Planner thinks about time
         </p>
       </div>
 
