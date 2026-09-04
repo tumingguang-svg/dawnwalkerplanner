@@ -16,7 +16,7 @@ import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = pageMetadata({
   path: "/time-costs",
-  title: "Dawnwalker Time Budget Costs (Reported Prologue + Estimated Catalog)",
+  title: "Blood of Dawnwalker Time Costs – Time Segment Catalog",
   description:
     "Dawnwalker Time Budget costs: launch-week Reported prologue/mechanics rows plus Estimated fan-model placeholders. Estimated / Reported / Verified labels.",
   absoluteTitle: true,
@@ -151,7 +151,7 @@ export default function TimeCostsPage() {
       />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Dawnwalker Time Budget Costs
+          Blood of Dawnwalker Time Costs
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
           Two catalogs on one page: launch-week{" "}

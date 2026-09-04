@@ -6,7 +6,7 @@ import { AP_CONFIG } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/how-time-works",
-  title: "Dawnwalker How Time Works – 8 Segments Reported, 480 Fan Model",
+  title: "Blood of Dawnwalker Time System – Day & Night Explained",
   description:
     "Dawnwalker how time works: Reported 8 day + 8 night segments from launch-week guides, plus the estimated 30-day Time Budget fan model. Not official AP.",
   absoluteTitle: true,
@@ -16,7 +16,7 @@ export default function HowTimeWorksPage() {
   return (
     <GuideLayout
       path="/guides/how-time-works"
-      title="Dawnwalker How Time Works"
+      title="Blood of Dawnwalker Time System: How It Works"
       intro="How the time bar is Reported to work at retail launch week, and how this site’s Estimated 30-day Time Budget model maps those segments into a planner ledger."
       keywordNote="Primary focus: how time works (Dawnwalker)."
       lastUpdated="2026-09-04"

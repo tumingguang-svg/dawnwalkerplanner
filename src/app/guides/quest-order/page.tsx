@@ -8,7 +8,7 @@ import { QUEST_TO_COST_ID } from "@/lib/plannerLinks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/quest-order",
-  title: "Dawnwalker Quest Order: Best Way to Spend Your Time (Prologue)",
+  title: "Blood of Dawnwalker Quest Order – Prologue Time Guide",
   description:
     "Blood of Dawnwalker prologue quest order by Time Segments: zero-cost XP first, Deep Down for Lazar, Withering Away before Mass. Reported costs, not Verified.",
   absoluteTitle: true,
@@ -19,7 +19,7 @@ export default function QuestOrderPage() {
   return (
     <GuideLayout
       path="/guides/quest-order"
-      title="Dawnwalker Quest Order: Best Way to Spend Your Time"
+      title="Blood of Dawnwalker Quest Order: Best Way to Spend Your Time"
       intro="Not a full walkthrough dump—a Time Segment spending order for the prologue day before Blood Mass. Costs are launch-week Reported (IGN, PC Gamer, Polygon). Interactive planner units stay a fan model."
       keywordNote="Primary focus: Dawnwalker quest order / prologue time spend."
       lastUpdated="2026-09-03"
