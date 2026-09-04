@@ -49,9 +49,9 @@ const SCHEMA_FIELDS = [
     meaning: "low, medium, high, or unknown.",
   },
   {
-    field: "lastVerified / source",
+    field: "lastChecked / source",
     meaning:
-      "Date plus source note. YouTube-derived rows store URL, timestamp (full-video narration is allowed), platform, and game version.",
+      "Date last checked against guides (UI label; not in-house Verified) plus source note. YouTube-derived rows store URL, timestamp (full-video narration is allowed), platform, and game version.",
   },
 ];
 

@@ -111,16 +111,39 @@ export function PlannerClient() {
       }
     }
 
-    const addId = params.get("add");
     const addName = params.get("name");
     const addCost = params.get("cost");
     const addPhase = params.get("phase");
-    if (addId) {
-      const entry = TIME_COST_ENTRIES.find((e) => e.id === addId);
-      if (entry) {
-        initial = [...initial, { ...lineFromEntry(entry), id: uid() }];
-        setAddFlash(`Added “${entry.name}” (${entry.apCost} segments).`);
+    // Support repeated ?add=id&add=id2 and comma-separated ?add=id1,id2,id3
+    const rawAddParams = params.getAll("add");
+    const addIds = [
+      ...new Set(
+        rawAddParams
+          .flatMap((v) => v.split(","))
+          .map((s) => s.trim())
+          .filter(Boolean)
+      ),
+    ];
+    const addedNames: string[] = [];
+    if (addIds.length > 0) {
+      const next = [...initial];
+      for (const addId of addIds) {
+        const entry = TIME_COST_ENTRIES.find((e) => e.id === addId);
+        if (!entry) continue;
+        next.push({ ...lineFromEntry(entry), id: uid() });
+        addedNames.push(entry.name);
         setSelectedEntry(entry.id);
+      }
+      initial = next;
+      if (addedNames.length === 1) {
+        const only = TIME_COST_ENTRIES.find((e) => e.id === addIds[0]);
+        setAddFlash(
+          only
+            ? `Added “${only.name}” (${only.apCost} segments).`
+            : `Added “${addedNames[0]}”.`
+        );
+      } else if (addedNames.length > 1) {
+        setAddFlash(`Added ${addedNames.length} items from checklist/link.`);
       }
     } else if (addName != null && addCost != null) {
       const phase: TimePhase =
@@ -149,7 +172,7 @@ export function PlannerClient() {
     setLines(initial);
     setHydrated(true);
 
-    if (addId || addName) {
+    if (addIds.length > 0 || addName) {
       const url = new URL(window.location.href);
       url.searchParams.delete("add");
       url.searchParams.delete("name");

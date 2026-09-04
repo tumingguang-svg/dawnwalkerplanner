@@ -8,8 +8,10 @@ import {
   MISSABLE_TO_COST_ID,
   type MissableEntry,
 } from "@/data/missables";
+import { TIME_COST_ENTRIES } from "@/data/timeCostEntries";
 import { AddToPlannerButton } from "@/components/AddToPlannerButton";
 import { VERIFICATION_LABELS } from "@/data/apConfig";
+import { plannerHrefForCostIds } from "@/lib/plannerLinks";
 
 const STORAGE_KEY = "dawnwalker-missables-checklist-v1";
 
@@ -21,6 +23,7 @@ const RISK_BADGE: Record<MissableEntry["risk"], string> = {
 };
 
 type CheckedMap = Record<string, boolean>;
+type FilterMode = "all" | "remaining" | "completed";
 
 function shortNotes(notes: string, max = 140): string {
   const t = notes.replace(/\s+/g, " ").trim();
@@ -30,9 +33,37 @@ function shortNotes(notes: string, max = 140): string {
   return `${(sp > 60 ? cut.slice(0, sp) : cut).trimEnd()}…`;
 }
 
+function shortSource(note?: string, max = 72): string | null {
+  if (!note) return null;
+  const t = note.replace(/\s+/g, " ").trim();
+  // Prefer a readable label before long URLs
+  const label = t.split(/https?:\/\//)[0].trim().replace(/[·.]+$/, "").trim();
+  const base = label || t;
+  if (base.length <= max) return base;
+  const cut = base.slice(0, max - 1);
+  const sp = cut.lastIndexOf(" ");
+  return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+}
+
+function costLabelForMissable(missableId: string): string | null {
+  const costId = MISSABLE_TO_COST_ID[missableId];
+  if (!costId) return null;
+  const entry = TIME_COST_ENTRIES.find((e) => e.id === costId);
+  if (!entry) return null;
+  return `${entry.apCost} seg`;
+}
+
+function lastCheckedLabel(row: MissableEntry): string | null {
+  if (!row.lastVerified) return null;
+  return row.verificationStatus === "verified"
+    ? `Verified ${row.lastVerified}`
+    : row.lastVerified;
+}
+
 export function MissablesChecklist() {
   const [checked, setChecked] = useState<CheckedMap>({});
   const [hydrated, setHydrated] = useState(false);
+  const [filter, setFilter] = useState<FilterMode>("all");
 
   useEffect(() => {
     try {
@@ -57,10 +88,31 @@ export function MissablesChecklist() {
   }, [checked, hydrated]);
 
   const total = MISSABLE_ENTRIES.length;
-  const checkedCount = useMemo(
+  const completedCount = useMemo(
     () => MISSABLE_ENTRIES.filter((e) => checked[e.id]).length,
     [checked]
   );
+  const remainingCount = total - completedCount;
+
+  const selectedCostIds = useMemo(() => {
+    const ids: string[] = [];
+    const seen = new Set<string>();
+    for (const e of MISSABLE_ENTRIES) {
+      if (!checked[e.id]) continue;
+      const costId = MISSABLE_TO_COST_ID[e.id];
+      if (!costId || seen.has(costId)) continue;
+      if (!TIME_COST_ENTRIES.some((c) => c.id === costId)) continue;
+      seen.add(costId);
+      ids.push(costId);
+    }
+    return ids;
+  }, [checked]);
+
+  const selectedUnmappedCount = useMemo(() => {
+    return MISSABLE_ENTRIES.filter(
+      (e) => checked[e.id] && !MISSABLE_TO_COST_ID[e.id]
+    ).length;
+  }, [checked]);
 
   const toggle = useCallback((id: string) => {
     setChecked((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -74,9 +126,17 @@ export function MissablesChecklist() {
     return m;
   }, []);
 
-  const prologueWithCost = CHECKLIST_GROUPS.find(
-    (g) => g.id === "before-blood-mass"
-  )?.missableIds.filter((id) => MISSABLE_TO_COST_ID[id]) ?? [];
+  const passesFilter = useCallback(
+    (id: string) => {
+      const isOn = Boolean(checked[id]);
+      if (filter === "remaining") return !isOn;
+      if (filter === "completed") return isOn;
+      return true;
+    },
+    [checked, filter]
+  );
+
+  const addSelectedHref = plannerHrefForCostIds(selectedCostIds);
 
   return (
     <section className="space-y-5" aria-labelledby="missables-checklist-heading">
@@ -89,19 +149,49 @@ export function MissablesChecklist() {
             Missables checklist
           </h2>
           <p className="mt-1 text-sm text-dusk-400">
-            Track Reported windows locally in this browser. Progress:{" "}
-            <strong className="text-dusk-100">
-              {hydrated ? checkedCount : "—"} of {total} checked
-            </strong>
-            . Data status stays Reported—not Verified.
+            Track Reported windows locally in this browser. Data status stays
+            Reported—not Verified.
+          </p>
+          <p
+            className="mt-2 font-display text-lg text-dusk-50"
+            aria-live="polite"
+          >
+            {hydrated ? (
+              <>
+                <span className="text-ember-400">
+                  {completedCount} / {total} completed
+                </span>
+                <span className="mx-2 text-dusk-600">·</span>
+                <span className="text-dusk-300">
+                  {remainingCount} remaining
+                </span>
+              </>
+            ) : (
+              <span className="text-dusk-500">— / {total} completed</span>
+            )}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
+          {selectedCostIds.length > 0 ? (
+            <Link
+              href={addSelectedHref}
+              className="inline-flex min-h-9 items-center rounded-md bg-ember-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-ember-500"
+            >
+              Add selected to Planner ({selectedCostIds.length})
+            </Link>
+          ) : (
+            <span
+              className="inline-flex min-h-9 items-center rounded-md border border-dusk-700 px-3 py-1.5 text-xs text-dusk-600"
+              title="Check mapped items (Esme, Lazar, Gremla) first"
+            >
+              Add selected to Planner
+            </span>
+          )}
           <Link
             href="/planner"
             className="inline-flex min-h-9 items-center rounded-md border border-ember-600/50 px-3 py-1.5 text-xs font-medium text-ember-400 hover:bg-ember-600/10"
           >
-            Open planner (prologue presets)
+            Open planner
           </Link>
           <button
             type="button"
@@ -113,23 +203,61 @@ export function MissablesChecklist() {
         </div>
       </div>
 
-      <p className="rounded-lg border border-dusk-800 bg-night-900/50 px-3 py-2 text-xs text-dusk-500">
-        Multi-add is limited to one planner query at a time. Use per-row{" "}
-        <span className="text-dusk-300">Add to Planner</span> for related quest
-        costs, or open the planner and load{" "}
-        <span className="text-dusk-300">Prologue: Save Esme + Lazar</span> (covers
-        Withering Away, Deep Down, Blasphemy, and other Mass-safe sides). Checked
-        prologue items with costs:{" "}
-        {prologueWithCost.filter((id) => checked[id]).length}/
-        {prologueWithCost.length}.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div
+          className="inline-flex rounded-lg border border-dusk-700 bg-night-950/60 p-0.5"
+          role="group"
+          aria-label="Checklist filter"
+        >
+          {(
+            [
+              ["all", "All"],
+              ["remaining", "Remaining"],
+              ["completed", "Completed"],
+            ] as const
+          ).map(([mode, label]) => (
+            <button
+              key={mode}
+              type="button"
+              onClick={() => setFilter(mode)}
+              aria-pressed={filter === mode}
+              className={`min-h-8 rounded-md px-3 text-xs font-medium transition-colors ${
+                filter === mode
+                  ? "bg-ember-600/20 text-ember-300"
+                  : "text-dusk-400 hover:text-dusk-200"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="text-xs text-dusk-500">
+          {selectedCostIds.length > 0 ? (
+            <>
+              {selectedCostIds.length} checked item
+              {selectedCostIds.length === 1 ? "" : "s"} map to planner costs
+              {selectedUnmappedCount > 0
+                ? ` · ${selectedUnmappedCount} checklist-only`
+                : ""}
+              .
+            </>
+          ) : (
+            <>
+              Check Esme / Lazar / Gremla (or any mapped row), then Add selected.
+              Unmapped checked items stay checklist-only.
+            </>
+          )}
+        </p>
+      </div>
 
       <div className="space-y-6">
         {CHECKLIST_GROUPS.map((group) => {
-          const rows = group.missableIds
+          const allRows = group.missableIds
             .map((id) => byId.get(id))
             .filter((e): e is MissableEntry => Boolean(e));
-          const groupChecked = rows.filter((r) => checked[r.id]).length;
+          const rows = allRows.filter((r) => passesFilter(r.id));
+          const groupChecked = allRows.filter((r) => checked[r.id]).length;
+          if (rows.length === 0) return null;
           return (
             <div
               key={group.id}
@@ -140,13 +268,17 @@ export function MissablesChecklist() {
                   {group.title}
                 </h3>
                 <p className="mt-0.5 text-xs text-dusk-500">
-                  {group.description} · {groupChecked}/{rows.length} in group
+                  {group.description} · {groupChecked}/{allRows.length} in group
+                  {filter !== "all" ? ` · showing ${rows.length}` : ""}
                 </p>
               </div>
               <ul className="divide-y divide-dusk-800/80">
                 {rows.map((row) => {
                   const costId = MISSABLE_TO_COST_ID[row.id];
                   const isOn = Boolean(checked[row.id]);
+                  const timeLabel = costLabelForMissable(row.id);
+                  const source = shortSource(row.sourceNote);
+                  const checkedDate = lastCheckedLabel(row);
                   return (
                     <li
                       key={row.id}
@@ -160,7 +292,7 @@ export function MissablesChecklist() {
                           onChange={() => toggle(row.id)}
                           aria-label={`Mark done: ${row.name}`}
                         />
-                        <span className="min-w-0 space-y-1">
+                        <span className="min-w-0 space-y-1.5">
                           <span
                             className={`block font-medium ${
                               isOn
@@ -170,11 +302,7 @@ export function MissablesChecklist() {
                           >
                             {row.name}
                           </span>
-                          <span className="block text-xs text-dusk-400">
-                            <span className="text-dusk-500">Window:</span>{" "}
-                            {row.window}
-                          </span>
-                          <span className="flex flex-wrap items-center gap-2 pt-0.5">
+                          <span className="flex flex-wrap items-center gap-2">
                             <span
                               className={`inline-block rounded border px-2 py-0.5 text-[10px] uppercase tracking-wide ${RISK_BADGE[row.risk]}`}
                             >
@@ -184,9 +312,56 @@ export function MissablesChecklist() {
                               {VERIFICATION_LABELS[row.verificationStatus]}
                             </span>
                           </span>
-                          <span className="block text-xs leading-relaxed text-dusk-500">
-                            {shortNotes(row.notes)}
-                          </span>
+                          <dl className="grid gap-1 text-xs text-dusk-400 sm:grid-cols-2">
+                            {timeLabel ? (
+                              <div className="flex gap-1.5 min-w-0">
+                                <dt className="shrink-0 text-dusk-600">Time</dt>
+                                <dd className="min-w-0 text-dusk-300">
+                                  {timeLabel}
+                                </dd>
+                              </div>
+                            ) : null}
+                            <div className="flex gap-1.5 min-w-0 sm:col-span-2">
+                              <dt className="shrink-0 text-dusk-600">Window</dt>
+                              <dd className="min-w-0 text-dusk-300">
+                                {row.window}
+                              </dd>
+                            </div>
+                            <div className="flex gap-1.5 min-w-0">
+                              <dt className="shrink-0 text-dusk-600">Risk</dt>
+                              <dd className="min-w-0 capitalize text-dusk-300">
+                                {row.risk}
+                              </dd>
+                            </div>
+                            {checkedDate ? (
+                              <div className="flex gap-1.5 min-w-0">
+                                <dt className="shrink-0 text-dusk-600">
+                                  {row.verificationStatus === "verified"
+                                    ? "Last verified"
+                                    : "Last checked"}
+                                </dt>
+                                <dd className="min-w-0 text-dusk-300">
+                                  {row.lastVerified}
+                                </dd>
+                              </div>
+                            ) : null}
+                            <div className="flex gap-1.5 min-w-0 sm:col-span-2">
+                              <dt className="shrink-0 text-dusk-600">
+                                Consequence
+                              </dt>
+                              <dd className="min-w-0 text-dusk-500">
+                                {shortNotes(row.notes)}
+                              </dd>
+                            </div>
+                            {source ? (
+                              <div className="flex gap-1.5 min-w-0 sm:col-span-2">
+                                <dt className="shrink-0 text-dusk-600">
+                                  Source
+                                </dt>
+                                <dd className="min-w-0 text-dusk-500">{source}</dd>
+                              </div>
+                            ) : null}
+                          </dl>
                         </span>
                       </label>
                       <div className="shrink-0 pl-7 sm:pl-0">
@@ -209,6 +384,19 @@ export function MissablesChecklist() {
           );
         })}
       </div>
+
+      {filter !== "all" &&
+        CHECKLIST_GROUPS.every((group) => {
+          const rows = group.missableIds.filter((id) => {
+            const e = byId.get(id);
+            return e && passesFilter(e.id);
+          });
+          return rows.length === 0;
+        }) && (
+          <p className="rounded-lg border border-dusk-800 bg-night-900/50 px-3 py-3 text-sm text-dusk-500">
+            No {filter} items right now. Switch to All or change your checks.
+          </p>
+        )}
     </section>
   );
 }

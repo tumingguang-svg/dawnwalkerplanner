@@ -77,7 +77,9 @@ export function DataStatus({
         <dl className="mt-2 space-y-1">
           {lastVerified ? (
             <div className="flex flex-wrap gap-x-2">
-              <dt className="text-dusk-600">Last verified</dt>
+              <dt className="text-dusk-600">
+                {verified ? "Last verified" : "Last checked"}
+              </dt>
               <dd className="text-dusk-300">{lastVerified}</dd>
             </div>
           ) : null}

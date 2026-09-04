@@ -55,3 +55,14 @@ export function countSources(sourceNote?: string, hasYoutube?: boolean): number 
   if (hasYoutube && !/YouTube|YT/i.test(note)) n += 1;
   return Math.max(n, note ? 1 : 0);
 }
+
+/** Build /planner URL that hydrates one or more time-cost ids via ?add=. */
+export function plannerHrefForCostIds(costIds: string[]): string {
+  const unique = [...new Set(costIds.filter(Boolean))];
+  if (unique.length === 0) return "/planner";
+  if (unique.length === 1) {
+    return `/planner?add=${encodeURIComponent(unique[0])}`;
+  }
+  // Comma-separated is compact; PlannerClient also accepts repeated ?add=.
+  return `/planner?add=${unique.map(encodeURIComponent).join(",")}`;
+}

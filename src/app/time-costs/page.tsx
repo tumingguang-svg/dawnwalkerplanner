@@ -45,7 +45,7 @@ function TimeCostTable({ rows }: { rows: TimeCostEntry[] }) {
             <th className="px-3 py-3">Segments</th>
             <th className="px-3 py-3">Phase</th>
             <th className="px-3 py-3">Status</th>
-            {showVerifiedCol && <th className="px-3 py-3">Last verified</th>}
+            {showVerifiedCol && <th className="px-3 py-3">Last checked</th>}
             {showSourceCol && <th className="px-3 py-3">Source note</th>}
             {showPlatformCol && <th className="px-3 py-3">Platform</th>}
             {showPatchCol && <th className="px-3 py-3">Patch</th>}

@@ -43,9 +43,9 @@ const SCHEMA_FIELDS = [
       "These rows are Reported from guides and tip videos—not Verified in-house play.",
   },
   {
-    field: "lastVerified / source",
+    field: "lastChecked / source",
     meaning:
-      "Date plus source note. YouTube-derived rows keep URL, timestamp, platform, and game version.",
+      "Date last checked against guides (UI label; not in-house Verified) plus source note. YouTube-derived rows keep URL, timestamp, platform, and game version.",
   },
 ];
 
