@@ -209,8 +209,8 @@ export default function HomePage() {
             },
             {
               href: "/missables",
-              title: "Missables index",
-              body: "Reported prologue lock windows (Esme, Lazar, Mass, half-quest fail). Not a Verified checklist.",
+              title: "Missables checklist",
+              body: "Reported prologue & campaign lock windows with local checklist + Add to Planner. Not Verified.",
             },
             {
               href: "/guides/how-to-plan-your-time",

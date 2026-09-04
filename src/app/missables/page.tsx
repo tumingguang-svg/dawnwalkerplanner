@@ -7,12 +7,13 @@ import { DataStatus } from "@/components/DataStatus";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { MissablesChecklist } from "@/components/MissablesChecklist";
 
 export const metadata: Metadata = pageMetadata({
   path: "/missables",
-  title: "Dawnwalker Missables – Reported Prologue Timer Risks",
+  title: "Blood of Dawnwalker Missables Checklist – Reported Timer Risks",
   description:
-    "Dawnwalker missables: Reported prologue lock windows (Esme, Lazar, Gremla, Blood Mass, half-quest fail) from launch-week guides and YouTube narration.",
+    "Dawnwalker missables checklist: Reported prologue and campaign lock windows (Esme, Lazar, Blood Mass, PowerPyx trophies) with local progress tracking and Add to Planner.",
   absoluteTitle: true,
 });
 
@@ -53,20 +54,25 @@ export default function MissablesPage() {
     <div className="space-y-8">
       <JsonLd
         data={breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Missables", path: "/missables" },
-          ])}
+          { name: "Home", path: "/" },
+          { name: "Missables", path: "/missables" },
+        ])}
       />
       <div>
         <h1 className="font-display text-3xl text-dusk-50 md:text-4xl">
-          Dawnwalker Missables – Reported Prologue Timer Risks
+          Blood of Dawnwalker Missables Checklist
         </h1>
         <p className="mt-2 max-w-2xl text-dusk-400">
-          Launch-week <strong className="text-dusk-200">Reported</strong>{" "}
-          prologue lock windows from guides and YouTube narration (2026-09-03).
-          Soft spoilers in the notes. Not a Verified retail checklist.
+          Practical{" "}
+          <strong className="text-dusk-200">dawnwalker missables</strong>{" "}
+          checklist for launch-week{" "}
+          <strong className="text-dusk-200">Reported</strong> prologue and
+          campaign lock windows. Soft spoilers in the notes. Not a Verified
+          retail list—Data status stays Reported.
         </p>
       </div>
+
+      <MissablesChecklist />
 
       <article className="prose-invert max-w-3xl space-y-6 text-dusk-300">
         <section className="space-y-3">
@@ -82,7 +88,7 @@ export default function MissablesPage() {
             hot water + three spoonfuls before the ceremony (PC Gamer / PowerPyx).
           </p>
           <p>
-            Pair this index with the{" "}
+            Pair this checklist with the{" "}
             <Link href="/quests" className="text-ember-400 hover:underline">
               prologue quest catalog
             </Link>{" "}
@@ -134,11 +140,11 @@ export default function MissablesPage() {
 
       <section className="space-y-3">
         <h2 className="font-display text-xl text-dusk-50">
-          Prologue missables (Reported)
+          Full reference table (Reported)
         </h2>
         <p className="text-sm text-dusk-500">
-          {MISSABLE_ENTRIES.length} rows. Notes include story-adjacent timer
-          outcomes from cited guides.
+          {MISSABLE_ENTRIES.length} rows with full notes and citations. The
+          checklist above uses the same data—nothing invented as Verified.
         </p>
         <div className="overflow-x-auto rounded-xl border border-dusk-800">
           <table className="min-w-full text-left text-sm">
@@ -200,7 +206,7 @@ export default function MissablesPage() {
 
       <DataStatus
         status="reported"
-        lastReviewed="2026-09-03"
+        lastReviewed="2026-09-04"
         source="IGN YT, GameSpot, Polygon, PowerPyx, LunarGaming narration"
       />
       <RelatedLinks

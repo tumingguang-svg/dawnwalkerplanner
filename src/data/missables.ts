@@ -156,3 +156,59 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
     sourceNote: SOURCE_URLS.powerpyxTrophy,
   },
 ];
+
+/** Checklist grouping — only maps existing missable ids; no invented deadlines. */
+export type ChecklistGroup = {
+  id: string;
+  title: string;
+  description: string;
+  missableIds: string[];
+};
+
+export const CHECKLIST_GROUPS: ChecklistGroup[] = [
+  {
+    id: "before-blood-mass",
+    title: "Before Blood Mass",
+    description:
+      "Prologue windows that lock when Mass begins or when the day bar fills (Reported).",
+    missableIds: [
+      "missable-esme-medicine",
+      "missable-lazar-deep-down",
+      "missable-gremla-blasphemy",
+      "missable-prologue-sides-after-mass",
+    ],
+  },
+  {
+    id: "always",
+    title: "Always (segment hygiene)",
+    description:
+      "Ongoing risk whenever an hourglass quest still needs time mid-chain.",
+    missableIds: ["missable-half-quest-one-segment"],
+  },
+  {
+    id: "campaign",
+    title: "Campaign (post-prologue)",
+    description:
+      "Reported PowerPyx trophy / timed windows after the Prologue—not Verified in-house.",
+    missableIds: [
+      "missable-30-day-family-rescue",
+      "missable-bittersweet-toast",
+      "missable-together-forever",
+      "missable-mothers-plea",
+      "missable-misery-loves-company",
+      "missable-the-manumit",
+      "missable-uphill-battle",
+    ],
+  },
+];
+
+/** Missable id → time-cost catalog id when a related quest cost exists. */
+export const MISSABLE_TO_COST_ID: Record<string, string> = {
+  "missable-esme-medicine": "prologue-cost-withering-away",
+  "missable-lazar-deep-down": "prologue-cost-deep-down",
+  "missable-gremla-blasphemy": "prologue-cost-typical-side",
+};
+
+export function missableById(id: string): MissableEntry | undefined {
+  return MISSABLE_ENTRIES.find((e) => e.id === id);
+}
