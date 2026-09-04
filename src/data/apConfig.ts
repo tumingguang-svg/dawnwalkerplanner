@@ -92,12 +92,18 @@ export const SOURCE_URLS = {
     "https://www.gamerguides.com/the-blood-of-dawnwalker/guide/getting-started/gameplay/time-management-explained",
   gamespotEsme:
     "https://www.gamespot.com/articles/blood-of-dawnwalker-save-coens-mother/",
+  vgcAfter30:
+    "https://www.videogameschronicle.com/guide/blood-of-dawnwalker-what-happens-after-30-days/",
+  gamerGuidesPrologueBest:
+    "https://www.gamerguides.com/the-blood-of-dawnwalker/guide/walkthrough/prologue/best-quests-to-do-during-the-prologue",
+  pcgamerEndings:
+    "https://www.pcgamer.com/games/rpg/the-blood-of-dawnwalker-endings/",
 } as const;
 
 /** Sitewide page-level data banner defaults. Planner units stay Estimated. */
 export const SITE_DATA_STATUS = {
   status: "estimated" as VerificationStatus,
-  lastReviewed: "2026-09-04",
+  lastReviewed: "2026-09-05",
   lastVerified: null as string | null,
   gameVersion: "retail launch week Sep 2026" as string | undefined,
   platform: undefined as string | undefined,
@@ -109,5 +115,5 @@ export const SITE_DATA_STATUS = {
   basis:
     "Interactive Time Segment budget remains an Estimated fan model (30 × 8 day + 8 night = 480). Day/night 8-segment mechanics are Reported from IGN, PC Gamer, Polygon, and Falcon YT. RageGaming spoken “10 notches” is footnoted only. Prologue catalogs are a Reported mix from guides and tip videos—not in-house Verified play.",
   pendingNote:
-    "Day-2 Reported deepen (2026-09-04): Esme brew steps (PC Gamer / PowerPyx), skill-tree budget + free activities (Gamer Guides). In-house Verified play still pending. Reported is not Verified.",
+    "Day-3 Reported deepen (2026-09-05): after-30-days outcomes (VGC / PC Gamer endings), prologue persist/ROI (Gamer Guides). In-house Verified play still pending. Reported is not Verified.",
 };

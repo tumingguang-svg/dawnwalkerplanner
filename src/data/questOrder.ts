@@ -101,7 +101,7 @@ export const PROLOGUE_DAY1_ROUTE: QuestOrderRoute = {
       name: "Blasphemy",
       segments: 1,
       runningTotal: 6,
-      tip: "~1 segment. Revelation choice affects Gremla at Mass.",
+      tip: "~1 segment. Tell Gremla about Premysl or she dies at Mass; optional double-dip rewards (Gamer Guides).",
       risk: "medium",
     },
     {
@@ -119,12 +119,12 @@ export const PROLOGUE_DAY1_ROUTE: QuestOrderRoute = {
       name: "Like Father, Like Son",
       segments: 1,
       runningTotal: 8,
-      tip: "Optional after Withering Away. Or skip remaining day straight to Mass.",
+      tip: "Optional after Withering Away · Charge Manual ROI (Gamer Guides). Or skip remaining day to Mass.",
       risk: "low",
     },
   ],
   leftoverNote:
-    "At 8/8 you are at Mass. Optional swaps: Into The Den (1), On The Run (2), Bandit camp (1) / Treasure map (2) — only if you drop something else. Never open a multi-step chain on your last segment.",
+    "At 8/8 you are at Mass. Prefer expiring NPC sides over Into The Den / bandit camp (Gamer Guides: those remain after prologue). On The Run (2) is poor ROI. Treasure map persist conflicts — do not assume safe to defer. Never open a multi-step chain on your last segment.",
 };
 
 export const QUEST_ORDER_ROUTES = [PROLOGUE_DAY1_ROUTE];

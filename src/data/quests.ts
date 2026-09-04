@@ -74,9 +74,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "medium",
+    lastVerified: "2026-09-05",
     notes:
-      "Banner investigation. Outcomes affect Gremla (IGN). Default 1 segment (PC Gamer / IGN).",
-    sourceNote: `IGN YT + PC Gamer. ${SOURCE_URLS.pcgamerPrologue}`,
+      "Banner investigation. Default 1 segment (PC Gamer / IGN). Gremla dies at Mass if you skip or never name Premysl (Gamer Guides). ROI tip: side with Premysl for Daylight Amulet, then tell Gremla anyway for both rewards + higher EXP (Gamer Guides).",
+    sourceNote: `IGN YT + PC Gamer + Gamer Guides ROI. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -125,9 +126,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "medium",
+    lastVerified: "2026-09-05",
     notes:
-      "Lost pig. PC Gamer lists 2⌛; IGN emphasizes XP. Planner default follows the more conservative PCG cost.",
-    sourceNote: `PC Gamer 2⌛ preferred over IGN XP-focus. ${SOURCE_URLS.pcgamerPrologue}`,
+      "Lost pig. PC Gamer lists 2⌛; IGN emphasizes XP. Planner default follows PCG. Gamer Guides calls this a poor ROI spend for prologue budget (2 TIME for modest XP/Denarius).",
+    sourceNote: `PC Gamer 2⌛ + Gamer Guides ROI. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -175,9 +177,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "medium",
+    lastVerified: "2026-09-05",
     notes:
-      "Base ~1 segment. Help bury / refill the grave = extra +1 hour (IGN / PC Gamer).",
-    sourceNote: `IGN YT + PC Gamer. ${SOURCE_URLS.pcgamerPrologue}`,
+      "Base ~1 segment. Help bury / refill the grave = extra +1 hour (IGN / PC Gamer). Gamer Guides: skip the bury ask — no meaningful payoff for the second segment.",
+    sourceNote: `IGN YT + PC Gamer + Gamer Guides. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -187,9 +190,11 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     estimatedAp: 1,
     phase: "day",
     ...REPORTED_LAUNCH,
-    missableRisk: "medium",
-    notes: "PC Gamer table lists 1⌛. Polygon also lists 1. Reported from PCG.",
-    sourceNote: `PC Gamer + Polygon. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.polygonMassQuests}`,
+    lastVerified: "2026-09-05",
+    missableRisk: "low",
+    notes:
+      "PC Gamer / Polygon list 1⌛. Gamer Guides: Into The Den remains available after the prologue — prefer spending Mass-day segments on expiring NPC quests instead. Not listed on PowerPyx’s prologue-missable side list.",
+    sourceNote: `PC Gamer + Polygon + Gamer Guides persist. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
   },
   {
     id: "prologue-like-father-like-son",
@@ -199,9 +204,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "low",
+    lastVerified: "2026-09-05",
     notes:
-      "After Withering Away. ~1 hour (IGN / PC Gamer). You can skip remaining day and go to Mass instead.",
-    sourceNote: `IGN + PC Gamer 1⌛. ${SOURCE_URLS.pcgamerPrologue}`,
+      "After Withering Away. ~1 hour (IGN / PC Gamer). Gamer Guides ROI: duel + chat with Pieter yields Charge Manual (unlock Charge skill) — one of the stronger 1-segment prologue spends. You can still skip remaining day and go to Mass instead.",
+    sourceNote: `IGN + PC Gamer + Gamer Guides Charge Manual. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -212,9 +218,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "low",
+    lastVerified: "2026-09-05",
     notes:
-      "UI warns engage = 1-hour segment (IGN). Treasure-map follow-up is a separate row; GameSpot/PCG/Polygon may add more cost for the full chain.",
-    sourceNote: `IGN YT (1-hour engage warning). Treasure chain: ${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamespotPrologue}`,
+      "UI warns engage = 1-hour segment (IGN). Treasure-map follow-up is a separate row. Gamer Guides: bandit camp remains available after prologue — do not burn Mass-day budget here if NPC sides still expire. Treasure-map missability conflicts (see Bandits’ Treasure row).",
+    sourceNote: `IGN YT + Gamer Guides persist. Treasure chain: ${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamespotPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -225,9 +232,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "low",
+    lastVerified: "2026-09-05",
     notes:
-      "Polygon-style treasure chain listed as 2 segments. GameSpot describes camp fight + later dig (conflicting split vs a single 2). Planner default 2 (conservative). Camp engage alone is 1 on the sibling row.",
-    sourceNote: `Polygon 2; GameSpot camp+dig split. ${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamespotPrologue}`,
+      "Polygon-style treasure chain listed as 2 segments. GameSpot describes camp fight + later dig (conflicting split vs a single 2). Planner default 2 (conservative). Persist conflict: PowerPyx lists this under prologue-missable sides; Gamer Guides says buried treasure remains after prologue — do not auto-assume safe to defer (Pending).",
+    sourceNote: `Polygon 2; GameSpot split; PowerPyx missable list vs Gamer Guides persist. ${SOURCE_URLS.polygonMassQuests} ${SOURCE_URLS.gamespotPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
 ];

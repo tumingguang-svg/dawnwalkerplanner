@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GuideLayout } from "@/components/GuideLayout";
-import { AP_CONFIG } from "@/data/apConfig";
+import { AP_CONFIG, SOURCE_URLS } from "@/data/apConfig";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guides/30-day-deadline",
-  title: "Dawnwalker 30-Day Deadline – Pacing the Campaign Clock",
+  title: "Blood of Dawnwalker 30-Day Deadline – What Happens After",
   description:
-    "Dawnwalker 30-day deadline guide: pace main path, side content, and contingency with an estimated Time Budget fan model—not official Action Points.",
+    "Blood of Dawnwalker 30-day deadline: what happens when the timer runs out (family, trophy, epilogue), plus Estimated pacing habits for the Time Budget planner.",
   absoluteTitle: true,
 });
 
@@ -16,13 +16,94 @@ export default function ThirtyDayDeadlinePage() {
   return (
     <GuideLayout
       path="/guides/30-day-deadline"
-      title="Dawnwalker 30-Day Deadline"
-      intro="How to treat the campaign month as a pacing problem: front-load what feels time-sensitive, park tourist content, and keep a contingency buffer in the fan Time Budget model."
-      keywordNote="Primary focus: 30-day deadline (Dawnwalker)."
+      title="Blood of Dawnwalker 30-Day Deadline"
+      intro="The campaign month is a pacing problem, not a real-time stopwatch. Below: Reported outcomes when the 30-day timer elapses, then Estimated habits for budgeting Time Segments in the fan planner."
+      keywordNote="Primary focus: Blood of Dawnwalker 30-day deadline / what happens after."
+      lastUpdated="2026-09-05"
+      dataStatus={{
+        status: "reported",
+        lastReviewed: "2026-09-05",
+        source: "VGC after-30-days + PC Gamer endings + PowerPyx trophy (Reported, not Verified)",
+        basis:
+          "Outcome bullets are launch-week Reported from written guides. The ~40/30/20/10 split remains Estimated planning hygiene only.",
+      }}
     >
       <section className="space-y-3 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
-          Why the month feels tight
+          What happens after 30 days (Reported)
+        </h2>
+        <p>
+          The timer is tied to saving Coen’s family — not a hard game-over. If
+          you stretch past day 30 before a family rescue ending:
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            Family perish at Brencis’ ceremony; you miss the{" "}
+            <strong className="text-dusk-100">In the Nick of Time</strong>{" "}
+            trophy/achievement (
+            <a
+              href={SOURCE_URLS.vgcAfter30}
+              className="text-ember-400 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              VGC
+            </a>
+            ; also{" "}
+            <a
+              href={SOURCE_URLS.powerpyxTrophy}
+              className="text-ember-400 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              PowerPyx
+            </a>
+            ).
+          </li>
+          <li>
+            You miss the family epilogue chapter after a successful rescue (
+            <a
+              href={SOURCE_URLS.vgcAfter30}
+              className="text-ember-400 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              VGC
+            </a>
+            ).{" "}
+            <a
+              href={SOURCE_URLS.pcgamerEndings}
+              className="text-ember-400 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              PC Gamer endings
+            </a>{" "}
+            likewise note the family is dead/absent if the timer ran out.
+          </li>
+          <li>
+            You can keep playing afterward (sandbox mop-up), but family-linked
+            main quests and that epilogue stay unavailable (VGC).
+          </li>
+          <li>
+            After you <em>do</em> rescue them and roll credits, there is no
+            free-roam — make a manual save before the final boss (VGC; PowerPyx
+            side-quest hub).
+          </li>
+        </ul>
+        <p className="text-sm text-dusk-500">
+          Last checked 2026-09-05. Reported from guides — not in-house Verified
+          play. Cross-check the{" "}
+          <Link href="/missables" className="text-ember-400 hover:underline">
+            Missables checklist
+          </Link>{" "}
+          row for In the Nick of Time.
+        </p>
+      </section>
+
+      <section className="space-y-3 text-dusk-300">
+        <h2 className="font-display text-xl text-dusk-50">
+          Why the month still feels tight
         </h2>
         <p>
           A fixed campaign window rewards players who decide early what
@@ -30,12 +111,22 @@ export default function ThirtyDayDeadlinePage() {
           beat, and faction errand in one pass is how ledgers go red. Our
           estimated model assumes {AP_CONFIG.totalAp} Time Segments across{" "}
           {AP_CONFIG.totalDays} days—useful for practice, not a promise about
-          official Action Points.
+          official Action Points. Time only advances on hourglass commits (not
+          free exploration) — see{" "}
+          <Link
+            href="/guides/how-time-works"
+            className="text-ember-400 hover:underline"
+          >
+            how time works
+          </Link>
+          .
         </p>
       </section>
 
       <section className="space-y-3 text-dusk-300">
-        <h2 className="font-display text-xl text-dusk-50">A simple pacing split</h2>
+        <h2 className="font-display text-xl text-dusk-50">
+          A simple pacing split (Estimated)
+        </h2>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
             <strong className="text-dusk-100">~40% main path</strong> — story
@@ -66,6 +157,14 @@ export default function ThirtyDayDeadlinePage() {
           <li>
             <strong className="text-dusk-100">Days 1–7:</strong> learn the day /
             night split; finish one main beat before opening three side chains.
+            Prologue first — see{" "}
+            <Link
+              href="/guides/quest-order"
+              className="text-ember-400 hover:underline"
+            >
+              quest order
+            </Link>
+            .
           </li>
           <li>
             <strong className="text-dusk-100">Days 8–15:</strong> spend personal
@@ -77,7 +176,8 @@ export default function ThirtyDayDeadlinePage() {
           </li>
           <li>
             <strong className="text-dusk-100">Days 24–30:</strong> protect ending
-            preparation; spend leftover units on low-risk cleanup only.
+            preparation; spend leftover units on low-risk cleanup only. Save
+            before the final boss if you want mop-up later.
           </li>
         </ol>
       </section>
@@ -92,6 +192,10 @@ export default function ThirtyDayDeadlinePage() {
           , then trim against the{" "}
           <Link href="/time-costs" className="text-ember-400 hover:underline">
             time costs catalog
+          </Link>
+          . Flag campaign missables on the{" "}
+          <Link href="/missables" className="text-ember-400 hover:underline">
+            Missables checklist
           </Link>
           . If you are asking whether one campaign can eat everything, read{" "}
           <Link

@@ -58,8 +58,9 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
     risk: "medium",
     ...REPORTED_LAUNCH,
     notes:
-      "Gremla’s fate depends on whether you reveal Premysl in the banner investigation (IGN). Outcomes show up at Mass.",
-    sourceNote: `IGN YT. Mass outcome also noted by PowerPyx Sacred Covenant. ${SOURCE_URLS.powerpyxCovenant}`,
+      "Gremla dies at Sacred Covenant if you skip Blasphemy or never tell her Premysl has the banner (Gamer Guides). Tell her → banner in church instead. IGN also ties revelation choice to Mass outcomes. Worth note: Gamer Guides says you can side with Premysl for Daylight Amulet then still rat him out for both rewards + higher EXP.",
+    sourceNote: `Gamer Guides prologue ROI + IGN YT + PowerPyx Sacred Covenant. ${SOURCE_URLS.gamerGuidesPrologueBest} ${SOURCE_URLS.powerpyxCovenant}`,
+    lastVerified: "2026-09-05",
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {
@@ -88,9 +89,10 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
     window: "Rescue family within 30 in-game days after Prologue",
     risk: "high",
     ...REPORTED_LAUNCH,
+    lastVerified: "2026-09-05",
     notes:
-      "PowerPyx trophy guide marks this MISSABLE and calls the 30-day family rescue the overall most missable requirement. If time runs out, the trophy cannot be earned.",
-    sourceNote: SOURCE_URLS.powerpyxTrophy,
+      "If the 30-day timer elapses before you rescue the family: family perish at Brencis’ ceremony; miss In the Nick of Time trophy; miss the family epilogue (VGC 2026-09-04). You can keep playing sandbox-style afterward, but family main quests / that epilogue stay unavailable. After you do rescue them and roll credits, there is no free-roam — save before the final boss (VGC; PowerPyx side-quest hub). PowerPyx still marks the trophy the most missable campaign requirement.",
+    sourceNote: `VGC after-30-days + PowerPyx trophy + PC Gamer endings corroboration. ${SOURCE_URLS.vgcAfter30} ${SOURCE_URLS.powerpyxTrophy} ${SOURCE_URLS.pcgamerEndings}`,
   },
   {
     id: "missable-bittersweet-toast",
