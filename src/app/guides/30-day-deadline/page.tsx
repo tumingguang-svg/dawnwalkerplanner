@@ -19,13 +19,13 @@ export default function ThirtyDayDeadlinePage() {
       title="Blood of Dawnwalker 30-Day Deadline"
       intro="The campaign month is a pacing problem, not a real-time stopwatch. Below: Reported outcomes when the 30-day timer elapses, then Estimated habits for budgeting Time Segments in the fan planner."
       keywordNote="Primary focus: Blood of Dawnwalker 30-day deadline / what happens after."
-      lastUpdated="2026-09-05"
+      lastUpdated="2026-09-06"
       dataStatus={{
         status: "reported",
-        lastReviewed: "2026-09-05",
-        source: "VGC after-30-days + PC Gamer endings + PowerPyx trophy (Reported, not Verified)",
+        lastReviewed: "2026-09-06",
+        source: "VGC after-30-days + PC Gamer endings + PowerPyx trophy roadmap (Reported, not Verified)",
         basis:
-          "Outcome bullets are launch-week Reported from written guides. The ~40/30/20/10 split remains Estimated planning hygiene only.",
+          "Outcome + Court pacing bullets are launch-week Reported from written guides. The ~40/30/20/10 split remains Estimated planning hygiene only.",
       }}
     >
       <section className="space-y-3 text-dusk-300">
@@ -92,12 +92,74 @@ export default function ThirtyDayDeadlinePage() {
           </li>
         </ul>
         <p className="text-sm text-dusk-500">
-          Last checked 2026-09-05. Reported from guides — not in-house Verified
+          Last checked 2026-09-06. Reported from guides — not in-house Verified
           play. Cross-check the{" "}
           <Link href="/missables" className="text-ember-400 hover:underline">
             Missables checklist
           </Link>{" "}
           row for In the Nick of Time.
+        </p>
+      </section>
+
+
+      <section className="space-y-3 text-dusk-300">
+        <h2 className="font-display text-xl text-dusk-50">
+          Court path pacing inside the 30 days (Reported)
+        </h2>
+        <p>
+          Players asking “how much of the month does the story actually eat?”
+          get a clearer answer from PowerPyx’s trophy roadmap than from the
+          Estimated split below:
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            Finishing Court Activities / the three boyar bosses takes about{" "}
+            <strong className="text-dusk-100">7–10 in-game days</strong>{" "}
+            (
+            <a
+              href={SOURCE_URLS.powerpyxTrophy}
+              className="text-ember-400 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              PowerPyx
+            </a>
+            ). You only need roughly{" "}
+            <strong className="text-dusk-100">~75%</strong> of Court Activities
+            to max anger and unlock each fight.
+          </li>
+          <li>
+            Aim to reach the ending around{" "}
+            <strong className="text-dusk-100">day 22</strong> so a few days
+            remain for ending-related side lines (PowerPyx). Manual-save before
+            the final quest for ending reloads.
+          </li>
+          <li>
+            Completing all five Sanzhani quests and returning to the leader at
+            Yawning Burrow is Reported to{" "}
+            <strong className="text-dusk-100">refund 1 in-game day</strong>{" "}
+            (~16 segments at 8+8) — a rare budget credit, not a free chain
+            (PowerPyx). See the{" "}
+            <Link href="/time-costs" className="text-ember-400 hover:underline">
+              time costs
+            </Link>{" "}
+            row.
+          </li>
+          <li>
+            Home Sweet Home (Silts Tower door) costs{" "}
+            <strong className="text-dusk-100">4 segments</strong> to open before
+            the dream loop toward Together Forever — budget it, or skip until
+            after In the Nick of Time is safe (
+            <Link href="/missables" className="text-ember-400 hover:underline">
+              Missables
+            </Link>
+            ).
+          </li>
+        </ul>
+        <p className="text-sm text-dusk-500">
+          Reported from PowerPyx trophy roadmap (Last checked 2026-09-06) — not
+          Verified in-house. Does not replace watching GSC/GA during the freeze
+          window.
         </p>
       </section>
 

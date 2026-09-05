@@ -101,8 +101,10 @@ export const QUEST_ENTRIES: QuestEntry[] = [
     phase: "day",
     ...REPORTED_LAUNCH,
     missableRisk: "low",
-    notes: "Vasil confrontation. ~1 segment; ~250 XP (IGN).",
-    sourceNote: `IGN YT + PC Gamer. ${SOURCE_URLS.pcgamerPrologue}`,
+    notes:
+      "Vasil confrontation. ~1 segment; ~250 XP (IGN). Gamer Guides: time cost lands at the end — solid last-slot activity when you have exactly 1 segment left (unlike mid-chain hourglass quests).",
+    lastVerified: "2026-09-06",
+    sourceNote: `IGN YT + PC Gamer + Gamer Guides. ${SOURCE_URLS.pcgamerPrologue} ${SOURCE_URLS.gamerGuidesPrologueBest}`,
     youtubeSource: YT_IGN_PROLOGUE,
   },
   {

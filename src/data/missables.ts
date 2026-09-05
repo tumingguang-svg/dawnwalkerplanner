@@ -113,7 +113,8 @@ export const MISSABLE_ENTRIES: MissableEntry[] = [
     risk: "high",
     ...REPORTED_LAUNCH,
     notes:
-      "PowerPyx marks the trophy MISSABLE. Escaping via the well early misses the secret Together Forever ending path.",
+      "PowerPyx marks the trophy MISSABLE. Opening the Silts Tower top door costs 4 time segments (Reported). Complete 4 dream cycles, stay on the 5th — escaping via the well early misses the secret Together Forever ending path. Single Steam claim that the loop burned more than the advertised door cost stays Pending.",
+    lastVerified: "2026-09-06",
     sourceNote: SOURCE_URLS.powerpyxTrophy,
   },
   {

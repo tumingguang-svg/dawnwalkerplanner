@@ -92,7 +92,7 @@ export const PROLOGUE_DAY1_ROUTE: QuestOrderRoute = {
       name: "Someone Needs A Lesson",
       segments: 1,
       runningTotal: 5,
-      tip: "~1 segment · solid XP.",
+      tip: "~1 segment · cost at end — good final 1-slot (Gamer Guides).",
       risk: "low",
     },
     {

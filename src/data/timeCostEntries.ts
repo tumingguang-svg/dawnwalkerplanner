@@ -482,9 +482,35 @@ export const TIME_COST_ENTRIES: TimeCostEntry[] = [
     gameVersion: "retail launch week Sep 2026",
     youtubeSource: YT_IGN_PROLOGUE,
   },
+  {
+    id: "campaign-home-sweet-home-door",
+    name: "Home Sweet Home — open Silts Tower door",
+    category: "Campaign",
+    apCost: 4,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "PowerPyx: opening the top-floor door at Silts Tower to start Home Sweet Home costs 4 time segments. Starts the dream-loop path toward Together Forever (or the well escape). Steam single-player claim that the loop ran longer than advertised stays Pending — keep 4 as the door commit only.",
+    lastVerified: "2026-09-06",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+    gameVersion: "retail launch week Sep 2026",
+  },
+  {
+    id: "campaign-sanzhani-day-refund",
+    name: "Sanzhani questline — day refund (all 5)",
+    category: "Campaign",
+    apCost: 0,
+    phase: "either",
+    verificationStatus: "reported",
+    notes:
+      "PowerPyx (The Tsarina's Favourite Human): finish all five Sanzhani quests (Good Home first, then Come Hither / Burrow Sorrows / Pearly and Precious / Tiny Dancer), return to the leader at Yawning Burrow — Reported to refund 1 in-game day (~16 segments at 8+8). Planner cost stays 0; treat as a budget credit, not a free quest chain.",
+    lastVerified: "2026-09-06",
+    sourceNote: SOURCE_URLS.powerpyxTrophy,
+    gameVersion: "retail launch week Sep 2026",
+  },
 ];
 
-const LAUNCH_WEEK_REPORTED_CATEGORIES = new Set(["Prologue", "Mechanics"]);
+const LAUNCH_WEEK_REPORTED_CATEGORIES = new Set(["Prologue", "Mechanics", "Campaign"]);
 
 export function isLaunchWeekReported(entry: TimeCostEntry): boolean {
   return (

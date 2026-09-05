@@ -19,7 +19,7 @@ export default function HowTimeWorksPage() {
       title="Blood of Dawnwalker Time System: How It Works"
       intro="How the time bar is Reported to work at retail launch week, and how this site’s Estimated 30-day Time Budget model maps those segments into a planner ledger."
       keywordNote="Primary focus: how time works (Dawnwalker)."
-      lastUpdated="2026-09-04"
+      lastUpdated="2026-09-06"
     >
       <section className="space-y-3 rounded-xl border border-ember-600/30 bg-ember-600/5 p-4 text-dusk-300">
         <h2 className="font-display text-xl text-dusk-50">
@@ -48,7 +48,16 @@ export default function HowTimeWorksPage() {
             <strong className="text-dusk-100">Skill / perk at shrine</strong> — ~1 each; full tree can burn days (Gamer Guides).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
-            <strong className="text-dusk-100">≤1 segment left</strong> — do not start multi-step hourglass quests (Polygon).
+            <strong className="text-dusk-100">≤1 segment left</strong> — do not start multi-step hourglass quests (Polygon). Prefer a 1-seg skill (e.g. Sustained Focus) or end-cost sides like Someone Needs A Lesson (Gamer Guides).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Court story path</strong> — ~7–10 days / ~75% Court Activities; aim ending ~day 22 (PowerPyx).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Home Sweet Home door</strong> — 4 segments to open Silts Tower top door (PowerPyx).
+          </li>
+          <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
+            <strong className="text-dusk-100">Sanzhani all 5</strong> — Reported +1 day refund at Yawning Burrow (PowerPyx).
           </li>
           <li className="rounded-lg border border-dusk-800 bg-night-950/50 px-3 py-2">
             <strong className="text-dusk-100">Shrine Wait</strong> — up to 16 ticks in one commit (Gamer Guides); avoid casual Wait.
